@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Conoce más sobre Yoeldis Castillo Quiala - Escritor, investigador y conferencista especializado en desarrollo personal." />
+  <title>Sobre Mí | Yoeldis Castillo Quiala</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header__container">
+      <a href="index.html" class="logo">
+        <span class="logo__yc">YC</span>
+        <span class="logo__text">Yoeldis Castillo Quiala<br><small>ESCRITOR</small></span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link">INICIO</a></li>
+          <li><a href="sobre-mi.html" class="nav__link nav__link--active">SOBRE MÍ</a></li>
+          <li><a href="libros.html" class="nav__link">LIBROS</a></li>
+          <li><a href="articulos.html" class="nav__link">ARTÍCULOS</a></li>
+          <li><a href="conferencias.html" class="nav__link">CONFERENCIAS</a></li>
+          <li><a href="contacto.html" class="nav__link">CONTACTO</a></li>
+        </ul>
+      </nav>
+
+      <div class="social social--desktop">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" aria-label="Email"><i class="far fa-envelope"></i></a>
+      </div>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Menú">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- SOBRE EL AUTOR -->
+  <section class="autor-page">
+    <div class="container">
+      <div class="autor-page__container">
+        <div class="autor-page__image">
+          <img src="img/autor.jpg" alt="Yoeldis Castillo Quiala" />
+        </div>
+        <div class="autor-page__content">
+          <h1 class="page__title page__title--left">Sobre el Autor</h1>
+          <div class="section__divider section__divider--left"></div>
+          
+          <div class="autor-page__text">
+            <p>
+              Yoeldis Castillo Quiala es escritor, investigador y conferencista especializado en comportamiento humano, desarrollo personal y crecimiento interior.
+            </p>
+            <p>
+              A través de sus libros y conferencias, busca inspirar a las personas a conocerse mejor, tomar decisiones conscientes y construir una vida con propósito.
+            </p>
+            <p>
+              Con años de experiencia investigando la mente humana y las dinámicas del comportamiento, ha desarrollado metodologías prácticas que han transformado la vida de miles de personas.
+            </p>
+            <p>
+              Su enfoque combina la profundidad del análisis psicológico con la aplicabilidad práctica, haciendo que conceptos complejos sean accesibles y útiles para el día a día.
+            </p>
+          </div>
+
+          <div class="autor-page__highlights">
+            <div class="highlight">
+              <i class="fas fa-book"></i>
+              <h3>4 Libros Publicados</h3>
+              <p>Obras que han impactado positivamente a lectores en múltiples países</p>
+            </div>
+            <div class="highlight">
+              <i class="fas fa-users"></i>
+              <h3>Conferencias</h3>
+              <p>Experiencia en eventos corporativos, educativos y de desarrollo personal</p>
+            </div>
+            <div class="highlight">
+              <i class="fas fa-brain"></i>
+              <h3>Investigación</h3>
+              <p>Estudios profundos sobre comportamiento humano y desarrollo personal</p>
+            </div>
+          </div>
+
+          <div class="autor-page__buttons">
+            <a href="libros.html" class="btn btn--solid">
+              <i class="fas fa-book"></i> VER LIBROS
+            </a>
+            <a href="conferencias.html" class="btn btn--outline">
+              CONFERENCIAS <i class="fas fa-chevron-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <div class="container newsletter__container">
+      <div class="newsletter__icon">
+        <i class="far fa-envelope"></i>
+      </div>
+      <div class="newsletter__content">
+        <h3>SUSCRÍBETE A MI BOLETÍN</h3>
+        <p>Recibe artículos, recursos y novedades directamente en tu correo.</p>
+      </div>
+      <form class="newsletter__form" action="https://formspree.io/f/TU_ID_AQUI" method="POST">
+        <input type="email" name="email" placeholder="Tu correo electrónico" required />
+        <button type="submit" class="btn btn--solid">SUSCRIBIRME</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER: SELLO DE DESARROLLADOR -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__pre-text">Experiencia interactiva desarrollada por</p>
+      
+      <div class="footer__brand">
+        <img src="img/Eltonlogo.jpg" alt="EO Logo" class="footer__logo" />
+        <h3 class="footer__name">ELTON OLIVARES</h3>
+      </div>
+      
+      <p class="footer__tagline">INNOVACIÓN • DISEÑO • TECNOLOGÍA</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

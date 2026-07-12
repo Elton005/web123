@@ -1,0 +1,648 @@
+/* ========== VARIABLES ========== */
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #121212;
+  --bg-tertiary: #1a1a1a;
+  --gold-primary: #c9a961;
+  --gold-hover: #e0c27a;
+  --gold-muted: #8a7346;
+  --text-primary: #f4f4f4;
+  --text-secondary: #a3a3a3;
+  --font-heading: 'Cinzel', serif;
+  --font-body: 'Montserrat', sans-serif;
+  --transition: all 0.3s ease;
+}
+
+/* ========== RESET ========== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ========== LOGO ========== */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.logo__yc {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--gold-primary);
+  font-weight: 700;
+}
+.logo__text {
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+.logo__text small {
+  color: var(--gold-primary);
+  font-size: 0.6rem;
+}
+
+/* ========== HEADER ========== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(10, 10, 10, 0.98);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(201, 169, 97, 0.1);
+}
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* NAV MOBILE */
+.nav {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  background: var(--bg-secondary);
+  border-bottom: 2px solid var(--gold-primary);
+  padding: 2rem 1.5rem;
+  transform: translateY(-150%);
+  transition: transform 0.3s ease;
+  z-index: 999;
+}
+.nav.active {
+  transform: translateY(0);
+}
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: center;
+}
+.nav__link {
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+  transition: var(--transition);
+  display: block;
+  padding: 0.5rem 0;
+}
+.nav__link:hover,
+.nav__link--active {
+  color: var(--gold-primary);
+}
+.nav__toggle {
+  background: none;
+  border: none;
+  color: var(--gold-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1001;
+}
+.social--desktop {
+  display: none;
+}
+
+/* ========== HERO ========== */
+.hero {
+  min-height: 100vh;
+  padding: 120px 0 60px;
+  background: radial-gradient(circle at 70% 30%, #1a1510 0%, var(--bg-primary) 60%);
+  display: flex;
+  align-items: center;
+}
+.hero__container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.hero__title {
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  color: var(--gold-primary);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.hero__divider {
+  width: 60px;
+  height: 2px;
+  background: var(--gold-primary);
+  margin: 1rem 0;
+}
+.hero__subtitle {
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+.hero__description {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+.hero__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+/* ========== HERO IMAGE CON DIFUMINADO ========== */
+.hero__image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.hero__image img {
+  max-height: 700px;
+  width: auto;
+  /* El truco del difuminado inferior */
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+}
+
+/* ========== BOTONES ========== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+  font-family: var(--font-body);
+  text-align: center;
+}
+.btn--outline {
+  border: 1px solid var(--gold-primary);
+  color: var(--gold-primary);
+  background: transparent;
+}
+.btn--outline:hover {
+  background: var(--gold-primary);
+  color: var(--bg-primary);
+}
+.btn--solid {
+  background: var(--gold-primary);
+  color: var(--bg-primary);
+}
+.btn--solid:hover {
+  background: var(--gold-hover);
+}
+
+/* ========== PÁGINAS ========== */
+.page__title {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  color: var(--gold-primary);
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.page__title--left { text-align: left; }
+.section__divider {
+  width: 60px;
+  height: 2px;
+  background: var(--gold-primary);
+  margin: 0 auto 1.5rem;
+  position: relative;
+}
+.section__divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: var(--gold-primary);
+  border-radius: 50%;
+}
+.section__divider--left { margin-left: 0; }
+.section__subtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 3rem;
+}
+
+/* ========== LIBROS ========== */
+.libros-page {
+  padding: 120px 0 60px;
+  background: var(--bg-secondary);
+}
+.carrusel {
+  display: none;
+}
+.libros__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.libro-card {
+  text-align: center;
+}
+.libro-card__img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: var(--transition);
+}
+.libro-card__img:hover {
+  transform: translateY(-5px);
+}
+.libro-card__title {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  margin: 1rem 0 0.3rem;
+}
+.libro-card__subtitle {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+.libro-card .btn {
+  padding: 0.6rem 1rem;
+  font-size: 0.65rem;
+}
+
+/* CTA */
+.cta {
+  padding: 4rem 0;
+  background: var(--bg-tertiary);
+  text-align: center;
+  border-top: 1px solid rgba(201, 169, 97, 0.2);
+}
+.cta p {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+/* ========== SOBRE MÍ ========== */
+.autor-page {
+  padding: 120px 0 60px;
+}
+.autor-page__container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+/* ========== IMAGEN AUTOR CON DIFUMINADO ========== */
+.autor-page__image {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.autor-page__image img {
+  max-width: 400px;
+  border-radius: 4px;
+  /* Difumina la parte inferior */
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+  
+  /* Sombra sutil para darle profundidad antes de que se difumine */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+.autor-page__text p {
+  color: var(--text-secondary);
+  margin-bottom: 1.2rem;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+.autor-page__highlights {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin: 3rem 0;
+}
+.highlight {
+  background: var(--bg-secondary);
+  padding: 2rem;
+  border-radius: 4px;
+  border-left: 3px solid var(--gold-primary);
+}
+.highlight i {
+  font-size: 2rem;
+  color: var(--gold-primary);
+  margin-bottom: 1rem;
+}
+.highlight h3 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+.highlight p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+.autor-page__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ========== NEWSLETTER ========== */
+.newsletter {
+  background: var(--bg-tertiary);
+  padding: 3rem 0;
+  border-top: 1px solid rgba(201, 169, 97, 0.2);
+  border-bottom: 1px solid rgba(201, 169, 97, 0.2);
+}
+.newsletter__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  text-align: center;
+}
+.newsletter__icon {
+  font-size: 2.5rem;
+  color: var(--gold-primary);
+}
+.newsletter__content h3 {
+  font-family: var(--font-heading);
+  color: var(--gold-primary);
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+.newsletter__content p {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+.newsletter__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.newsletter__form input {
+  padding: 1rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--gold-muted);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+}
+.newsletter__form input:focus {
+  outline: none;
+  border-color: var(--gold-primary);
+}
+
+/* ========== COMING SOON ========== */
+.coming-soon {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 0 60px;
+}
+.coming-soon__content {
+  text-align: center;
+}
+.coming-soon__icon {
+  font-size: 4rem;
+  color: var(--gold-primary);
+  margin-bottom: 2rem;
+}
+.coming-soon__title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--gold-primary);
+  margin-bottom: 1rem;
+}
+.coming-soon__text {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+/* ========== FOOTER (SELLO DE DESARROLLADOR) ========== */
+.footer {
+  background-color: var(--bg-primary);
+  padding: 4rem 0 3rem;
+  border-top: 1px solid rgba(201, 169, 97, 0.15);
+  text-align: center;
+}
+
+.footer__pre-text {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.footer__brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer__logo {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  /* Opcional: si el logo tiene fondo transparente, se verá perfecto. 
+     Si tiene fondo negro, puedes quitar el border-radius */
+}
+
+.footer__name {
+  font-family: var(--font-heading); /* Usa Cinzel, igual que los títulos */
+  color: var(--gold-primary);
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.footer__tagline {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  letter-spacing: 4px; /* Espaciado amplio como en la foto */
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+/* Ajuste para móviles */
+@media (max-width: 600px) {
+  .footer {
+    padding: 3rem 0 2rem;
+  }
+  
+  .footer__brand {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .footer__name {
+    font-size: 1.3rem;
+  }
+  
+  .footer__tagline {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+  }
+}
+
+/* ========== TABLET (768px) ========== */
+@media (min-width: 768px) {
+  .container { padding: 0 2rem; }
+  
+  .hero__container {
+    flex-direction: row;
+    align-items: center;
+  }
+  .hero__title { font-size: 3.5rem; }
+  .hero__buttons { flex-direction: row; }
+  .hero__image { order: 0; }
+  .hero__image img { max-height: 550px; }
+  
+  .libros__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  .libro-card__img { height: 350px; }
+  
+  .autor-page__container {
+    flex-direction: row;
+    align-items: center;
+  }
+  .autor-page__image img { max-width: 400px; }
+  
+  .autor-page__highlights {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .autor-page__buttons {
+    flex-direction: row;
+  }
+  
+  .newsletter__container {
+    grid-template-columns: auto 1fr auto;
+    text-align: left;
+  }
+  .newsletter__form {
+    flex-direction: row;
+  }
+}
+
+/* ========== DESKTOP (1024px) ========== */
+@media (min-width: 1024px) {
+  .nav {
+    position: static;
+    transform: none;
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+  .nav__list {
+    flex-direction: row;
+    gap: 2rem;
+  }
+  .nav__link {
+    font-size: 0.75rem;
+    padding: 0;
+  }
+  .nav__toggle { display: none; }
+  .social--desktop {
+    display: flex;
+    gap: 1rem;
+  }
+  .social a {
+    width: 35px;
+    height: 35px;
+    border: 1px solid var(--gold-muted);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold-primary);
+    transition: var(--transition);
+    font-size: 0.85rem;
+  }
+  .social a:hover {
+    background: var(--gold-primary);
+    color: var(--bg-primary);
+    border-color: var(--gold-primary);
+  }
+  
+  .hero__title { font-size: 4rem; }
+  
+  .carrusel {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .carrusel__track {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 2rem 0;
+    scrollbar-width: none;
+    flex: 1;
+  }
+  .carrusel__track::-webkit-scrollbar { display: none; }
+  .libros__grid { display: none; }
+  
+  .libro-card {
+    flex: 0 0 260px;
+    scroll-snap-align: start;
+  }
+  .libro-card__img { height: 380px; }
+  
+  .carrusel__btn {
+    background: transparent;
+    border: 1px solid var(--gold-muted);
+    color: var(--gold-primary);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+    flex-shrink: 0;
+  }
+  .carrusel__btn:hover {
+    background: var(--gold-primary);
+    color: var(--bg-primary);
+  }
+}
+
+/* ========== DESKTOP GRANDE (1200px) ========== */
+@media (min-width: 1200px) {
+  .hero__title { font-size: 4.5rem; }
+  .page__title { font-size: 2.5rem; }
+}
