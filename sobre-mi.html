@@ -28,7 +28,6 @@
           <li><a href="sobre-mi.html" class="nav__link nav__link--active">SOBRE MÍ</a></li>
           <li><a href="libros.html" class="nav__link">LIBROS</a></li>
           <li><a href="articulos.html" class="nav__link">ARTÍCULOS</a></li>
-          <li><a href="conferencias.html" class="nav__link">CONFERENCIAS</a></li>
           <li><a href="contacto.html" class="nav__link">CONTACTO</a></li>
         </ul>
       </nav>
@@ -46,56 +45,36 @@
     </div>
   </header>
 
-  <!-- SOBRE EL AUTOR -->
+  <!-- SOBRE EL AUTOR - VERSIÓN MÓVIL OPTIMIZADA -->
   <section class="autor-page">
     <div class="container">
-      <div class="autor-page__container">
-        <div class="autor-page__image">
-          <img src="img/autor.jpg" alt="Yoeldis Castillo Quiala" />
+      <div class="autor-page__container" style="display: flex; flex-direction: row; align-items: flex-start; gap: 1rem;">
+        
+        <!-- Foto compacta -->
+        <div class="autor-page__image" style="flex: 0 0 100px; min-width: 100px;">
+          <img src="img/autor.jpg" alt="Yoeldis Castillo Quiala" style="max-width: 100px; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.6);" />
         </div>
-        <div class="autor-page__content">
-          <h1 class="page__title page__title--left">Sobre el Autor</h1>
-          <div class="section__divider section__divider--left"></div>
+        
+        <!-- Contenido -->
+        <div class="autor-page__content" style="flex: 1;">
+          <h1 class="page__title page__title--left" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Sobre el Autor</h1>
+          <div class="section__divider section__divider--left" style="width: 40px; margin: 0 0 1rem 0;"></div>
           
           <div class="autor-page__text">
-            <p>
+            <p style="font-size: 0.85rem; line-height: 1.6; margin-bottom: 0.8rem;">
               Yoeldis Castillo Quiala es escritor, investigador y conferencista especializado en comportamiento humano, desarrollo personal y crecimiento interior.
             </p>
-            <p>
+            <p style="font-size: 0.85rem; line-height: 1.6; margin-bottom: 0.8rem;">
               A través de sus libros y conferencias, busca inspirar a las personas a conocerse mejor, tomar decisiones conscientes y construir una vida con propósito.
             </p>
-            <p>
-              Con años de experiencia investigando la mente humana y las dinámicas del comportamiento, ha desarrollado metodologías prácticas que han transformado la vida de miles de personas.
-            </p>
-            <p>
-              Su enfoque combina la profundidad del análisis psicológico con la aplicabilidad práctica, haciendo que conceptos complejos sean accesibles y útiles para el día a día.
-            </p>
           </div>
-
-          <div class="autor-page__highlights">
-            <div class="highlight">
-              <i class="fas fa-book"></i>
-              <h3>4 Libros Publicados</h3>
-              <p>Obras que han impactado positivamente a lectores en múltiples países</p>
-            </div>
-            <div class="highlight">
-              <i class="fas fa-users"></i>
-              <h3>Conferencias</h3>
-              <p>Experiencia en eventos corporativos, educativos y de desarrollo personal</p>
-            </div>
-            <div class="highlight">
-              <i class="fas fa-brain"></i>
-              <h3>Investigación</h3>
-              <p>Estudios profundos sobre comportamiento humano y desarrollo personal</p>
-            </div>
-          </div>
-
-          <div class="autor-page__buttons">
+  
+          <div class="autor-page__buttons" style="margin-top: 1rem;">
             <a href="libros.html" class="btn btn--solid">
               <i class="fas fa-book"></i> VER LIBROS
             </a>
-            <a href="conferencias.html" class="btn btn--outline">
-              CONFERENCIAS <i class="fas fa-chevron-right"></i>
+            <a href="contacto.html" class="btn btn--outline">
+              CONTACTAR <i class="fas fa-chevron-right"></i>
             </a>
           </div>
         </div>

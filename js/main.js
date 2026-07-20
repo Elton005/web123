@@ -30,7 +30,30 @@ function initMenu() {
   });
 }
 
-// ========== CARGAR LIBROS ==========
+// ========== ACORDEÓN DE LIBROS ==========
+function initAcordeon() {
+  const triggers = document.querySelectorAll('.acordeon__trigger');
+  
+  triggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const content = trigger.nextElementSibling;
+      const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+      
+      // Alternar el estado actual
+      trigger.setAttribute('aria-expanded', !isExpanded);
+      
+      if (!isExpanded) {
+        // Abrir: establecer la altura máxima al tamaño real del contenido
+        content.style.maxHeight = content.scrollHeight + 'px';
+      } else {
+        // Cerrar: restablecer a 0
+        content.style.maxHeight = null;
+      }
+    });
+  });
+}
+
+// ========== CARGAR LIBROS (Para Grid/Carrusel si se usa) ==========
 async function cargarLibros() {
   const carruselTrack = document.getElementById('carruselTrack');
   const librosGrid = document.getElementById('librosGrid');
@@ -80,6 +103,7 @@ function initCarrusel() {
 // ========== INICIALIZAR ==========
 document.addEventListener('DOMContentLoaded', () => {
   initMenu();
+  initAcordeon();       // <-- Nueva función agregada
   cargarLibros();
   initCarrusel();
 });
