@@ -1,0 +1,28 @@
+/* =========================================
+   VARIABLES DEL SISTEMA DE DISEÑO
+   ========================================= */
+:root {
+    /* Paleta de Colores */
+    --color-crema: #f5f1ea;
+    --color-crema-oscuro: #e8e2d9; /* Para hovers o fondos secundarios */
+    --color-negro: #1a1a1a;
+    --color-negro-suave: #333333;
+    --color-dorado: #b8935a;
+    --color-dorado-oscuro: #9a7a4a;
+    --color-blanco: #ffffff;
+
+    /* Tipografías */
+    --fuente-serif: 'Playfair Display', serif;
+    --fuente-sans: 'Inter', sans-serif;
+
+    /* Espaciados (Sistema de 8px) */
+    --space-xs: 0.5rem;  /* 8px */
+    --space-sm: 1rem;    /* 16px */
+    --space-md: 2rem;    /* 32px */
+    --space-lg: 4rem;    /* 64px */
+    --space-xl: 6rem;    /* 96px */
+
+    /* Transiciones */
+    --transition-fast: 0.2s ease;
+    --transition-smooth: 0.4s ease;
+}

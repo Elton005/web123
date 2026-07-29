@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Entre Libros y Café - Boletín mensual de Junior Osmany Coronel Durán">
+    <title>Blog | La Huella Escrita</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/blog.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-script">La Huella</span>
+                <span class="logo-text">LA HUELLA ESCRITA</span>
+            </a>
+
+            <button class="menu-toggle" aria-label="Abrir menú">
+                <span class="hamburger"></span>
+            </button>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="autor.html" class="nav-link">Autor</a></li>
+                    <li><a href="biblioteca.html" class="nav-link">Biblioteca</a></li>
+                    <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                    <li><a href="recursos.html" class="nav-link">Recursos</a></li>
+                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ============================================ -->
+        <!-- HERO DEL BOLETÍN - IMAGEN DE FONDO -->
+        <!-- ============================================ -->
+        <section class="newsletter-hero">
+            <div class="hero-background">
+                <img src="assets/images/blog/hero-boletin.png" alt="Entre Libros y Café">
+                <div class="hero-fade-bottom"></div>
+            </div>
+            
+            <div class="hero-content-overlay">
+                <h1 class="newsletter-title">
+                    <span class="title-script">Entre</span>
+                    <span class="title-main">Libros y Café</span>
+                </h1>
+                
+                <p class="newsletter-subtitle">Boletín mensual de historias, ideas y reflexiones para crecer cada día.</p>
+                
+                <p class="newsletter-author">de Junior Osmany Coronel Durán</p>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- CONTENIDO DEL BOLETÍN -->
+        <!-- ============================================ -->
+        <section class="newsletter-content">
+            <div class="container">
+
+                <!-- Saludo -->
+                <div class="newsletter-greeting">
+                    <div class="greeting-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </div>
+                    <div class="greeting-text">
+                        <h2 class="greeting-title">Hola, amigo lector:</h2>
+                        <p>
+                            Gracias por abrir de nuevo esta carta. Agosto siempre me inspira renovación, nuevos comienzos y muchas ideas que quieren salir a la luz. Este mes tengo historias, noticias y reflexiones que espero te acompañen tanto como a mí me acompañan a ti.
+                        </p>
+                        <p><strong>¡Vamos a disfrutar esta edición juntos!</strong></p>
+                    </div>
+                </div>
+
+                <!-- Grid principal - 3 columnas -->
+                <div class="newsletter-grid">
+
+                    <!-- Reflexión del mes -->
+                    <article class="newsletter-card card-reflexion">
+                        <span class="card-label">Reflexión del mes</span>
+                        <h3 class="card-title-script">El valor de empezar de nuevo</h3>
+                        <p class="card-text">
+                            A veces creemos que ya es tarde para cambiar de rumbo, para intentarlo otra vez, para escribir un nuevo capítulo. Pero cada amanecer nos recuerda que la vida siempre nos da una página en blanco. La decisión está en nuestras manos: ¿qué historia quieres escribir hoy?
+                        </p>
+                        <div class="card-divider">
+                            <span class="divider-heart">♡</span>
+                        </div>
+                    </article>
+
+                    <!-- Detrás de la historia -->
+                    <article class="newsletter-card card-historia">
+                        <span class="card-label">Detrás de la historia</span>
+                        <div class="card-illustration">
+                            <img src="assets/images/blog/abeja.jpg" alt="Belina la abeja">
+                        </div>
+                        <p class="card-text">
+                            Belina, la abeja trabajadora, nació después de observar cómo, en la naturaleza, cada pequeño esfuerzo tiene un propósito más grande. Su historia es un homenaje a la constancia, a la cooperación y a la belleza de servir.
+                        </p>
+                    </article>
+
+                    <!-- Adelanto exclusivo -->
+                    <article class="newsletter-card card-adelanto">
+                        <span class="card-label card-label-exclusive">Adelanto exclusivo</span>
+                        <div class="card-book-preview">
+                            <img src="assets/images/blog/cornelio.jpg" alt="Cornelio el cuervo">
+                        </div>
+                        <p class="card-text">
+                            Una historia sobre atreverse a ser diferente, seguir los sueños y descubrir la belleza de nuestra verdadera voz.
+                        </p>
+                    </article>
+
+                </div>
+
+                <!-- Segunda fila -->
+                <div class="newsletter-grid-secondary">
+
+                    <!-- Recomendación -->
+                    <article class="newsletter-card card-recomendacion">
+                        <div class="card-header-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                                <line x1="6" y1="1" x2="6" y2="4"/>
+                                <line x1="10" y1="1" x2="10" y2="4"/>
+                                <line x1="14" y1="1" x2="14" y2="4"/>
+                            </svg>
+                            <span class="card-label">Recomendación</span>
+                        </div>
+                        <div class="card-book-info">
+                            <p class="book-meta"><strong>Libro:</strong> Hábitos atómicos</p>
+                            <p class="book-meta"><strong>Autor:</strong> James Clear</p>
+                        </div>
+                        <p class="card-text">
+                            Ideas prácticas y poderosas para construir pequeños hábitos que producen grandes resultados a largo plazo.
+                        </p>
+                    </article>
+
+                    <!-- La pregunta del mes -->
+                    <article class="newsletter-card card-pregunta">
+                        <div class="card-header-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                            </svg>
+                            <span class="card-label">La pregunta del mes</span>
+                        </div>
+                        <h3 class="card-question">¿Qué pequeño hábito te gustaría cultivar este mes y por qué?</h3>
+                        <p class="card-text">
+                            Responde y cuéntame tu historia. ¡Me encantará leerte!
+                        </p>
+                    </article>
+
+                    <!-- Curiosidad (sin foto del cuervo) -->
+                    <article class="newsletter-card card-curiosidad">
+                        <div class="card-header-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+                            </svg>
+                            <span class="card-label">Curiosidad</span>
+                        </div>
+                        <p class="card-text">
+                            ¿Sabías que los cuervos son consideradas las aves más inteligentes después de los loros? Son capaces de resolver problemas sorprendentes y recordar rostros por años.
+                        </p>
+                    </article>
+
+                </div>
+
+                <!-- El rincón del lector + CTA libros -->
+                <div class="newsletter-bottom">
+
+                    <!-- Rincón del lector (imagen arriba, cita abajo) -->
+                    <div class="newsletter-card card-rincon">
+                        <span class="card-label">El rincón del lector</span>
+                        <div class="rincon-content">
+                            <div class="rincon-drawing">
+                                <img src="assets/images/blog/dibujo-nino.png" alt="Dibujo de Mateo">
+                            </div>
+                            <blockquote class="rincon-quote">
+                                "Me encanta Crispín porque siempre canta aunque esté lloviendo."
+                                <cite>— Mateo, 7 años</cite>
+                            </blockquote>
+                            <span class="rincon-heart">♡</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA Libros -->
+                    <div class="newsletter-cta-books">
+                        <div class="cta-books-content">
+                            <div class="cta-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                                    <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                                    <line x1="6" y1="1" x2="6" y2="4"/>
+                                    <line x1="10" y1="1" x2="10" y2="4"/>
+                                    <line x1="14" y1="1" x2="14" y2="4"/>
+                                </svg>
+                            </div>
+                            <h3 class="cta-title">Si todavía no conoces mis libros...</h3>
+                            <p class="cta-text">Te invito a descubrir historias que inspiran, enseñan y acompañan.</p>
+                            <a href="biblioteca.html" class="btn btn-cta-books">Ver libros</a>
+                        </div>
+                        <div class="cta-books-images">
+                            <img src="assets/images/sections/libros-antiguos-916.png" alt="Libros de Junior Osmany Coronel Durán">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- FOOTER DEL BOLETÍN -->
+        <!-- ============================================ -->
+        <section class="newsletter-footer">
+            <div class="container">
+                <div class="newsletter-footer-content">
+                    <div class="footer-logo">
+                        <span class="footer-logo-icon"></span>
+                        <span class="footer-logo-text">El Oso Escritor</span>
+                    </div>
+                    <p class="footer-message">
+                        Gracias por leer, por soñar y por ser parte de esta comunidad.<br>
+                        <em>Nos leemos el próximo mes.</em>
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Email">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

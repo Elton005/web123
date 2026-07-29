@@ -1,0 +1,44 @@
+/* =========================================
+   RESET & NORMALIZACIÓN BASE
+   ========================================= */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px; /* Base para calcular rems */
+    scroll-behavior: smooth; /* Scroll suave al hacer clic en anclas */
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased; /* Texto más nítido en Mac/iOS */
+}
+
+/* Imágenes responsivas por defecto (crítico para móvil) */
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Quitar estilos por defecto de listas y enlaces */
+ul, ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+}

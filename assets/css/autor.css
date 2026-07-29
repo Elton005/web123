@@ -1,0 +1,453 @@
+/* =========================================
+   PÁGINA DE AUTOR - ESTILOS ESPECÍFICOS
+   El header ya está definido en main.css (global)
+   ========================================= */
+
+/* =========================================
+   FOTO DEL AUTOR - PÁGINA AUTOR (DERECHA)
+   ========================================= */
+.author-floating-photo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 55%;
+    max-width: 750px;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.author-floating-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 60%);
+    mask-image: linear-gradient(to right, transparent 0%, black 60%);
+}
+
+/* =========================================
+   HERO DEL AUTOR
+   ========================================= */
+.author-hero {
+    position: relative;
+    padding-top: 120px; /* MISMO espacio que el index */
+    min-height: 850px;
+    background-color: var(--color-crema);
+    overflow: hidden;
+}
+
+.author-hero-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    align-items: center;
+    max-width: 50%;
+    position: relative;
+    z-index: 10;
+}
+
+.author-hero-tagline {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-dorado);
+    margin-bottom: var(--space-sm);
+    font-weight: 500;
+}
+
+.author-hero-title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-sm);
+    font-weight: 700;
+}
+
+.author-hero-subtitle {
+    font-family: var(--fuente-serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--color-negro-suave);
+    margin-bottom: var(--space-md);
+}
+
+.author-hero-quote {
+    font-family: var(--fuente-serif);
+    font-size: 1.3rem;
+    line-height: 1.4;
+    color: var(--color-negro);
+    margin-bottom: var(--space-md);
+    padding-left: var(--space-md);
+    border-left: 3px solid var(--color-dorado);
+    font-style: italic;
+}
+
+.author-hero-description {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-negro-suave);
+    margin-bottom: var(--space-lg);
+    max-width: 600px;
+}
+
+.author-hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+}
+
+.btn-outline {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--fuente-sans);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid var(--color-negro);
+    color: var(--color-negro);
+    background-color: transparent;
+    border-radius: 2px;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+}
+
+.btn-outline:hover {
+    background-color: var(--color-negro);
+    color: var(--color-crema);
+}
+
+/* =========================================
+   LA MIRADA DETRÁS DE LOS LIBROS
+   ========================================= */
+.author-look {
+    padding: var(--space-xl) 0;
+    background-color: var(--color-crema-oscuro);
+}
+
+.author-look-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+}
+
+.section-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: var(--space-md);
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background-color: var(--color-dorado);
+}
+
+.author-look-text p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-negro-suave);
+    max-width: 700px;
+}
+
+.author-look-pillars {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+}
+
+.pillar {
+    text-align: center;
+    padding: var(--space-md);
+    background-color: var(--color-crema);
+    border-radius: 4px;
+    transition: transform var(--transition-smooth);
+}
+
+@media (hover: hover) {
+    .pillar:hover {
+        transform: translateY(-5px);
+    }
+}
+
+.pillar-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--space-sm);
+    border-radius: 50%;
+    background-color: var(--color-crema-oscuro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-dorado);
+}
+
+.pillar-title {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--space-xs);
+    color: var(--color-negro);
+}
+
+.pillar-subtitle {
+    font-family: var(--fuente-serif);
+    font-style: italic;
+    color: var(--color-gris);
+    font-size: 1rem;
+}
+
+/* =========================================
+   TIMELINE
+   ========================================= */
+.author-timeline {
+    padding: var(--space-xl) 0;
+    background-color: var(--color-crema);
+    text-align: center;
+}
+
+.author-timeline .section-title {
+    margin-bottom: var(--space-lg);
+}
+
+.author-timeline .section-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--color-dorado);
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    padding: var(--space-md);
+    background-color: var(--color-crema-oscuro);
+    border-radius: 4px;
+    z-index: 1;
+}
+
+.timeline-year {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-dorado);
+    margin-bottom: var(--space-xs);
+    font-family: var(--fuente-serif);
+}
+
+.timeline-label {
+    font-size: 0.95rem;
+    color: var(--color-negro-suave);
+}
+
+.timeline-quote {
+    font-family: var(--fuente-serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--color-gris);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* =========================================
+   SECCIÓN OSCURA
+   ========================================= */
+.author-dark {
+    padding: var(--space-xl) 0;
+    background-color: var(--color-negro);
+    color: var(--color-crema);
+}
+
+.author-dark-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    align-items: center;
+}
+
+.author-dark-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid var(--color-dorado);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-md);
+}
+
+.author-dark-logo .logo-script {
+    font-family: var(--fuente-serif);
+    font-size: 2rem;
+    color: var(--color-dorado);
+    font-style: italic;
+}
+
+.author-dark-title {
+    font-size: 2rem;
+    color: var(--color-crema);
+    margin-bottom: var(--space-xs);
+}
+
+.author-dark-subtitle {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-dorado);
+    margin-bottom: var(--space-md);
+}
+
+.author-dark-quote {
+    font-family: var(--fuente-serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-crema);
+    max-width: 500px;
+}
+
+.author-dark-image {
+    width: 100%;
+}
+
+.author-dark-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    filter: sepia(20%);
+}
+
+.author-dark-cta {
+    text-align: center;
+}
+
+.author-dark-cta .btn-primary {
+    background-color: var(--color-dorado);
+    color: var(--color-negro);
+    font-weight: 600;
+}
+
+.author-dark-cta .btn-primary:hover {
+    background-color: var(--color-crema);
+}
+
+/* =========================================
+   MEDIA QUERIES - TABLET (768px)
+   ========================================= */
+@media (min-width: 768px) {
+    
+    .author-hero-content {
+        grid-template-columns: 1fr;
+        max-width: 50%;
+    }
+
+    .author-look-content {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .author-look-pillars {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .timeline {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .timeline::before {
+        left: 0;
+        right: 0;
+        top: 50%;
+        bottom: auto;
+        width: 100%;
+        height: 2px;
+        transform: translateY(-50%);
+    }
+
+    .timeline-item {
+        flex: 1;
+        text-align: center;
+    }
+
+    .author-dark-content {
+        grid-template-columns: 1fr 1fr auto;
+    }
+
+    .author-dark-cta {
+        text-align: right;
+    }
+}
+
+/* =========================================
+   MEDIA QUERIES - DESKTOP (1024px)
+   ========================================= */
+@media (min-width: 1024px) {
+    
+    /* Hero desktop - MISMO padding-top que el index */
+    .author-hero {
+        padding-top: 140px;
+        min-height: 900px;
+    }
+
+    .author-hero-title {
+        font-size: clamp(3rem, 5vw, 5rem);
+    }
+
+    .author-hero-quote {
+        font-size: 1.5rem;
+    }
+
+    .author-dark-title {
+        font-size: 2.5rem;
+    }
+}
+
+/* =========================================
+   MEDIA QUERIES - MÓVIL (menos de 768px)
+   ========================================= */
+@media (max-width: 767px) {
+    .author-floating-photo {
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin-bottom: var(--space-md);
+    }
+
+    .author-floating-photo img {
+        -webkit-mask-image: none;
+        mask-image: none;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .author-hero {
+        padding-top: 90px; /* MISMO que el index en móvil */
+        min-height: auto;
+    }
+}

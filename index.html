@@ -1,90 +1,187 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Yoeldis Castillo Quiala - Escritor, investigador y profesor especializado en desarrollo personal y psicología." />
-  <title>Yoeldis Castillo Quiala | Inicio</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="css/styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="La Huella Escrita - Junior Osmany Coronel Durán. Libros para comprender lo que somos.">
+    <title>La Huella Escrita | Junior Osmany Coronel Durán</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="container header__container">
-      <a href="index.html" class="logo">
-        <span class="logo__yc">YC</span>
-        <span class="logo__text">Yoeldis Castillo Quiala<br><small>ESCRITOR</small></span>
-      </a>
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-script">La Huella</span>
+                <span class="logo-text">LA HUELLA ESCRITA</span>
+            </a>
 
-      <nav class="nav" id="nav">
-        <ul class="nav__list">
-          <li><a href="index.html" class="nav__link nav__link--active">INICIO</a></li>
-          <li><a href="sobre-mi.html" class="nav__link">SOBRE MÍ</a></li>
-          <li><a href="libros.html" class="nav__link">LIBROS</a></li>
-          <li><a href="articulos.html" class="nav__link">ARTÍCULOS</a></li>
-          <li><a href="contacto.html" class="nav__link">CONTACTO</a></li>
-        </ul>
-      </nav>
+            <button class="menu-toggle" aria-label="Abrir menú">
+                <span class="hamburger"></span>
+            </button>
 
-      <div class="social social--desktop">
-        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#" aria-label="Email"><i class="far fa-envelope"></i></a>
-      </div>
-
-      <button class="nav__toggle" id="navToggle" aria-label="Menú">
-        <i class="fas fa-bars"></i>
-      </button>
-    </div>
-  </header>
-
-  <!-- HERO (SIN FOTO, TEXTO CENTRADO E IMPACTANTE) -->
-  <section class="hero">
-    <div class="container hero__container">
-      <div class="hero__content">
-        <h1 class="hero__title">Comprende tu mente,<br>transforma tu vida.</h1>
-        <div class="hero__divider"></div>
-        
-        <!-- NUEVO: Nombre del autor con protagonismo -->
-        <h2 class="hero__author">Yoeldis Castillo Quiala</h2>
-        
-        <p class="hero__subtitle">ESCRITOR • INVESTIGADOR • PROFESOR</p>
-        <p class="hero__description">
-          Traduzco la complejidad del comportamiento humano en herramientas prácticas para que construyas una vida con propósito, claridad y decisiones conscientes.
-        </p>
-        <div class="hero__buttons">
-          <a href="libros.html" class="btn btn--solid">
-            <i class="fas fa-book"></i> EXPLORAR MIS LIBROS
-          </a>
-          <a href="sobre-mi.html" class="btn btn--outline">
-            CONOCE MI TRAYECTORIA <i class="fas fa-chevron-right"></i>
-          </a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link active">Inicio</a></li>
+                    <li><a href="autor.html" class="nav-link">Autor</a></li>
+                    <li><a href="biblioteca.html" class="nav-link">Biblioteca</a></li>
+                    <li><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li><a href="recursos.html" class="nav-link">Recursos</a></li>
+                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
         </div>
-      </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- FOOTER: SELLO DE DESARROLLADOR -->
-  <footer class="footer">
-    <div class="container">
-      <p class="footer__pre-text">Experiencia interactiva desarrollada por</p>
-      
-      <div class="footer__brand">
-        <img src="img/Eltonlogo.jpg" alt="EO Logo" class="footer__logo" />
-        <h3 class="footer__name">ELTON OLIVARES</h3>
-      </div>
-      
-      <p class="footer__tagline">INNOVACIÓN • DISEÑO • TECNOLOGÍA</p>
+    <!-- FOTO FLOTANTE DEL AUTOR (IZQUIERDA) -->
+    <div class="index-floating-photo">
+        <img src="assets/images/hero/autor-desktop.png" alt="Junior Osmany Coronel Durán">
     </div>
-  </footer>
 
-  <script src="js/main.js"></script>
+    <main>
+
+        <!-- HERO SECTION - REDISEÑADO -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    
+                    <!-- Cita editorial (protagonista visual) -->
+                    <div class="hero-editorial">
+                        <span class="editorial-mark">❝</span>
+                        <blockquote class="editorial-quote">
+                            Escribo para comprender lo que somos y para dejar respuestas allí donde antes solo había preguntas.
+                        </blockquote>
+                        <div class="editorial-signature">
+                            <span class="signature-name">Junior Osmany Coronel Durán</span>
+                            <span class="signature-role">Escritor · La Huella Escrita</span>
+                        </div>
+                    </div>
+
+                    <!-- Información del sello (sutil, abajo) -->
+                    <div class="hero-brand-info">
+                        <div class="brand-divider"></div>
+                        <p class="brand-description">
+                            <strong>La Huella Escrita</strong> es el sello editorial donde cada libro se convierte en un espejo. 
+                            Desde 2006, una voz que se atreve a preguntar lo que otros callan.
+                        </p>
+                        <a href="biblioteca.html" class="btn btn-cta">
+                            <span>Descubrir la obra</span>
+                            <span class="btn-arrow">→</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- GRID DE 4 SECCIONES -->
+        <section class="sections-grid" id="biblioteca">
+            <div class="container">
+                <div class="grid">
+
+                    <!-- Biblioteca -->
+                    <article class="section-card">
+                        <div class="card-content">
+                            <h3 class="card-title">Biblioteca</h3>
+                            <p class="card-description">Obras que dialogan con el presente</p>
+                            <p class="card-text">Explora todos mis libros publicados: ensayos, ficción y pensamiento.</p>
+                            <a href="biblioteca.html" class="btn-link">Ir a la biblioteca →</a>
+                        </div>
+                        <div class="card-image">
+                            <img src="assets/images/sections/biblioteca.jpg" alt="Libros publicados">
+                        </div>
+                    </article>
+
+                    <!-- Blog -->
+                    <article class="section-card">
+                        <div class="card-content">
+                            <h3 class="card-title">Blog</h3>
+                            <p class="card-description">Ideas para pensar mejor</p>
+                            <p class="card-text">Artículos y reflexiones sobre cultura, sociedad, literatura y condición humana.</p>
+                            <a href="blog.html" class="btn-link">Leer el blog →</a>
+                        </div>
+                        <div class="card-image">
+                            <img src="assets/images/sections/ensayos.jpg" alt="Pluma y papel">
+                        </div>
+                    </article>
+
+                    <!-- Noticias -->
+                    <article class="section-card">
+                        <div class="card-content">
+                            <h3 class="card-title">Noticias</h3>
+                            <p class="card-description">Lo último</p>
+                            <p class="card-text">Presentaciones, entrevistas, nuevos proyectos y actividades.</p>
+                            <a href="#" class="btn-link">Ver noticias →</a>
+                        </div>
+                        <div class="card-image">
+                            <img src="assets/images/sections/noticias.jpg" alt="Evento en auditorio">
+                        </div>
+                    </article>
+
+                    <!-- Recursos (antes Para Lectores) -->
+                    <article class="section-card">
+                        <div class="card-content">
+                            <h3 class="card-title">Recursos</h3>
+                            <p class="card-description">Herramientas para el lector</p>
+                            <p class="card-text">Descarga la app, guías de lectura y accede a contenidos exclusivos.</p>
+                            <a href="para-lectores.html" class="btn-link">Ver recursos →</a>
+                        </div>
+                        <div class="card-image">
+                            <img src="assets/images/sections/app.jpg" alt="Recursos para lectores">
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <blockquote class="footer-quote">
+                "La literatura no cambia el mundo, pero lo vuelve habitable."
+            </blockquote>
+            
+            <div class="footer-social">
+                <a href="#" class="social-link" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+                <a href="#" class="social-link" aria-label="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                </a>
+                <a href="#" class="social-link" aria-label="X (Twitter)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                    </svg>
+                </a>
+                <a href="#" class="social-link" aria-label="Email">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </a>
+            </div>
+            
+            <p class="copyright">© 2026 La Huella Escrita. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
 </body>
 </html>

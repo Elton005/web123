@@ -1,0 +1,677 @@
+/* =========================================
+   BLOG - ENTRE LIBROS Y CAFÉ
+   ========================================= */
+
+/* =========================================
+   HERO DEL BOLETÍN - IMAGEN DE FONDO CON DIFUMINADO
+   ========================================= */
+.newsletter-hero {
+    position: relative;
+    width: 100%;
+    min-height: 700px;
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* Overlay oscuro para mejorar legibilidad general */
+.hero-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.25);
+    z-index: 1;
+}
+
+/* Difuminado en la parte inferior */
+.hero-fade-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(245, 241, 234, 0.3) 30%,
+        rgba(245, 241, 234, 0.7) 60%,
+        var(--color-crema) 100%
+    );
+    z-index: 2;
+}
+
+/* Contenido sobre la imagen */
+.hero-content-overlay {
+    position: absolute;
+    top: 0;
+    left: 15%;
+    z-index: 3;
+    max-width: 600px;
+    width: 70%;
+    padding: 140px 40px 60px;
+    text-align: center;
+}
+
+.newsletter-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: var(--space-md);
+}
+
+.title-script {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    color: var(--color-crema);
+    font-weight: 700;
+    line-height: 1;
+    text-shadow: 3px 3px 12px rgba(0,0,0,0.8), 0 0 30px rgba(0,0,0,0.4);
+    margin-bottom: 0.5rem;
+}
+
+.title-main {
+    font-family: var(--fuente-serif);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    color: var(--color-dorado);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    line-height: 1.1;
+    text-shadow: 3px 3px 12px rgba(0,0,0,0.8), 0 0 30px rgba(0,0,0,0.4);
+}
+
+.newsletter-subtitle {
+    font-size: 1.15rem;
+    color: var(--color-crema);
+    margin-bottom: var(--space-sm);
+    line-height: 1.6;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+    max-width: 550px;
+    font-weight: 400;
+}
+
+.newsletter-author {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.6rem;
+    color: var(--color-dorado);
+    font-style: italic;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+    margin-top: var(--space-sm);
+}
+
+/* =========================================
+   CONTENIDO DEL BOLETÍN
+   ========================================= */
+.newsletter-content {
+    background-color: var(--color-crema);
+    padding: var(--space-xl) 0;
+    position: relative;
+    z-index: 4;
+}
+
+/* Saludo */
+.newsletter-greeting {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-md);
+    align-items: start;
+    max-width: 900px;
+    margin: 0 auto var(--space-xl);
+    padding: var(--space-lg);
+    background-color: var(--color-blanco);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.greeting-icon {
+    width: 60px;
+    height: 60px;
+    background-color: var(--color-crema-oscuro);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-dorado);
+}
+
+.greeting-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: var(--color-dorado);
+    margin-bottom: var(--space-sm);
+}
+
+.greeting-text p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-negro-suave);
+    margin-bottom: var(--space-sm);
+}
+
+/* Grid principal - 3 columnas siempre */
+.newsletter-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+}
+
+.newsletter-card {
+    background-color: var(--color-blanco);
+    padding: var(--space-lg);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transition: transform var(--transition-smooth);
+}
+
+@media (hover: hover) {
+    .newsletter-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+}
+
+.card-label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-dorado);
+    margin-bottom: var(--space-sm);
+    font-weight: 600;
+}
+
+.card-label-exclusive {
+    color: var(--color-negro);
+    font-weight: 700;
+}
+
+.card-sublabel {
+    display: none;
+}
+
+.card-title-script {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: var(--color-negro);
+    margin-bottom: var(--space-md);
+    line-height: 1.2;
+}
+
+.card-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-negro-suave);
+}
+
+.card-divider {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--space-md);
+}
+
+.divider-heart {
+    font-size: 1.5rem;
+    color: var(--color-dorado);
+}
+
+.card-illustration {
+    margin-bottom: var(--space-md);
+}
+
+.card-illustration img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.card-book-preview {
+    margin-bottom: var(--space-md);
+    text-align: center;
+}
+
+.card-book-preview img {
+    width: 100%;
+    max-width: 160px;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Tarjeta de adelanto compacta */
+.card-adelanto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.card-adelanto .card-label {
+    align-self: flex-start;
+}
+
+.card-adelanto .card-book-preview {
+    margin: var(--space-sm) 0;
+}
+
+.card-adelanto .card-book-preview img {
+    max-width: 160px;
+}
+
+.card-adelanto .card-text {
+    font-size: 0.95rem;
+}
+
+/* Segunda fila */
+.newsletter-grid-secondary {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+}
+
+.card-header-icon {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+    color: var(--color-dorado);
+}
+
+.card-question {
+    font-family: var(--fuente-serif);
+    font-size: 1.3rem;
+    color: var(--color-negro);
+    margin-bottom: var(--space-sm);
+    line-height: 1.4;
+    font-style: italic;
+}
+
+/* Ocultar foto del cuervo en Curiosidad */
+.card-illustration-small {
+    display: none;
+}
+
+.card-illustration-small img {
+    width: 150px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.card-book-info {
+    margin-bottom: var(--space-sm);
+}
+
+.book-meta {
+    font-size: 0.95rem;
+    color: var(--color-negro-suave);
+    margin-bottom: 0.3rem;
+}
+
+/* Bottom section */
+.newsletter-bottom {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+}
+
+.card-rincon {
+    background-color: var(--color-crema-oscuro);
+}
+
+/* Rincón del lector: imagen arriba, cita abajo */
+.rincon-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    text-align: center;
+}
+
+.rincon-drawing {
+    width: 100%;
+    max-width: 350px;
+}
+
+.rincon-drawing img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.rincon-quote {
+    font-family: var(--fuente-serif);
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--color-negro);
+    line-height: 1.5;
+    margin: 0;
+    max-width: 500px;
+}
+
+.rincon-quote cite {
+    display: block;
+    margin-top: var(--space-sm);
+    font-size: 0.9rem;
+    color: var(--color-gris);
+    font-style: normal;
+}
+
+.rincon-heart {
+    font-size: 2rem;
+    color: var(--color-dorado);
+    text-align: center;
+}
+
+/* CTA Libros */
+.newsletter-cta-books {
+    background: linear-gradient(135deg, #2c2420 0%, #1a1512 100%);
+    padding: var(--space-xl);
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    align-items: center;
+}
+
+.cta-books-content {
+    text-align: center;
+}
+
+.cta-icon {
+    color: var(--color-dorado);
+    margin-bottom: var(--space-md);
+}
+
+.cta-title {
+    font-family: var(--fuente-serif);
+    font-size: 1.8rem;
+    color: var(--color-crema);
+    margin-bottom: var(--space-sm);
+    line-height: 1.3;
+}
+
+.cta-text {
+    font-size: 1.1rem;
+    color: var(--color-crema);
+    margin-bottom: var(--space-lg);
+    line-height: 1.5;
+}
+
+.btn-cta-books {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background-color: var(--color-dorado);
+    color: var(--color-negro);
+    font-family: var(--fuente-sans);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 2px;
+    transition: all var(--transition-smooth);
+}
+
+.btn-cta-books:hover {
+    background-color: var(--color-crema);
+    transform: translateY(-3px);
+}
+
+/* =========================================
+   CAMBIO CLAVE: DIFUMINADO DE BORDES EN LA IMAGEN DE LIBROS
+   ========================================= */
+.cta-books-images img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+    /* Efecto de bordes difuminados (se funde con el fondo oscuro) */
+    -webkit-mask-image: radial-gradient(ellipse at center, black 65%, transparent 100%);
+    mask-image: radial-gradient(ellipse at center, black 65%, transparent 100%);
+    /* Sombra suave para dar sensación de flotación y profundidad */
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.6));
+}
+
+/* =========================================
+   FOOTER DEL BOLETÍN
+   ========================================= */
+.newsletter-footer {
+    background-color: var(--color-negro);
+    padding: var(--space-xl) 0;
+    text-align: center;
+}
+
+.newsletter-footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+}
+
+.footer-logo-icon {
+    font-size: 2rem;
+}
+
+.footer-logo-text {
+    font-family: var(--fuente-serif);
+    font-size: 1.2rem;
+    color: var(--color-crema);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.footer-message {
+    font-size: 1.1rem;
+    color: var(--color-crema);
+    line-height: 1.6;
+    margin-bottom: var(--space-lg);
+}
+
+.footer-message em {
+    font-style: italic;
+    color: var(--color-dorado);
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+}
+
+.footer-social .social-link {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(245, 241, 234, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+}
+
+.footer-social .social-link:hover {
+    background-color: var(--color-dorado);
+    transform: translateY(-3px);
+}
+
+.footer-social .social-link svg {
+    color: var(--color-crema);
+    transition: color var(--transition-fast);
+}
+
+.footer-social .social-link:hover svg {
+    color: var(--color-negro);
+}
+
+/* =========================================
+   MEDIA QUERIES - TABLET (768px)
+   ========================================= */
+@media (min-width: 768px) {
+    
+    /* 3 columnas siempre en el grid principal */
+    .newsletter-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card-reflexion,
+    .card-historia,
+    .card-adelanto {
+        grid-column: auto;
+    }
+
+    .newsletter-grid-secondary {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .newsletter-bottom {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .newsletter-cta-books {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .cta-books-content {
+        text-align: left;
+    }
+}
+
+/* =========================================
+   MEDIA QUERIES - DESKTOP (1024px)
+   ========================================= */
+@media (min-width: 1024px) {
+    
+    .newsletter-grid {
+        grid-template-columns: repeat(3, 1fr);
+        align-items: stretch;
+    }
+
+    .card-reflexion,
+    .card-historia,
+    .card-adelanto {
+        height: 100%;
+        grid-column: auto;
+    }
+
+    .card-adelanto {
+        justify-content: space-between;
+    }
+
+    .title-script {
+        font-size: 5rem;
+    }
+
+    .title-main {
+        font-size: 3.5rem;
+    }
+
+    .greeting-title {
+        font-size: 2.5rem;
+    }
+
+    .card-title-script {
+        font-size: 2.5rem;
+    }
+
+    .cta-title {
+        font-size: 2rem;
+    }
+}
+
+/* =========================================
+   MEDIA QUERIES - MÓVIL (menos de 768px)
+   ========================================= */
+@media (max-width: 767px) {
+    .newsletter-hero {
+        min-height: 550px;
+    }
+
+    .hero-content-overlay {
+        position: absolute;
+        top: 0;
+        left: 5%;
+        width: 90%;
+        padding: 110px 20px 40px;
+        text-align: center;
+    }
+
+    .newsletter-title {
+        align-items: center;
+    }
+
+    .title-script {
+        font-size: 3rem;
+    }
+
+    .title-main {
+        font-size: 2rem;
+    }
+
+    .newsletter-subtitle {
+        font-size: 1rem;
+    }
+
+    .newsletter-author {
+        font-size: 1.3rem;
+    }
+
+    .newsletter-greeting {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: var(--space-md);
+    }
+
+    .greeting-icon {
+        margin: 0 auto;
+    }
+
+    .newsletter-card {
+        padding: var(--space-md);
+    }
+
+    .card-title-script {
+        font-size: 1.8rem;
+    }
+
+    .card-question {
+        font-size: 1.1rem;
+    }
+
+    .cta-title {
+        font-size: 1.5rem;
+    }
+
+    .footer-message {
+        font-size: 1rem;
+    }
+}
