@@ -451,3 +451,197 @@
         min-height: auto;
     }
 }
+
+/* =========================================
+   AUTOR - MÓVIL REESTRUCTURADO (CENTRADO)
+   ========================================= */
+@media (max-width: 767px) {
+    
+    /* Foto del autor - más pequeña y centrada */
+    .author-floating-photo {
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        height: 50vh;
+        margin-bottom: var(--space-lg);
+    }
+
+    .author-floating-photo img {
+        -webkit-mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
+        mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
+    }
+
+    /* Hero centrado */
+    .author-hero {
+        padding: var(--space-lg) 0;
+        min-height: auto;
+    }
+
+    .author-hero-content {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0 var(--space-sm);
+    }
+
+    .author-hero-tagline {
+        font-size: 0.7rem;
+        text-align: center;
+        margin-bottom: var(--space-md);
+    }
+
+    .author-hero-title {
+        font-size: clamp(2rem, 7vw, 3rem);
+        text-align: center;
+        line-height: 1.1;
+        margin-bottom: var(--space-md);
+    }
+
+    .author-hero-subtitle {
+        font-size: 0.95rem;
+        text-align: center;
+        margin-bottom: var(--space-lg);
+    }
+
+    .author-hero-quote {
+        font-size: 1.1rem;
+        padding-left: var(--space-md);
+        margin-bottom: var(--space-lg);
+        text-align: left;
+    }
+
+    .author-hero-description {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        text-align: center;
+        max-width: 100%;
+        margin-bottom: var(--space-lg);
+    }
+
+    .author-hero-buttons {
+        flex-direction: column;
+        gap: var(--space-sm);
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .author-hero-buttons .btn {
+        width: 100%;
+    }
+
+    /* Sección "La mirada" */
+    .author-look {
+        padding: var(--space-md) 0;
+    }
+
+    .author-look-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+
+    .author-look-text {
+        text-align: center;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        text-align: center;
+        display: block;
+    }
+
+    .section-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .author-look-text p {
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .author-look-pillars {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+
+    .pillar {
+        padding: var(--space-md);
+    }
+
+    .pillar-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    /* Timeline */
+    .author-timeline {
+        padding: var(--space-md) 0;
+    }
+
+    .timeline {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+
+    .timeline::before {
+        display: none;
+    }
+
+    .timeline-item {
+        padding: var(--space-sm);
+        text-align: center;
+    }
+
+    .timeline-year {
+        font-size: 1.3rem;
+    }
+
+    .timeline-quote {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    /* Sección oscura */
+    .author-dark {
+        padding: var(--space-md) 0;
+    }
+
+    .author-dark-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+        text-align: center;
+    }
+
+    .author-dark-logo {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto var(--space-md);
+    }
+
+    .author-dark-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .author-dark-subtitle {
+        text-align: center;
+    }
+
+    .author-dark-quote {
+        font-size: 1rem;
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .author-dark-image {
+        order: -1;
+    }
+
+    .author-dark-image img {
+        max-width: 100%;
+    }
+
+    .author-dark-cta .btn {
+        width: 100%;
+        max-width: 100%;
+    }
+}

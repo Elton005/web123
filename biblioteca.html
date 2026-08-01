@@ -3,19 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Biblioteca de obras publicadas - La Huella Escrita">
+    <meta name="description" content="Biblioteca de Junior Osmany Coronel Durán - Explora todos los libros publicados">
     <title>Biblioteca | La Huella Escrita</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/variables.css">
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/biblioteca.css">
+    <link rel="stylesheet" href="assets/css/mobile.css" media="(max-width: 767px)">
 </head>
 <body>
 
+    <!-- HEADER -->
     <header class="site-header">
         <div class="container">
             <a href="index.html" class="logo">
@@ -32,62 +38,251 @@
                     <li><a href="index.html" class="nav-link">Inicio</a></li>
                     <li><a href="autor.html" class="nav-link">Autor</a></li>
                     <li><a href="biblioteca.html" class="nav-link active">Biblioteca</a></li>
-                    <li><a href="ensayos.html" class="nav-link">Ensayos</a></li>
-                    <li><a href="para-lectores.html" class="nav-link">Para Lectores</a></li>
+                    <li><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li><a href="recursos.html" class="nav-link">Recursos</a></li>
                     <li><a href="contacto.html" class="nav-link">Contacto</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="page-in-development">
-        <div class="container">
-            <div class="development-message">
-                <div class="development-icon">
-                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+    <main>
+
+        <!-- ============================================ -->
+        <!-- 1. HERO (Banner inicial) -->
+        <!-- ============================================ -->
+        <section class="library-hero">
+            <div class="container">
+                <div class="hero-wrapper">
+                    <!-- Texto a la izquierda -->
+                    <div class="hero-text">
+                        <span class="hero-label">La Obra</span>
+                        <h1 class="hero-title">Biblioteca</h1>
+                        <p class="hero-subtitle">Libros para comprender lo que somos y descubrir aquello que todavía podemos llegar a ser.</p>
+                    </div>
+                    
+                    <!-- Imagen de los libros a la derecha -->
+                    <div class="hero-image">
+                        <img src="assets/images/library/banner-libros.png" alt="Biblioteca de Junior Osmany Coronel Durán">
+                    </div>
                 </div>
-                <h1>Sección en desarrollo</h1>
-                <p>Este espacio está siendo preparado con cuidado para ofrecerte una experiencia literaria excepcional.</p>
-                <p class="development-subtext">Próximamente disponible: <span class="highlight">Catálogo completo de libros, ensayos y ficción</span></p>
-                <a href="index.html" class="btn btn-primary">Volver al inicio</a>
             </div>
-        </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- 2. MENÚ DE FILTROS (Sección independiente) -->
+        <!-- ============================================ -->
+        <section class="library-filters">
+            <div class="container">
+                <div class="filter-menu">
+                    <button class="filter-btn active" data-filter="todos">
+                        <span class="filter-text">Todos</span>
+                    </button>
+                    <span class="filter-dot"></span>
+                    <button class="filter-btn" data-filter="ensayo">
+                        <span class="filter-text">Ensayo</span>
+                    </button>
+                    <span class="filter-dot"></span>
+                    <button class="filter-btn" data-filter="desarrollo">
+                        <span class="filter-text">Desarrollo Personal</span>
+                    </button>
+                    <span class="filter-dot"></span>
+                    <button class="filter-btn" data-filter="narrativa">
+                        <span class="filter-text">Narrativa</span>
+                    </button>
+                    <span class="filter-dot"></span>
+                    <button class="filter-btn" data-filter="infantil">
+                        <span class="filter-text">Infantil</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- 3. GRID DE LIBROS -->
+        <!-- ============================================ -->
+        <section class="library-books" id="libros">
+            <div class="container">
+                <div class="books-grid">
+                    
+                    <!-- Libro 1: La Luz de lo Invisible (ENSAYO) -->
+                    <article class="book-card" data-category="ensayo">
+                        <div class="book-cover">
+                            <img src="assets/images/library/mapas-de-lo-interior1.png" alt="La Luz de lo Invisible">
+                        </div>
+                        <div class="book-content">
+                            <h3 class="book-title">La Luz de lo Invisible</h3>
+                            <p class="book-subtitle">Una exploración profunda sobre lo que no vemos pero nos define</p>
+                            <p class="book-description">
+                                Un viaje hacia lo esencial de la condición humana. Este ensayo nos invita a mirar más allá de lo evidente y descubrir las verdades que habitan en el silencio.
+                            </p>
+                            <div class="book-actions">
+                                <a href="#" class="btn-book-primary">Descubre el contenido del libro</a>
+                                <a href="#" class="btn-book-secondary">
+                                    <i class="fa-brands fa-amazon"></i> Obtener en Amazon
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Libro 2: Mapas de lo Interior (ENSAYO) -->
+                    <article class="book-card" data-category="ensayo">
+                        <div class="book-cover">
+                            <img src="assets/images/library/mapas-de-lo-interior1.png" alt="Mapas de lo Interior">
+                        </div>
+                        <div class="book-content">
+                            <h3 class="book-title">Mapas de lo Interior</h3>
+                            <p class="book-subtitle">Cartografías del alma</p>
+                            <p class="book-description">
+                                Un recorrido por los territorios internos que habitamos y que nos habitan. Una guía para navegar los paisajes emocionales que definen quiénes somos.
+                            </p>
+                            <div class="book-actions">
+                                <a href="#" class="btn-book-primary">Descubre el contenido del libro</a>
+                                <a href="#" class="btn-book-secondary">
+                                    <i class="fa-brands fa-amazon"></i> Obtener en Amazon
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Libro 3: El Orden de lo Esencial (ENSAYO - DESTACADO) -->
+                    <article class="book-card book-featured" data-category="ensayo">
+                        <div class="book-cover">
+                            <img src="assets/images/library/mapas-de-lo-interior1.png" alt="El Orden de lo Esencial">
+                            <span class="book-badge">Nuevo</span>
+                        </div>
+                        <div class="book-content">
+                            <h3 class="book-title">El Orden de lo Esencial</h3>
+                            <p class="book-subtitle">Ensayos sobre identidad, tiempo y sentido</p>
+                            <p class="book-description">
+                                Una invitación a detenernos y mirar aquello que da forma a nuestra existencia. Ensayos que acompañan nuestras decisiones, nuestros vínculos y nuestra manera de estar en el mundo.
+                            </p>
+                            <div class="book-actions">
+                                <a href="#" class="btn-book-primary">Descubre el contenido del libro</a>
+                                <a href="#" class="btn-book-secondary">
+                                    <i class="fa-brands fa-amazon"></i> Obtener en Amazon
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Libro 4: La Cercanía de las Palabras (NARRATIVA) -->
+                    <article class="book-card" data-category="narrativa">
+                        <div class="book-cover">
+                            <img src="assets/images/library/mapas-de-lo-interior1.png" alt="La Cercanía de las Palabras">
+                        </div>
+                        <div class="book-content">
+                            <h3 class="book-title">La Cercanía de las Palabras</h3>
+                            <p class="book-subtitle">Historias que acercan lo lejano y alejan lo cercano</p>
+                            <p class="book-description">
+                                Relatos sobre la distancia que hay entre decir y sentir. Historias que exploran los silencios, las ausencias y los encuentros que nos transforman.
+                            </p>
+                            <div class="book-actions">
+                                <a href="#" class="btn-book-primary">Descubre el contenido del libro</a>
+                                <a href="#" class="btn-book-secondary">
+                                    <i class="fa-brands fa-amazon"></i> Obtener en Amazon
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Libro 5: Hábitos del Alma (DESARROLLO PERSONAL) -->
+                    <article class="book-card" data-category="desarrollo">
+                        <div class="book-cover">
+                            <img src="assets/images/library/mapas-de-lo-interior1.png" alt="Hábitos del Alma">
+                        </div>
+                        <div class="book-content">
+                            <h3 class="book-title">Hábitos del Alma</h3>
+                            <p class="book-subtitle">Herramientas para el crecimiento interior</p>
+                            <p class="book-description">
+                                Herramientas prácticas para cultivar el crecimiento interior y vivir con mayor plenitud y consciencia. Un camino hacia la transformación personal.
+                            </p>
+                            <div class="book-actions">
+                                <a href="#" class="btn-book-primary">Descubre el contenido del libro</a>
+                                <a href="#" class="btn-book-secondary">
+                                    <i class="fa-brands fa-amazon"></i> Obtener en Amazon
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Libro 6: Cuentos para Crecer (INFANTIL) -->
+                    <article class="book-card" data-category="infantil">
+                        <div class="book-cover">
+                            <img src="assets/images/library/mapas-de-lo-interior1.png" alt="Cuentos para Crecer">
+                        </div>
+                        <div class="book-content">
+                            <h3 class="book-title">Cuentos para Crecer</h3>
+                            <p class="book-subtitle">Historias mágicas para los más pequeños</p>
+                            <p class="book-description">
+                                Relatos que enseñan, inspiran y acompañan el crecimiento. Historias que siembran semillas de curiosidad, valentía y asombro en los corazones jóvenes.
+                            </p>
+                            <div class="book-actions">
+                                <a href="#" class="btn-book-primary">Descubre el contenido del libro</a>
+                                <a href="#" class="btn-book-secondary">
+                                    <i class="fa-brands fa-amazon"></i> Obtener en Amazon
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- 4. AUTOR INVITADO (Yoeldis Castillo Quiala) - MÁS PEQUEÑO -->
+        <!-- ============================================ -->
+        <section class="guest-author">
+            <div class="container">
+                <div class="guest-author-content">
+                    <h2 class="guest-author-title">Rigor académico, visión humana.</h2>
+                    <p class="guest-author-subtitle">Licenciado en Psicología y Máster en Dirección, dedicado a desbloquear el potencial humano.</p>
+                    
+                    <div class="guest-author-wrapper">
+                        <div class="guest-author-image">
+                            <img src="assets/images/library/autor.jpg" alt="Yoeldis Castillo Quiala">
+                        </div>
+                        
+                        <div class="guest-author-text">
+                            <p>
+                                <strong>Yoeldis Castillo Quiala</strong> es Profesor Asistente, Máster en Dirección y Licenciado en Psicología. Su sólida formación académica y experiencia profesional le han permitido profundizar en el estudio del comportamiento humano, la personalidad y los procesos que influyen en la toma de decisiones.
+                            </p>
+                            <p>
+                                A lo largo de su trayectoria, ha ampliado su preparación mediante el análisis de diversos enfoques de la psicología y las ciencias del comportamiento, con especial interés en la comprensión de las <strong>diferencias individuales</strong> y el <strong>potencial humano</strong>.
+                            </p>
+                            <div class="guest-author-cta">
+                                <a href="https://elton005.github.io/yoeldiscastillo/index.html" target="_blank" class="btn btn-primary">
+                                    Explorar sus libros <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
+    <!-- FOOTER -->
     <footer class="site-footer">
         <div class="container">
             <blockquote class="footer-quote">
                 "La literatura no cambia el mundo, pero lo vuelve habitable."
             </blockquote>
             
-            <!-- DESPUÉS (SVG inline): -->
             <div class="footer-social">
                 <a href="#" class="social-link" aria-label="Instagram">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                    </svg>
+                    <i class="fa-brands fa-instagram"></i>
                 </a>
                 <a href="#" class="social-link" aria-label="Facebook">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                    </svg>
+                    <i class="fa-brands fa-facebook-f"></i>
                 </a>
                 <a href="#" class="social-link" aria-label="X (Twitter)">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                    </svg>
+                    <i class="fa-brands fa-x-twitter"></i>
                 </a>
                 <a href="#" class="social-link" aria-label="Email">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                        <polyline points="22,6 12,13 2,6"></polyline>
-                    </svg>
+                    <i class="fa-solid fa-envelope"></i>
                 </a>
             </div>
             
@@ -96,5 +291,6 @@
     </footer>
 
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/biblioteca.js"></script>
 </body>
 </html>
