@@ -8,7 +8,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/variables.css">
@@ -36,7 +36,21 @@
                     <li><a href="biblioteca.html" class="nav-link">Biblioteca</a></li>
                     <li><a href="blog.html" class="nav-link">Blog</a></li>
                     <li><a href="recursos.html" class="nav-link">Recursos</a></li>
-                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+                    
+                    <!-- AUTENTICACIÓN (Reemplaza a Contacto) -->
+                    <!-- Estado: NO logueado -->
+                    <li id="auth-login-container">
+                        <button id="auth-login-btn" class="nav-link auth-login-link" onclick="openLoginModal()">
+                            Iniciar sesión
+                        </button>
+                    </li>
+                    
+                    <li id="auth-profile-container" class="nav-user-profile" style="display: none;">
+                        <div class="user-avatar-circle">
+                            <span id="user-initial" class="user-initial">U</span>
+                        </div>
+                        <span id="auth-user-email" class="user-email"></span>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -48,13 +62,10 @@
     </div>
 
     <main>
-
-        <!-- HERO SECTION - REDISEÑADO -->
+        <!-- HERO SECTION -->
         <section class="hero">
             <div class="container">
                 <div class="hero-content">
-                    
-                    <!-- Cita editorial (protagonista visual) -->
                     <div class="hero-editorial">
                         <span class="editorial-mark">❝</span>
                         <blockquote class="editorial-quote">
@@ -66,7 +77,6 @@
                         </div>
                     </div>
 
-                    <!-- Información del sello (sutil, abajo) -->
                     <div class="hero-brand-info">
                         <div class="brand-divider"></div>
                         <p class="brand-description">
@@ -78,7 +88,6 @@
                             <span class="btn-arrow">→</span>
                         </a>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -87,8 +96,6 @@
         <section class="sections-grid" id="biblioteca">
             <div class="container">
                 <div class="grid">
-
-                    <!-- Biblioteca -->
                     <article class="section-card">
                         <div class="card-content">
                             <h3 class="card-title">Biblioteca</h3>
@@ -101,7 +108,6 @@
                         </div>
                     </article>
 
-                    <!-- Blog -->
                     <article class="section-card">
                         <div class="card-content">
                             <h3 class="card-title">Blog</h3>
@@ -114,7 +120,6 @@
                         </div>
                     </article>
 
-                    <!-- Noticias -->
                     <article class="section-card">
                         <div class="card-content">
                             <h3 class="card-title">Noticias</h3>
@@ -127,23 +132,20 @@
                         </div>
                     </article>
 
-                    <!-- Recursos (antes Para Lectores) -->
                     <article class="section-card">
                         <div class="card-content">
                             <h3 class="card-title">Recursos</h3>
                             <p class="card-description">Herramientas para el lector</p>
                             <p class="card-text">Descarga la app, guías de lectura y accede a contenidos exclusivos.</p>
-                            <a href="para-lectores.html" class="btn-link">Ver recursos →</a>
+                            <a href="recursos.html" class="btn-link">Ver recursos →</a>
                         </div>
                         <div class="card-image">
                             <img src="assets/images/sections/app.jpg" alt="Recursos para lectores">
                         </div>
                     </article>
-
                 </div>
             </div>
         </section>
-
     </main>
 
     <!-- FOOTER -->
@@ -183,6 +185,107 @@
         </div>
     </footer>
 
+    <!-- MODAL DE LOGIN (SUPABASE) -->
+    <div id="login-modal" class="login-modal">
+        <div class="login-modal-content">
+            <button class="login-modal-close" onclick="closeLoginModal()" aria-label="Cerrar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            
+            <h3 class="login-modal-title">Accede a contenido exclusivo</h3>
+            <p class="login-modal-subtitle">Inicia sesión para acceder a recursos exclusivos y juegos interactivos.</p>
+            
+            <!-- BOTÓN DE GOOGLE (NUEVO) -->
+            <button type="button" onclick="loginWithGoogle()" class="btn-google">
+                <svg width="20" height="20" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                </svg>
+                Continuar con Google
+            </button>
+    
+            <!-- Separador -->
+            <div class="login-divider">
+                <span>o usa tu correo</span>
+            </div>
+            
+            <!-- Formulario de email (se mantiene como alternativa) -->
+            <form id="login-form" onsubmit="handleLoginSubmit(event)">
+                <div class="login-input-group">
+                    <input type="email" id="login-email" placeholder="tu@correo.com" required class="login-input">
+                </div>
+                <button type="submit" id="login-submit-btn" class="btn btn-primary login-submit-btn">
+                    Enviar enlace mágico
+                </button>
+            </form>
+            
+            <p id="login-message" class="login-message"></p>
+        </div>
+    </div>
+
+    <!-- MODAL DE PERFIL DE USUARIO -->
+    <div id="profile-modal" class="profile-modal">
+        <div class="profile-modal-content">
+            <button class="profile-modal-close" onclick="closeProfileModal()" aria-label="Cerrar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            
+            <!-- Encabezado del perfil -->
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <h3 class="profile-title">Tu Perfil</h3>
+                <p id="profile-email" class="profile-email"></p>
+            </div>
+            
+            <!-- Separador -->
+            <div class="profile-divider"></div>
+            
+            <!-- Sección de contacto con autores -->
+            <div class="profile-contact-section">
+                <h4 class="profile-section-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    ¿Quieres contactar a los autores?
+                </h4>
+                <p class="profile-contact-text">
+                    ¿Tienes preguntas, sugerencias o quieres colaborar? Escríbenos directamente.
+                </p>
+                <a href="contacto.html" class="btn btn-primary profile-contact-btn">
+                    Enviar mensaje
+                </a>
+            </div>
+            
+            <!-- Separador -->
+            <div class="profile-divider"></div>
+            
+            <!-- Botón de cerrar sesión -->
+            <button onclick="logout()" class="btn btn-outline profile-logout-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+                Cerrar sesión
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="assets/js/main.js"></script>
+    <script type="module" src="assets/js/supabase.js"></script>
 </body>
 </html>

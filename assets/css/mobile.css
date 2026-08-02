@@ -671,3 +671,52 @@ code {
         scroll-behavior: auto !important;
     }
 }
+
+/* =========================================
+   AUTENTICACIÓN EN MÓVIL - CENTRADA
+   ========================================= */
+@media (max-width: 767px) {
+    /* Centrar botón de login en el menú móvil */
+    .main-nav.is-active #auth-login-container {
+        display: flex;
+        justify-content: center;
+        margin-top: var(--space-sm);
+        padding: var(--space-sm) 0;
+    }
+    
+    .main-nav.is-active #auth-login-container .auth-login-link {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    /* Perfil de usuario en móvil */
+    .main-nav.is-active #auth-profile-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: var(--space-sm);
+        padding: var(--space-md);
+        background-color: var(--color-crema-oscuro);
+        border-radius: 50px;
+        width: 100%;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .main-nav.is-active .user-email {
+        font-size: 0.9rem;
+        max-width: 200px;
+    }
+    
+    .main-nav.is-active .user-avatar-circle {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .main-nav.is-active .user-initial {
+        font-size: 1rem;
+    }
+}
