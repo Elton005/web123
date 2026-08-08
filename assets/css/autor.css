@@ -1,17 +1,16 @@
 /* =========================================
    PÁGINA DE AUTOR - ESTILOS ESPECÍFICOS
-   El header ya está definido en main.css (global)
    ========================================= */
 
 /* =========================================
-   FOTO DEL AUTOR - PÁGINA AUTOR (DERECHA)
+   FOTO DEL AUTOR (DERECHA)
    ========================================= */
 .author-floating-photo {
     position: absolute;
     top: 0;
     right: 0;
-    width: 55%;
-    max-width: 750px;
+    width: 50%;
+    max-width: 650px;
     height: 100%;
     z-index: 1;
     pointer-events: none;
@@ -24,8 +23,8 @@
     object-fit: cover;
     object-position: top center;
     display: block;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 60%);
-    mask-image: linear-gradient(to right, transparent 0%, black 60%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 50%);
+    mask-image: linear-gradient(to right, transparent 0%, black 50%);
 }
 
 /* =========================================
@@ -33,8 +32,8 @@
    ========================================= */
 .author-hero {
     position: relative;
-    padding-top: 120px; /* MISMO espacio que el index */
-    min-height: 850px;
+    padding-top: 120px;
+    min-height: 800px;
     background-color: var(--color-crema);
     overflow: hidden;
 }
@@ -42,15 +41,15 @@
 .author-hero-content {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-lg);
+    gap: var(--space-md);
     align-items: center;
-    max-width: 50%;
+    max-width: 55%;
     position: relative;
     z-index: 10;
 }
 
 .author-hero-tagline {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.2em;
     color: var(--color-dorado);
@@ -59,8 +58,8 @@
 }
 
 .author-hero-title {
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    line-height: 1;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.1;
     letter-spacing: -0.02em;
     margin-bottom: var(--space-sm);
     font-weight: 700;
@@ -69,15 +68,15 @@
 .author-hero-subtitle {
     font-family: var(--fuente-serif);
     font-style: italic;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--color-negro-suave);
     margin-bottom: var(--space-md);
 }
 
 .author-hero-quote {
     font-family: var(--fuente-serif);
-    font-size: 1.3rem;
-    line-height: 1.4;
+    font-size: 1.1rem;
+    line-height: 1.5;
     color: var(--color-negro);
     margin-bottom: var(--space-md);
     padding-left: var(--space-md);
@@ -86,37 +85,17 @@
 }
 
 .author-hero-description {
-    font-size: 1rem;
+    font-size: 0.95rem;
     line-height: 1.7;
     color: var(--color-negro-suave);
     margin-bottom: var(--space-lg);
-    max-width: 600px;
+    max-width: 550px;
 }
 
 .author-hero-buttons {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-sm);
-}
-
-.btn-outline {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    font-family: var(--fuente-sans);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border: 1px solid var(--color-negro);
-    color: var(--color-negro);
-    background-color: transparent;
-    border-radius: 2px;
-    transition: all var(--transition-fast);
-    cursor: pointer;
-}
-
-.btn-outline:hover {
-    background-color: var(--color-negro);
-    color: var(--color-crema);
 }
 
 /* =========================================
@@ -134,7 +113,7 @@
 }
 
 .section-title {
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
     margin-bottom: var(--space-md);
     position: relative;
     display: inline-block;
@@ -145,13 +124,13 @@
     position: absolute;
     bottom: -0.5rem;
     left: 0;
-    width: 60px;
+    width: 50px;
     height: 2px;
     background-color: var(--color-dorado);
 }
 
 .author-look-text p {
-    font-size: 1rem;
+    font-size: 0.95rem;
     line-height: 1.7;
     color: var(--color-negro-suave);
     max-width: 700px;
@@ -179,8 +158,8 @@
 }
 
 .pillar-icon {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     margin: 0 auto var(--space-sm);
     border-radius: 50%;
     background-color: var(--color-crema-oscuro);
@@ -191,7 +170,7 @@
 }
 
 .pillar-title {
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin-bottom: var(--space-xs);
@@ -202,11 +181,11 @@
     font-family: var(--fuente-serif);
     font-style: italic;
     color: var(--color-gris);
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 /* =========================================
-   TIMELINE
+   TIMELINE - TÍTULOS DESTACADOS
    ========================================= */
 .author-timeline {
     padding: var(--space-xl) 0;
@@ -248,26 +227,59 @@
     background-color: var(--color-crema-oscuro);
     border-radius: 4px;
     z-index: 1;
+    text-align: center;
+    border-left: 3px solid var(--color-dorado); /* Borde dorado lateral para destacar */
 }
 
 .timeline-year {
-    display: block;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-dorado);
-    margin-bottom: var(--space-xs);
-    font-family: var(--fuente-serif);
+    display: none; /* Oculto según solicitud */
 }
 
-.timeline-label {
-    font-size: 0.95rem;
+/* ✅ TÍTULOS DEL TIMELINE REDISEÑADOS - MÁS ELEGANTES */
+.timeline-title {
+    font-family: var(--fuente-serif);
+    font-size: 1.25rem; /* Aumentado */
+    font-weight: 700;
+    color: var(--color-dorado); /* Color dorado para destacar */
+    margin-bottom: var(--space-sm);
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    position: relative;
+    padding-bottom: var(--space-xs);
+}
+
+/* Pequeño separador dorado debajo del título */
+.timeline-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background-color: var(--color-dorado);
+    opacity: 0.6;
+}
+
+.timeline-description {
+    font-size: 0.9rem;
     color: var(--color-negro-suave);
+    line-height: 1.6;
+    margin: 0;
+    font-family: var(--fuente-sans);
+}
+
+.timeline-description em {
+    font-style: italic;
+    color: var(--color-negro);
+    font-family: var(--fuente-serif);
 }
 
 .timeline-quote {
     font-family: var(--fuente-serif);
     font-style: italic;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--color-gris);
     max-width: 500px;
     margin: 0 auto;
@@ -290,31 +302,17 @@
 }
 
 .author-dark-logo {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 2px solid var(--color-dorado);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: var(--space-md);
-}
-
-.author-dark-logo .logo-script {
-    font-family: var(--fuente-serif);
-    font-size: 2rem;
-    color: var(--color-dorado);
-    font-style: italic;
+    display: none; /* Oculto según solicitud */
 }
 
 .author-dark-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--color-crema);
     margin-bottom: var(--space-xs);
 }
 
 .author-dark-subtitle {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.15em;
     color: var(--color-dorado);
@@ -324,7 +322,7 @@
 .author-dark-quote {
     font-family: var(--fuente-serif);
     font-style: italic;
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.6;
     color: var(--color-crema);
     max-width: 500px;
@@ -332,6 +330,7 @@
 
 .author-dark-image {
     width: 100%;
+    overflow: hidden;
 }
 
 .author-dark-image img {
@@ -339,6 +338,8 @@
     height: auto;
     border-radius: 4px;
     filter: sepia(20%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
+    mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
 }
 
 .author-dark-cta {
@@ -359,10 +360,9 @@
    MEDIA QUERIES - TABLET (768px)
    ========================================= */
 @media (min-width: 768px) {
-    
     .author-hero-content {
         grid-template-columns: 1fr;
-        max-width: 50%;
+        max-width: 55%;
     }
 
     .author-look-content {
@@ -407,241 +407,20 @@
    MEDIA QUERIES - DESKTOP (1024px)
    ========================================= */
 @media (min-width: 1024px) {
-    
-    /* Hero desktop - MISMO padding-top que el index */
     .author-hero {
         padding-top: 140px;
-        min-height: 900px;
+        min-height: 850px;
     }
 
     .author-hero-title {
-        font-size: clamp(3rem, 5vw, 5rem);
+        font-size: clamp(2.5rem, 4vw, 4rem);
     }
 
     .author-hero-quote {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
     .author-dark-title {
-        font-size: 2.5rem;
-    }
-}
-
-/* =========================================
-   MEDIA QUERIES - MÓVIL (menos de 768px)
-   ========================================= */
-@media (max-width: 767px) {
-    .author-floating-photo {
-        position: relative;
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-        margin-bottom: var(--space-md);
-    }
-
-    .author-floating-photo img {
-        -webkit-mask-image: none;
-        mask-image: none;
-        height: auto;
-        object-fit: cover;
-    }
-
-    .author-hero {
-        padding-top: 90px; /* MISMO que el index en móvil */
-        min-height: auto;
-    }
-}
-
-/* =========================================
-   AUTOR - MÓVIL REESTRUCTURADO (CENTRADO)
-   ========================================= */
-@media (max-width: 767px) {
-    
-    /* Foto del autor - más pequeña y centrada */
-    .author-floating-photo {
-        position: relative;
-        width: 100%;
-        max-width: 100%;
-        height: 50vh;
-        margin-bottom: var(--space-lg);
-    }
-
-    .author-floating-photo img {
-        -webkit-mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
-        mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
-    }
-
-    /* Hero centrado */
-    .author-hero {
-        padding: var(--space-lg) 0;
-        min-height: auto;
-    }
-
-    .author-hero-content {
-        max-width: 100%;
-        margin: 0 auto;
-        padding: 0 var(--space-sm);
-    }
-
-    .author-hero-tagline {
-        font-size: 0.7rem;
-        text-align: center;
-        margin-bottom: var(--space-md);
-    }
-
-    .author-hero-title {
-        font-size: clamp(2rem, 7vw, 3rem);
-        text-align: center;
-        line-height: 1.1;
-        margin-bottom: var(--space-md);
-    }
-
-    .author-hero-subtitle {
-        font-size: 0.95rem;
-        text-align: center;
-        margin-bottom: var(--space-lg);
-    }
-
-    .author-hero-quote {
-        font-size: 1.1rem;
-        padding-left: var(--space-md);
-        margin-bottom: var(--space-lg);
-        text-align: left;
-    }
-
-    .author-hero-description {
-        font-size: 0.95rem;
-        line-height: 1.6;
-        text-align: center;
-        max-width: 100%;
-        margin-bottom: var(--space-lg);
-    }
-
-    .author-hero-buttons {
-        flex-direction: column;
-        gap: var(--space-sm);
-        max-width: 300px;
-        margin: 0 auto;
-    }
-
-    .author-hero-buttons .btn {
-        width: 100%;
-    }
-
-    /* Sección "La mirada" */
-    .author-look {
-        padding: var(--space-md) 0;
-    }
-
-    .author-look-content {
-        grid-template-columns: 1fr;
-        gap: var(--space-lg);
-    }
-
-    .author-look-text {
-        text-align: center;
-    }
-
-    .section-title {
-        font-size: 1.5rem;
-        text-align: center;
-        display: block;
-    }
-
-    .section-title::after {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .author-look-text p {
-        text-align: center;
-        max-width: 100%;
-    }
-
-    .author-look-pillars {
-        grid-template-columns: 1fr;
-        gap: var(--space-md);
-    }
-
-    .pillar {
-        padding: var(--space-md);
-    }
-
-    .pillar-icon {
-        width: 60px;
-        height: 60px;
-    }
-
-    /* Timeline */
-    .author-timeline {
-        padding: var(--space-md) 0;
-    }
-
-    .timeline {
-        flex-direction: column;
-        gap: var(--space-sm);
-    }
-
-    .timeline::before {
-        display: none;
-    }
-
-    .timeline-item {
-        padding: var(--space-sm);
-        text-align: center;
-    }
-
-    .timeline-year {
-        font-size: 1.3rem;
-    }
-
-    .timeline-quote {
-        font-size: 1rem;
-        text-align: center;
-    }
-
-    /* Sección oscura */
-    .author-dark {
-        padding: var(--space-md) 0;
-    }
-
-    .author-dark-content {
-        grid-template-columns: 1fr;
-        gap: var(--space-lg);
-        text-align: center;
-    }
-
-    .author-dark-logo {
-        width: 60px;
-        height: 60px;
-        margin: 0 auto var(--space-md);
-    }
-
-    .author-dark-title {
-        font-size: 1.5rem;
-        text-align: center;
-    }
-
-    .author-dark-subtitle {
-        text-align: center;
-    }
-
-    .author-dark-quote {
-        font-size: 1rem;
-        text-align: center;
-        max-width: 100%;
-    }
-
-    .author-dark-image {
-        order: -1;
-    }
-
-    .author-dark-image img {
-        max-width: 100%;
-    }
-
-    .author-dark-cta .btn {
-        width: 100%;
-        max-width: 100%;
+        font-size: 2rem;
     }
 }

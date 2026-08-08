@@ -720,3 +720,227 @@ code {
         font-size: 1rem;
     }
 }
+
+/* =========================================
+   AUTOR - MÓVIL REESTRUCTURADO (COMPACTO)
+   ========================================= */
+@media (max-width: 767px) {
+    
+    /* Foto del autor: más compacta */
+    .author-floating-photo {
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        height: 40vh; /* Reducido de 50vh para ahorrar espacio */
+        margin-bottom: var(--space-md);
+    }
+
+    .author-floating-photo img {
+        -webkit-mask-image: radial-gradient(ellipse at center, black 50%, transparent 100%);
+        mask-image: radial-gradient(ellipse at center, black 50%, transparent 100%);
+    }
+
+    /* Hero compacto */
+    .author-hero {
+        padding: var(--space-md) 0; /* Reducido de lg a md */
+        min-height: auto;
+    }
+
+    .author-hero-content {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0 var(--space-sm);
+        gap: var(--space-md);
+    }
+
+    .author-hero-tagline {
+        font-size: 0.65rem;
+        text-align: center;
+        margin-bottom: var(--space-sm);
+    }
+
+    .author-hero-title {
+        font-size: clamp(1.8rem, 7vw, 2.5rem);
+        text-align: center;
+        line-height: 1.1;
+        margin-bottom: var(--space-sm);
+    }
+
+    .author-hero-subtitle {
+        font-size: 0.9rem;
+        text-align: center;
+        margin-bottom: var(--space-md);
+    }
+
+    .author-hero-quote {
+        font-size: 1rem;
+        padding-left: var(--space-sm);
+        margin-bottom: var(--space-md);
+        text-align: left;
+    }
+
+    .author-hero-description {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        text-align: center;
+        max-width: 100%;
+        margin-bottom: var(--space-md);
+    }
+
+    .author-hero-buttons {
+        flex-direction: column;
+        gap: var(--space-sm);
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .author-hero-buttons .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Sección "La mirada" compacta */
+    .author-look {
+        padding: var(--space-md) 0; /* Reducido */
+    }
+
+    .author-look-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+
+    .author-look-text {
+        text-align: center;
+    }
+
+    .section-title {
+        font-size: 1.3rem;
+        text-align: center;
+        display: block;
+    }
+
+    .section-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .author-look-text p {
+        text-align: center;
+        max-width: 100%;
+        font-size: 0.9rem;
+    }
+
+    .author-look-pillars {
+        grid-template-columns: 1fr;
+        gap: var(--space-sm); /* Reducido */
+    }
+
+    .pillar {
+        padding: var(--space-sm);
+    }
+
+    .pillar-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .pillar-title {
+        font-size: 0.9rem;
+    }
+
+    .pillar-subtitle {
+        font-size: 0.85rem;
+    }
+
+    /* Timeline compacto */
+    .author-timeline {
+        padding: var(--space-md) 0; /* Reducido */
+    }
+
+    .author-timeline .section-title {
+        margin-bottom: var(--space-md);
+    }
+
+    .timeline {
+        flex-direction: column;
+        gap: var(--space-sm); /* Reducido */
+    }
+
+    .timeline::before {
+        display: none;
+    }
+
+    .timeline-item {
+        padding: var(--space-sm);
+        text-align: center;
+    }
+
+    .timeline-year {
+        font-size: 1.2rem;
+    }
+
+    .timeline-title {
+        font-size: 0.95rem;
+    }
+
+    .timeline-description {
+        font-size: 0.85rem;
+    }
+
+    .timeline-quote {
+        font-size: 0.9rem;
+        text-align: center;
+        margin-top: var(--space-sm);
+    }
+
+    /* Sección oscura compacta */
+    .author-dark {
+        padding: var(--space-md) 0; /* Reducido */
+    }
+
+    .author-dark-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+        text-align: center;
+    }
+
+    .author-dark-logo {
+        width: 50px;
+        height: 50px;
+        margin: 0 auto var(--space-sm);
+    }
+
+    .author-dark-logo .logo-script {
+        font-size: 1.5rem;
+    }
+
+    .author-dark-title {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    .author-dark-subtitle {
+        font-size: 0.75rem;
+        text-align: center;
+    }
+
+    .author-dark-quote {
+        font-size: 0.9rem;
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .author-dark-image {
+        order: -1;
+    }
+
+    .author-dark-image img {
+        max-width: 100%;
+    }
+
+    .author-dark-cta .btn {
+        width: 100%;
+        max-width: 100%;
+        justify-content: center;
+    }
+}

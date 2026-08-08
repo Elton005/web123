@@ -22,7 +22,9 @@ h1, h2, h3, h4 {
     color: var(--color-negro);
 }
 
-/* Botones base */
+/* =========================================
+   BOTONES BASE
+   ========================================= */
 .btn {
     display: inline-block;
     padding: 0.75rem 1.5rem;
@@ -78,7 +80,6 @@ h1, h2, h3, h4 {
     color: var(--color-dorado-oscuro);
 }
 
-/* Botón CTA del hero */
 .btn-cta {
     display: inline-flex;
     align-items: center;
@@ -132,26 +133,52 @@ h1, h2, h3, h4 {
     align-items: center;
 }
 
+/* =========================================
+   LOGO - CIRCULAR + TEXTO EN LÍNEA
+   ========================================= */
 .logo {
-    display: flex;
-    flex-direction: column;
-    line-height: 1;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    text-decoration: none !important;
+    line-height: 1 !important;
 }
 
-.logo-script {
-    font-family: var(--fuente-serif);
-    font-style: italic;
-    font-size: 1.3rem;
-    color: var(--color-negro);
+.logo-image {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    display: block !important;
+    flex-shrink: 0 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
 }
 
 .logo-text {
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-top: 0.2rem;
+    font-family: var(--fuente-serif) !important;
+    font-size: 0.9rem !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+    font-weight: 700 !important;
+    color: var(--color-negro) !important;
+    line-height: 1.2 !important;
+    margin-top: 0 !important;
+    transition: all var(--transition-fast) !important;
 }
 
+.logo:hover .logo-text {
+    color: var(--color-dorado) !important;
+    transform: translateY(-1px);
+}
+
+.logo-script {
+    display: none !important;
+}
+
+/* =========================================
+   NAVEGACIÓN PRINCIPAL
+   ========================================= */
 .main-nav {
     display: none;
 }
@@ -173,7 +200,6 @@ h1, h2, h3, h4 {
 .hamburger::before { transform: translateY(-6px); }
 .hamburger::after { transform: translateY(6px); }
 
-/* Menú nítido sobre el glassmorphism */
 .main-nav .nav-link {
     color: var(--color-negro);
     font-weight: 500;
@@ -196,7 +222,7 @@ h1, h2, h3, h4 {
 }
 
 /* =========================================
-   FOTO FLOTANTE DEL AUTOR - INDEX (IZQUIERDA)
+   FOTO FLOTANTE DEL AUTOR - INDEX
    ========================================= */
 .index-floating-photo {
     position: absolute;
@@ -204,7 +230,7 @@ h1, h2, h3, h4 {
     left: 0;
     width: 55%;
     max-width: 750px;
-    height: 100vh; /* Ocupa toda la altura de la ventana */
+    height: 100vh;
     z-index: 1;
     pointer-events: none;
     overflow: hidden;
@@ -272,15 +298,15 @@ h1, h2, h3, h4 {
 }
 
 /* =========================================
-   HERO SECTION - REDISEÑO EDITORIAL
+   HERO SECTION
    ========================================= */
 .hero {
     position: relative;
-    min-height: 100vh; /* Altura completa de la ventana */
+    min-height: 100vh;
     background-color: var(--color-crema);
     overflow: hidden;
     display: flex;
-    align-items: center; /* Centra verticalmente el contenido */
+    align-items: center;
 }
 
 .hero-content {
@@ -288,13 +314,12 @@ h1, h2, h3, h4 {
     grid-template-columns: 1fr;
     gap: var(--space-xl);
     max-width: 50%;
-    margin-left: auto; /* Empuja todo a la derecha */
+    margin-left: auto;
     position: relative;
     z-index: 10;
     padding: var(--space-xl) 0;
 }
 
-/* Cita editorial (protagonista) */
 .hero-editorial {
     position: relative;
     padding-top: var(--space-lg);
@@ -302,7 +327,7 @@ h1, h2, h3, h4 {
 
 .editorial-quote {
     font-family: var(--fuente-serif);
-    font-size: clamp(1.3rem, 2vw, 1.6rem); /* Reducido */
+    font-size: clamp(1.3rem, 2vw, 1.6rem);
     font-weight: 400;
     font-style: italic;
     line-height: 1.4;
@@ -317,7 +342,7 @@ h1, h2, h3, h4 {
     top: 0;
     left: 0;
     font-family: var(--fuente-serif);
-    font-size: 2.5rem; /* Reducido de 4rem */
+    font-size: 2.5rem;
     color: var(--color-dorado);
     line-height: 1;
     opacity: 0.5;
@@ -346,7 +371,6 @@ h1, h2, h3, h4 {
     color: var(--color-gris);
 }
 
-/* Información del sello */
 .hero-brand-info {
     padding-top: var(--space-md);
 }
@@ -372,7 +396,7 @@ h1, h2, h3, h4 {
 }
 
 /* =========================================
-   GRID DE SECCIONES (DISEÑO EDITORIAL)
+   GRID DE SECCIONES
    ========================================= */
 .sections-grid {
     padding: var(--space-xl) 0;
@@ -540,178 +564,7 @@ h1, h2, h3, h4 {
 }
 
 /* =========================================
-   MEDIA QUERIES - TABLET (768px)
-   ========================================= */
-@media (min-width: 768px) {
-    
-    .menu-toggle {
-        display: none;
-    }
-
-    .main-nav {
-        display: block;
-    }
-
-    .nav-list {
-        display: flex;
-        gap: var(--space-md);
-    }
-
-    .nav-link::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 0;
-        height: 1px;
-        background-color: var(--color-dorado);
-        transition: width var(--transition-smooth);
-    }
-
-    .nav-link:hover::after,
-    .nav-link.active::after {
-        width: 100%;
-    }
-
-    .nav-link:hover {
-        color: var(--color-dorado);
-    }
-
-    .editorial-quote {
-    font-size: 1.8rem; /* Reducido de 2.2rem */
-    }
-
-    .grid {
-        grid-template-columns: 1fr 1fr;
-        gap: var(--space-lg);
-    }
-
-    .card-image img {
-        height: 350px;
-    }
-
-    .footer-quote {
-        font-size: 1.4rem;
-        margin-bottom: var(--space-xl);
-    }
-    
-    .footer-quote::after {
-        bottom: -2rem;
-        width: 100px;
-    }
-    
-    .footer-social {
-        gap: var(--space-lg);
-    }
-    
-    .social-link {
-        width: 48px;
-        height: 48px;
-    }
-}
-
-/* =========================================
-   MEDIA QUERIES - DESKTOP (1024px)
-   ========================================= */
-@media (min-width: 1024px) {
-    
-    .site-header {
-        padding: 1.2rem 0;
-    }
-    
-    .nav-list {
-        gap: var(--space-lg);
-    }
-
-    .hero-content {
-        grid-template-columns: 1fr;
-        gap: var(--space-xxl);
-        max-width: 45%;
-        margin-left: auto;
-    }
-
-     .editorial-quote {
-     font-size: clamp(1.8rem, 2.5vw, 2.2rem); /* Reducido */
-    }
-
-    .grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: var(--space-md);
-    }
-
-    .card-image img {
-        height: 220px;
-    }
-    
-    .card-description {
-        font-size: 1.25rem;
-    }
-
-    .footer-quote {
-        font-size: 1.6rem;
-        margin-bottom: var(--space-xl);
-    }
-    
-    .footer-quote::after {
-        width: 120px;
-    }
-}
-
-/* =========================================
-   MEDIA QUERIES - MÓVIL (menos de 768px)
-   ========================================= */
-@media (max-width: 767px) {
-    .index-floating-photo {
-        position: relative;
-        width: 100%;
-        max-width: 100%;
-        height: 60vh;
-        margin-bottom: 0;
-    }
-
-    .index-floating-photo img {
-        -webkit-mask-image: none;
-        mask-image: none;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .site-header {
-        padding: 0.75rem 0;
-    }
-
-    .hero {
-        min-height: auto;
-        padding: var(--space-xl) 0;
-    }
-
-    .hero-content {
-        max-width: 100%;
-        margin-left: 0;
-        gap: var(--space-lg);
-    }
-
-    .editorial-quote {
-    font-size: 1.2rem; /* Reducido de 1.5rem */
-    padding-left: var(--space-sm);
-    }
-
-    .editorial-mark {
-        font-size: 2rem; /* Reducido de 3rem */
-    }
-
-    .editorial-signature {
-        padding-left: var(--space-md);
-    }
-
-    .brand-description {
-        font-size: 0.95rem;
-    }
-}
-
-/* =========================================
-   AUTENTICACIÓN EN EL HEADER (PROFESIONAL)
+   AUTENTICACIÓN EN EL HEADER
    ========================================= */
 .auth-login-link {
     background: none;
@@ -732,84 +585,54 @@ h1, h2, h3, h4 {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.4rem 0.8rem;
+    padding: 0.4rem 1rem;
     background-color: var(--color-crema-oscuro);
     border-radius: 50px;
     border: 1px solid transparent;
     transition: all var(--transition-fast);
     list-style: none;
+    cursor: pointer;
 }
 
 .nav-user-profile:hover {
     border-color: var(--color-dorado);
+    background-color: var(--color-crema);
 }
 
-.user-icon {
-    color: var(--color-dorado);
+.user-avatar-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-dorado) 0%, var(--color-dorado-oscuro) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
 }
 
+.user-initial {
+    color: var(--color-blanco);
+    font-weight: 600;
+    font-size: 0.9rem;
+    font-family: var(--fuente-sans);
+}
+
 .user-email {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 500;
     color: var(--color-negro);
-    max-width: 120px;
+    max-width: 150px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .auth-logout-btn {
-    background: none;
-    border: none;
-    color: var(--color-negro-suave);
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    cursor: pointer;
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    transition: all var(--transition-fast);
-    margin-left: 0.25rem;
-    border-left: 1px solid var(--color-crema);
-}
-
-.auth-logout-btn:hover {
-    color: var(--color-dorado);
-    background-color: rgba(184, 147, 90, 0.1);
-}
-
-/* Ajustes móviles para el perfil de usuario */
-@media (max-width: 767px) {
-    .nav-user-profile {
-        justify-content: center;
-        padding: 0.75rem;
-        margin-top: 0.5rem;
-        background-color: var(--color-crema-oscuro);
-        border: 1px solid var(--color-crema-oscuro);
-        width: 100%;
-        box-sizing: border-box;
-    }
-    
-    .user-email {
-        max-width: 200px;
-        font-size: 0.9rem;
-    }
-    
-    .auth-logout-btn {
-        border-left: none;
-        margin-left: 0;
-        margin-top: 0.25rem;
-        width: 100%;
-        text-align: center;
-        padding: 0.5rem;
-        background-color: rgba(255, 255, 255, 0.5);
-    }
+    display: none !important;
 }
 
 /* =========================================
-   MODAL DE LOGIN (SUPABASE)
+   MODAL DE LOGIN
    ========================================= */
 .login-modal {
     position: fixed;
@@ -913,7 +736,6 @@ h1, h2, h3, h4 {
     min-height: 1.5rem;
 }
 
-/* Botón de Google en el Modal */
 .btn-google {
     width: 100%;
     padding: 0.9rem;
@@ -960,7 +782,7 @@ h1, h2, h3, h4 {
 }
 
 /* =========================================
-   MODAL DE PERFIL DE USUARIO
+   MODAL DE PERFIL
    ========================================= */
 .profile-modal {
     position: fixed;
@@ -1017,7 +839,6 @@ h1, h2, h3, h4 {
     color: var(--color-negro);
 }
 
-/* Encabezado del perfil */
 .profile-header {
     text-align: center;
     margin-bottom: 1.5rem;
@@ -1049,14 +870,12 @@ h1, h2, h3, h4 {
     word-break: break-all;
 }
 
-/* Separador */
 .profile-divider {
     height: 1px;
     background-color: var(--color-crema-oscuro);
     margin: 1.5rem 0;
 }
 
-/* Sección de contacto */
 .profile-contact-section {
     text-align: center;
     padding: 1rem 0;
@@ -1089,7 +908,6 @@ h1, h2, h3, h4 {
     justify-content: center;
 }
 
-/* Botón de cerrar sesión */
 .profile-logout-btn {
     width: 100%;
     justify-content: center;
@@ -1097,13 +915,206 @@ h1, h2, h3, h4 {
     margin-top: 1rem;
 }
 
-/* Cursor pointer para el perfil en el header */
-.nav-user-profile {
-    cursor: pointer;
+/* =========================================
+   MEDIA QUERIES - TABLET (768px)
+   ========================================= */
+@media (min-width: 768px) {
+    .menu-toggle {
+        display: none;
+    }
+
+    .main-nav {
+        display: block;
+    }
+
+    .nav-list {
+        display: flex;
+        gap: var(--space-md);
+    }
+
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 1px;
+        background-color: var(--color-dorado);
+        transition: width var(--transition-smooth);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+        width: 100%;
+    }
+
+    .nav-link:hover {
+        color: var(--color-dorado);
+    }
+
+    .editorial-quote {
+        font-size: 1.8rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-lg);
+    }
+
+    .card-image img {
+        height: 350px;
+    }
+
+    .footer-quote {
+        font-size: 1.4rem;
+        margin-bottom: var(--space-xl);
+    }
+    
+    .footer-quote::after {
+        bottom: -2rem;
+        width: 100px;
+    }
+    
+    .footer-social {
+        gap: var(--space-lg);
+    }
+    
+    .social-link {
+        width: 48px;
+        height: 48px;
+    }
 }
 
-/* Ajustes móviles */
+/* =========================================
+   MEDIA QUERIES - DESKTOP (1024px)
+   ========================================= */
+@media (min-width: 1024px) {
+    .site-header {
+        padding: 1.2rem 0;
+    }
+    
+    .nav-list {
+        gap: var(--space-lg);
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-xxl);
+        max-width: 45%;
+        margin-left: auto;
+    }
+
+    .editorial-quote {
+        font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+    }
+
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--space-md);
+    }
+
+    .card-image img {
+        height: 220px;
+    }
+    
+    .card-description {
+        font-size: 1.25rem;
+    }
+
+    .footer-quote {
+        font-size: 1.6rem;
+        margin-bottom: var(--space-xl);
+    }
+    
+    .footer-quote::after {
+        width: 120px;
+    }
+}
+
+/* =========================================
+   MEDIA QUERIES - MÓVIL (menos de 768px)
+   ========================================= */
 @media (max-width: 767px) {
+    .index-floating-photo {
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        height: 60vh;
+        margin-bottom: 0;
+    }
+
+    .index-floating-photo img {
+        -webkit-mask-image: none;
+        mask-image: none;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .site-header {
+        padding: 0.75rem 0;
+    }
+
+    .hero {
+        min-height: auto;
+        padding: var(--space-xl) 0;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        margin-left: 0;
+        gap: var(--space-lg);
+    }
+
+    .editorial-quote {
+        font-size: 1.2rem;
+        padding-left: var(--space-sm);
+    }
+
+    .editorial-mark {
+        font-size: 2rem;
+    }
+
+    .editorial-signature {
+        padding-left: var(--space-md);
+    }
+
+    .brand-description {
+        font-size: 0.95rem;
+    }
+
+    /* Logo móvil */
+    .logo {
+        gap: 0.6rem !important;
+    }
+    
+    .logo-image {
+        width: 36px !important;
+        height: 36px !important;
+    }
+    
+    .logo-text {
+        font-size: 0.7rem !important;
+        letter-spacing: 0.1em !important;
+    }
+
+    /* Perfil móvil */
+    .nav-user-profile {
+        justify-content: center;
+        padding: 0.75rem;
+        margin-top: 0.5rem;
+        background-color: var(--color-crema-oscuro);
+        border: 1px solid var(--color-crema-oscuro);
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .user-email {
+        max-width: 200px;
+        font-size: 0.9rem;
+    }
+
+    /* Modal perfil móvil */
     .profile-modal-content {
         padding: 2rem 1.5rem;
     }
@@ -1116,58 +1127,325 @@ h1, h2, h3, h4 {
     .profile-title {
         font-size: 1.5rem;
     }
+
+    /* Botones touch-friendly */
+    .btn,
+    .btn-primary,
+    .btn-outline,
+    .btn-link,
+    .btn-cta {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn-primary,
+    .btn-outline {
+        padding: 0.75rem 1.5rem;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .btn-cta {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    /* Centrar botón login en menú móvil */
+    .main-nav.is-active #auth-login-container {
+        display: flex;
+        justify-content: center;
+        margin-top: var(--space-sm);
+        padding: var(--space-sm) 0;
+    }
+    
+    .main-nav.is-active #auth-login-container .auth-login-link {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .main-nav.is-active #auth-profile-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: var(--space-sm);
+        padding: var(--space-md);
+        background-color: var(--color-crema-oscuro);
+        border-radius: 50px;
+        width: 100%;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .main-nav.is-active .user-email {
+        font-size: 0.9rem;
+        max-width: 200px;
+    }
+    
+    .main-nav.is-active .user-avatar-circle {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .main-nav.is-active .user-initial {
+        font-size: 1rem;
+    }
 }
 
 /* =========================================
-   PERFIL DE USUARIO - ESTILO GOOGLE
+   NUEVO HERO SECTION - INDEX (AJUSTE FINAL)
    ========================================= */
-.nav-user-profile {
+.new-hero {
+    min-height: 80vh;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.4rem 1rem;
-    background-color: var(--color-crema-oscuro);
-    border-radius: 50px;
-    border: 1px solid transparent;
-    transition: all var(--transition-fast);
-    list-style: none;
-    cursor: pointer;
-}
-
-.nav-user-profile:hover {
-    border-color: var(--color-dorado);
+    padding-top: 100px; /* ✅ Compensa la altura del header fijo */
+    padding-bottom: var(--space-md);
     background-color: var(--color-crema);
 }
 
-.user-avatar-circle {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--color-dorado) 0%, var(--color-dorado-oscuro) 100%);
+.new-hero .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    align-items: center;
+}
+
+/* ✅ IMAGEN CON DIFUMINADO SUTIL */
+.hero-image-section {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: visible;
+}
+
+.hero-logo-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: 550px;
+    object-fit: contain;
+    
+    /* ✅ DIFUMINADO SUTIL - solo en el borde derecho */
+    /* Mantiene el 75% de la imagen nítida, difumina solo el 25% final */
+    -webkit-mask-image: linear-gradient(
+        to right,
+        black 0%,
+        black 70%,
+        rgba(0, 0, 0, 0.5) 85%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to right,
+        black 0%,
+        black 70%,
+        rgba(0, 0, 0, 0.5) 85%,
+        transparent 100%
+    );
+}
+
+/* El resto del CSS del hero se mantiene igual */
+.hero-text-section {
+    padding: 0;
+}
+
+.hero-subtitle-small {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-dorado);
+    margin-bottom: var(--space-sm);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.hero-subtitle-small i {
+    font-size: 0.8rem;
+}
+
+.hero-main-title {
+    font-family: var(--fuente-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    line-height: 1.2;
+    margin-bottom: var(--space-sm);
+}
+
+.hero-main-title .highlight {
+    color: var(--color-dorado);
+    display: block;
+}
+
+.hero-divider {
+    width: 80px;
+    height: 1px;
+    background-color: var(--color-dorado);
+    margin: var(--space-sm) 0;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
 }
 
-.user-initial {
+.hero-divider i {
+    position: absolute;
+    background-color: var(--color-crema);
+    padding: 0 0.5rem;
+    color: var(--color-dorado);
+    font-size: 0.8rem;
+}
+
+.hero-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-negro-suave);
+    margin-bottom: var(--space-md);
+    max-width: 450px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+.btn-hero-primary {
+    background-color: var(--color-dorado);
     color: var(--color-blanco);
-    font-weight: 600;
-    font-size: 0.9rem;
-    font-family: var(--fuente-sans);
-}
-
-.user-email {
-    font-size: 0.85rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 2px;
+    text-decoration: none;
     font-weight: 500;
-    color: var(--color-negro);
-    max-width: 150px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all var(--transition-fast);
+    border: none;
+    cursor: pointer;
 }
 
-/* Eliminar el botón de logout del header */
-.auth-logout-btn {
-    display: none !important;
+.btn-hero-primary:hover {
+    background-color: var(--color-dorado-oscuro);
+    transform: translateY(-2px);
+}
+
+.btn-hero-primary i {
+    font-size: 0.85rem;
+}
+
+.btn-hero-outline {
+    background-color: transparent;
+    color: var(--color-negro);
+    padding: 0.85rem 1.5rem;
+    border: 1px solid var(--color-negro);
+    border-radius: 2px;
+    text-decoration: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+}
+
+.btn-hero-outline:hover {
+    background-color: var(--color-negro);
+    color: var(--color-crema);
+}
+
+.btn-hero-outline i {
+    font-size: 0.85rem;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 968px) {
+    .new-hero {
+        padding-top: 90px; /* Ajuste para tablet */
+    }
+    
+    .new-hero .container {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+    
+    .hero-image-section {
+        order: -1;
+        justify-content: center;
+    }
+    
+    .hero-logo-image {
+        max-width: 70%;
+        max-height: 400px;
+        /* En tablet, difuminado radial más sutil */
+        -webkit-mask-image: radial-gradient(ellipse at center, black 75%, transparent 100%);
+        mask-image: radial-gradient(ellipse at center, black 75%, transparent 100%);
+    }
+    
+    .hero-text-section {
+        text-align: center;
+        padding: 0;
+    }
+    
+    .hero-subtitle-small {
+        justify-content: center;
+    }
+    
+    .hero-divider {
+        margin: var(--space-sm) auto;
+    }
+    
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 767px) {
+    .new-hero {
+        min-height: auto;
+        padding-top: 80px; /* Ajuste para móvil */
+        padding-bottom: var(--space-sm);
+    }
+    
+    .hero-logo-image {
+        max-width: 80%;
+        max-height: 300px;
+        -webkit-mask-image: radial-gradient(ellipse at center, black 70%, transparent 100%);
+        mask-image: radial-gradient(ellipse at center, black 70%, transparent 100%);
+    }
+    
+    .hero-main-title {
+        font-size: clamp(1.4rem, 5vw, 2.2rem);
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-hero-primary,
+    .btn-hero-outline {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+    }
 }
