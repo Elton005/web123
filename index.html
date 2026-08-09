@@ -62,14 +62,14 @@
         <!-- NUEVO HERO SECTION -->
         <section class="new-hero">
             <div class="container">
-                <!-- Sección izquierda: Imagen del logo -->
+                <!-- Sección izquierda: Imagen -->
                 <div class="hero-image-section">
                     <img src="assets/images/hero/logo-osos-libros.png" alt="La Huella Escrita - Letras e Historias" class="hero-logo-image">
                 </div>
                 
                 <!-- Sección derecha: Contenido textual -->
                 <div class="hero-text-section">
-                    <p class="hero-subtitle-small"><i class="fas fa-feather-alt"></i> Letras e historia desde 2009</p>
+                    <p class="hero-subtitle-small"><i class="fas fa-feather-alt"></i> Letras e historia desde 2006</p>
                     
                     <h1 class="hero-main-title">
                         Historias que dejan huella.<br>
@@ -87,17 +87,19 @@
                             <i class="fas fa-book"></i> Explorar Biblioteca
                         </a>
                         <a href="autor.html" class="btn-hero-outline">
-                            <i class="fas fa-feather-alt"></i> Conoce el Universo
+                            <i class="fas fa-feather-alt"></i> Conoce al Autor
                         </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- GRID DE 4 SECCIONES -->
+        <!-- GRID DE 4 SECCIONES (REORGANIZADO) -->
         <section class="sections-grid" id="biblioteca">
             <div class="container">
                 <div class="grid">
+                    
+                    <!-- 1. Biblioteca (Sin cambios) -->
                     <article class="section-card">
                         <div class="card-content">
                             <h3 class="card-title">Biblioteca</h3>
@@ -110,30 +112,7 @@
                         </div>
                     </article>
 
-                    <article class="section-card">
-                        <div class="card-content">
-                            <h3 class="card-title">Blog</h3>
-                            <p class="card-description">Ideas para pensar mejor</p>
-                            <p class="card-text">Artículos y reflexiones sobre cultura, sociedad, literatura y condición humana.</p>
-                            <a href="blog.html" class="btn-link">Leer el blog →</a>
-                        </div>
-                        <div class="card-image">
-                            <img src="assets/images/sections/ensayos.jpg" alt="Pluma y papel">
-                        </div>
-                    </article>
-
-                    <article class="section-card">
-                        <div class="card-content">
-                            <h3 class="card-title">Noticias</h3>
-                            <p class="card-description">Lo último</p>
-                            <p class="card-text">Presentaciones, entrevistas, nuevos proyectos y actividades.</p>
-                            <a href="#" class="btn-link">Ver noticias →</a>
-                        </div>
-                        <div class="card-image">
-                            <img src="assets/images/sections/noticias.jpg" alt="Evento en auditorio">
-                        </div>
-                    </article>
-
+                    <!-- 2. Recursos (Texto de recursos, foto de ensayos) -->
                     <article class="section-card">
                         <div class="card-content">
                             <h3 class="card-title">Recursos</h3>
@@ -142,9 +121,36 @@
                             <a href="recursos.html" class="btn-link">Ver recursos →</a>
                         </div>
                         <div class="card-image">
-                            <img src="assets/images/sections/app.jpg" alt="Recursos para lectores">
+                            <img src="assets/images/sections/ensayos.jpg" alt="Herramientas y recursos">
                         </div>
                     </article>
+
+                    <!-- 3. Autor (Reemplaza a Noticias, foto de autor.html) -->
+                    <article class="section-card">
+                        <div class="card-content">
+                            <h3 class="card-title">Autor</h3>
+                            <p class="card-description">La mirada detrás de los libros</p>
+                            <p class="card-text">Escritor, narrador y ensayista. Descubre la trayectoria y la convicción de que cada libro abre un nuevo camino.</p>
+                            <a href="autor.html" class="btn-link">Conoce al autor →</a>
+                        </div>
+                        <div class="card-image">
+                            <img src="assets/images/hero/autor-about.png" alt="Junior Osmany Coronel Durán">
+                        </div>
+                    </article>
+
+                    <!-- 4. Blog (Reemplaza a Recursos, foto de blog.html) -->
+                    <article class="section-card">
+                        <div class="card-content">
+                            <h3 class="card-title">Blog</h3>
+                            <p class="card-description">Ideas para pensar mejor</p>
+                            <p class="card-text">Artículos y reflexiones sobre cultura, sociedad, literatura y condición humana.</p>
+                            <a href="blog.html" class="btn-link">Leer el blog →</a>
+                        </div>
+                        <div class="card-image">
+                            <img src="assets/images/blog/hero-boletin.png" alt="Entre Libros y Café">
+                        </div>
+                    </article>
+
                 </div>
             </div>
         </section>
@@ -184,7 +190,7 @@
             </button>
             
             <h3 class="login-modal-title">Accede a contenido exclusivo</h3>
-            <p class="login-modal-subtitle">Inicia sesión para acceder a recursos exclusivos y juegos interactivos.</p>
+            <p class="login-modal-subtitle">Inicia sesión para acceder a recursos exclusivos, materiales complementarios, adelantos editoriales y experiencias interactivas.</p>
             
             <button type="button" onclick="loginWithGoogle()" class="btn-google">
                 <i class="fab fa-google"></i> Continuar con Google
