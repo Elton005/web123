@@ -371,3 +371,90 @@
         margin: 0 auto;
     }
 }
+
+/* =========================================
+   BIBLIOTECA - HERO (ESPACIO REDUCIDO)
+   ========================================= */
+.library-hero {
+    padding: var(--space-sm) 0 var(--space-md) 0; /* Reducido: antes era space-xl 0 */
+    background-color: var(--color-crema);
+    margin-top: 80px;
+}
+
+.hero-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md); /* Reducido: antes era space-xl */
+    align-items: center;
+}
+
+.hero-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-dorado);
+    font-weight: 600;
+    margin-bottom: var(--space-xs); /* Reducido */
+    display: block;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    color: var(--color-negro);
+    margin-bottom: var(--space-sm); /* Reducido */
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-negro-suave);
+    max-width: 500px;
+    margin: 0; /* Eliminado margen inferior */
+}
+
+.hero-image {
+    margin: 0; /* Eliminado margen superior */
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    -webkit-mask-image: radial-gradient(ellipse at center, black 70%, transparent 100%);
+    mask-image: radial-gradient(ellipse at center, black 70%, transparent 100%);
+}
+
+/* =========================================
+   GRID DE LIBROS - MENOS ESPACIO SUPERIOR
+   ========================================= */
+.library-books {
+    padding: var(--space-sm) 0 var(--space-xl) 0; /* Reducido: antes era space-xl 0 */
+}
+
+.books-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* Reducido: antes era 3rem */
+}
+
+/* =========================================
+   GRID DE LIBROS - ESPACIO AJUSTADO
+   ========================================= */
+.library-books {
+    padding: 0 0 var(--space-lg) 0; /* Quitamos padding superior, reducimos el inferior */
+}
+
+.books-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Reducido de 2rem a 1.5rem para que los libros estén más juntos */
+}
+
+/* Ajuste del hero para que el final también sea más compacto */
+.library-hero {
+    padding: var(--space-sm) 0 0 0; /* Quitamos el padding inferior del hero */
+    background-color: var(--color-crema);
+    margin-top: 80px;
+}
