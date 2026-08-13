@@ -194,45 +194,46 @@ body {
    4. HERO SECTIONS OPTIMIZADAS
    ========================================= */
 
-/* Hero de biblioteca */
+/* Hero de biblioteca - COMPACTO */
 .library-hero {
-    padding: var(--space-md) 0;
+    padding: var(--space-sm) 0 var(--space-md) 0; /* Reducido drásticamente */
     margin-top: 70px;
 }
 
 .hero-wrapper {
     grid-template-columns: 1fr;
-    gap: var(--space-md);
+    gap: var(--space-sm);
 }
 
 .hero-title {
     font-size: clamp(2rem, 8vw, 3rem);
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-xs); /* Reducido */
 }
 
 .hero-subtitle {
     font-size: 1rem;
-    margin-bottom: var(--space-md);
+    margin-bottom: 0; /* Sin margen inferior */
 }
 
 .hero-image {
-    margin-top: var(--space-md);
+    margin-top: var(--space-sm);
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero-image img {
-    /* Difuminado en bordes laterales */
-    -webkit-mask-image: linear-gradient(
-        to right,
-        transparent 0%,
-        black 15%,
-        black 85%,
+    width: 100%;
+    height: auto;
+    /* Difuminado suave en los bordes para que se integre con el fondo */
+    -webkit-mask-image: radial-gradient(
+        ellipse at center,
+        black 60%,
         transparent 100%
     );
-    mask-image: linear-gradient(
-        to right,
-        transparent 0%,
-        black 15%,
-        black 85%,
+    mask-image: radial-gradient(
+        ellipse at center,
+        black 60%,
         transparent 100%
     );
 }
@@ -332,66 +333,73 @@ body {
     color: var(--color-negro);
 }
 
-/* Espacio para compensar el sticky */
+/* Espacio reducido entre hero y libros */
 .library-books {
-    padding-top: var(--space-xl);
+    padding-top: var(--space-sm); /* Cambiado de space-xl a space-sm */
 }
 
 /* =========================================
-   6. GRID DE LIBROS MÓVIL
+   6. GRID DE LIBROS MÓVIL - OCUPA TODO EL ANCHO
    ========================================= */
 .books-grid {
     gap: var(--space-md);
+    width: 100%;
 }
 
 .book-card {
     grid-template-columns: 1fr;
+    width: 100%;
+    margin: 0;
+    border-radius: 8px; /* Reducido para móvil */
+}
+
+.book-cover {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    max-height: 400px; /* Limitado para no ser tan alto */
 }
 
 .book-cover img {
-    height: 250px;
-    /* Difuminado sutil */
-    -webkit-mask-image: linear-gradient(
-        to bottom,
-        black 85%,
-        transparent 100%
-    );
-    mask-image: linear-gradient(
-        to bottom,
-        black 85%,
-        transparent 100%
-    );
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .book-content {
     padding: var(--space-md);
+    width: 100%;
 }
 
 .book-title {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+    margin-bottom: 0.3rem;
 }
 
 .book-subtitle {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    margin-bottom: var(--space-sm);
 }
 
 .book-description {
     font-size: 0.9rem;
     line-height: 1.6;
+    margin-bottom: var(--space-md);
 }
 
 .book-actions {
     flex-direction: column;
     gap: var(--space-sm);
+    width: 100%;
 }
 
 .btn-book-primary,
 .btn-book-secondary {
     width: 100%;
-    min-height: 44px;
+    min-height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 0.85rem;
 }
 
 /* =========================================

@@ -1,77 +1,88 @@
-/* =========================================
-   BIBLIOTECA - FILTRADO DE LIBROS Y STICKY MENU
-   ========================================= */
+import { supabase } from './supabase.js';
 
-document.addEventListener('DOMContentLoaded', function() {
+console.log('🚀 biblioteca.js cargado correctamente');
+
+async function cargarLibros() {
+    const grid = document.getElementById('books-grid');
     
-    console.log('Biblioteca JS cargado');
-    
-    // Seleccionar elementos del DOM
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const bookCards = document.querySelectorAll('.book-card');
-    const filterMenu = document.querySelector('.library-filters');
-    const guestAuthorSection = document.querySelector('.guest-author');
+    try {
+        const { data: libros, error } = await supabase
+            .from('libros')
+            .select('*')
+            .eq('esta_publicado', true)
+            .order('orden_mostrar', { ascending: true });
 
-    console.log('Botones encontrados:', filterButtons.length);
-    console.log('Libros encontrados:', bookCards.length);
+        if (error) throw error;
 
-    // ============================================
-    // 1. LÓGICA DE FILTRADO DE LIBROS
-    // ============================================
-    function filterBooks(category) {
-        bookCards.forEach(card => {
-            const cardCategory = card.getAttribute('data-category');
-            
-            if (category === 'todos' || cardCategory === category) {
-                card.classList.remove('hide');
-                card.classList.add('show');
-            } else {
-                card.classList.remove('show');
-                card.classList.add('hide');
-            }
-        });
-    }
+        grid.innerHTML = ''; // Limpiar mensaje de carga
 
-    // Agregar evento click a cada botón de filtro
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Remover clase active de todos los botones
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            
-            // Agregar clase active al botón clickeado
-            this.classList.add('active');
-            
-            // Obtener el filtro seleccionado y aplicar
-            const filterValue = this.getAttribute('data-filter');
-            filterBooks(filterValue);
-        });
-    });
-
-    // ============================================
-    // 2. OCULTAR FILTROS AL LLEGAR AL AUTOR INVITADO
-    // ============================================
-    function checkAuthorSection() {
-        if (!guestAuthorSection || !filterMenu) return;
-        
-        // Obtenemos la posición de la sección del autor respecto al viewport
-        const authorSectionTop = guestAuthorSection.getBoundingClientRect().top;
-        
-        // Si la parte superior de la sección del autor está a menos de 150px del tope de la ventana
-        // (es decir, está empezando a ser visible), ocultamos el menú de filtros
-        if (authorSectionTop < 150) {
-            filterMenu.classList.add('hide-filters');
-        } else {
-            filterMenu.classList.remove('hide-filters');
+        if (!libros || libros.length === 0) {
+            grid.innerHTML = '<p class="no-books">Próximamente se agregarán nuevas obras.</p>';
+            return;
         }
+
+        libros.forEach(libro => {
+            const card = crearTarjetaLibro(libro);
+            grid.appendChild(card);
+        });
+
+    } catch (error) {
+        console.error('💥 Error al cargar libros:', error);
+        grid.innerHTML = `<p class="error-message">Error: ${error.message}. Revisa la consola (F12).</p>`;
     }
-    
-    // Escuchar el evento de scroll 
-    // (usamos { passive: true } para mejorar el rendimiento del scroll)
-    window.addEventListener('scroll', checkAuthorSection, { passive: true });
-    
-    // Inicializar: mostrar todos los libros y verificar posición inicial al cargar
-    filterBooks('todos');
-    checkAuthorSection();
-});
+}
+
+function crearTarjetaLibro(libro) {
+    const article = document.createElement('article');
+    article.className = `book-card ${libro.es_destacado ? 'book-featured' : ''}`;
+
+    const esProximamente = libro.estado === 'proximamente' || (!libro.amazon_url && !libro.app_interactiva_url);
+
+    let badgeHTML = '';
+    if (esProximamente) {
+        badgeHTML = '<span class="book-badge badge-proximamente">Próximamente</span>';
+    } else if (libro.es_destacado) {
+        badgeHTML = '<span class="book-badge">Nuevo</span>';
+    }
+
+    // Si no hay imagen, usa una por defecto elegante
+    const imagenSrc = libro.imagen_url || 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=800';
+
+    let accionesHTML = '';
+    if (esProximamente) {
+        accionesHTML = `
+            <div class="book-actions">
+                <button class="btn-book-primary btn-disabled" disabled>
+                    <i class="fas fa-clock"></i> Disponible pronto
+                </button>
+            </div>
+        `;
+    } else {
+        const appBtn = libro.app_interactiva_url 
+            ? `<a href="${libro.app_interactiva_url}" class="btn-book-primary" target="_blank"><i class="fas fa-gamepad"></i> Experiencia Interactiva</a>` 
+            : '';
+            
+        const amazonBtn = libro.amazon_url 
+            ? `<a href="${libro.amazon_url}" class="btn-book-secondary" target="_blank"><i class="fa-brands fa-amazon"></i> Obtener en Amazon</a>` 
+            : '';
+
+        accionesHTML = `<div class="book-actions">${appBtn}${amazonBtn}</div>`;
+    }
+
+    article.innerHTML = `
+        <div class="book-cover">
+            <img src="${imagenSrc}" alt="${libro.titulo}" class="book-cover-img ${esProximamente ? 'proximamente-img' : ''}">
+            ${badgeHTML}
+        </div>
+        <div class="book-content">
+            <h3 class="book-title">${libro.titulo}</h3>
+            <p class="book-subtitle">${libro.subtitulo || ''}</p>
+            <p class="book-description">${libro.descripcion || ''}</p>
+            ${accionesHTML}
+        </div>
+    `;
+
+    return article;
+}
+
+document.addEventListener('DOMContentLoaded', cargarLibros);

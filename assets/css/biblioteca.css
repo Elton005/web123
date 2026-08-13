@@ -1,262 +1,147 @@
 /* =========================================
-   BIBLIOTECA - ESTILOS ESPECÍFICOS
-   ========================================= */
-
-/* =========================================
-   1. HERO (Banner inicial)
+   BIBLIOTECA - HERO
    ========================================= */
 .library-hero {
     padding: var(--space-xl) 0;
     background-color: var(--color-crema);
     margin-top: 80px;
-    border-bottom: 1px solid var(--color-crema-oscuro);
-}
-
-.library-hero .container {
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
 }
 
 .hero-wrapper {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: var(--space-xl);
     align-items: center;
 }
 
-.hero-text {
-    max-width: 100%;
-}
-
 .hero-label {
-    display: block;
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    color: var(--color-gris);
+    color: var(--color-dorado);
+    font-weight: 600;
     margin-bottom: var(--space-sm);
-    font-weight: 500;
+    display: block;
 }
 
 .hero-title {
-    font-size: clamp(3rem, 6vw, 5rem);
+    font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 700;
-    line-height: 1;
-    margin-bottom: var(--space-md);
     color: var(--color-negro);
-    letter-spacing: -0.02em;
+    margin-bottom: var(--space-sm);
+    line-height: 1.1;
 }
 
 .hero-subtitle {
-    font-family: var(--fuente-serif);
-    font-style: italic;
     font-size: 1.1rem;
-    line-height: 1.5;
+    line-height: 1.6;
     color: var(--color-negro-suave);
-    margin-bottom: var(--space-lg);
     max-width: 500px;
-}
-
-/* Imagen de los libros con bordes difuminados */
-.hero-image {
-    width: 100%;
-    margin-top: var(--space-lg);
-    overflow: hidden;
 }
 
 .hero-image img {
     width: 100%;
     height: auto;
-    display: block;
     border-radius: 4px;
-    /* Difuminado en ambos bordes laterales */
-    -webkit-mask-image: linear-gradient(
-        to right,
-        transparent 0%,
-        black 10%,
-        black 90%,
+    /* Difuminado sutil en los bordes para un look más editorial */
+    -webkit-mask-image: radial-gradient(
+        ellipse at center,
+        black 70%,
         transparent 100%
     );
-    mask-image: linear-gradient(
-        to right,
-        transparent 0%,
-        black 10%,
-        black 90%,
+    mask-image: radial-gradient(
+        ellipse at center,
+        black 70%,
         transparent 100%
     );
 }
 
 /* =========================================
-   2. MENÚ DE FILTROS (Sección independiente)
+   GRID DE LIBROS - LAYOUT DE FILA (PRO)
    ========================================= */
-.library-filters {
-    padding: var(--space-lg) 0;
-    background-color: var(--color-crema);
-    border-bottom: 1px solid var(--color-crema-oscuro);
-}
-
-.library-filters .container {
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.filter-menu {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 1rem;
-    justify-content: center;
-}
-
-.filter-btn {
-    background: none;
-    border: none;
-    padding: 0.5rem 0;
-    cursor: pointer;
-    position: relative;
-    transition: all var(--transition-fast);
-}
-
-.filter-text {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--color-gris);
-    font-weight: 500;
-    transition: color var(--transition-fast);
-    font-family: var(--fuente-sans);
-}
-
-/* Línea dorada debajo del filtro activo */
-.filter-btn::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--color-dorado);
-    transition: width var(--transition-smooth);
-}
-
-.filter-btn.active .filter-text {
-    color: var(--color-negro);
-}
-
-.filter-btn.active::after {
-    width: 100%;
-}
-
-.filter-btn:hover .filter-text {
-    color: var(--color-negro);
-}
-
-/* Separador dorado (punto) */
-.filter-dot {
-    width: 4px;
-    height: 4px;
-    background-color: var(--color-dorado);
-    border-radius: 50%;
-    display: inline-block;
-}
-
-/* =========================================
-   3. GRID DE LIBROS (Tarjetas horizontales)
-   ========================================= */
-.library-books {
-    padding: var(--space-xxl) 0;
-    background-color: var(--color-crema);
-}
-
-.library-books .container {
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
 .books-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: var(--space-xl) 0;
 }
 
-/* Tarjeta de libro - Estilo universal (claro elegante) */
 .book-card {
-    background-color: var(--color-blanco);
-    border: 1px solid var(--color-crema-oscuro);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     display: grid;
-    grid-template-columns: 1fr;
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    grid-template-columns: 280px 1fr;
+    gap: 2.5rem;
+    background-color: var(--color-blanco);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
-.book-card.hide {
-    opacity: 0;
-    transform: scale(0.95);
-    pointer-events: none;
-    position: absolute;
-    visibility: hidden;
+.book-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
 }
 
-.book-card.show {
-    opacity: 1;
-    transform: scale(1);
-    position: relative;
-    visibility: visible;
-}
-
+/* Portada del libro */
 .book-cover {
     position: relative;
+    aspect-ratio: 3 / 4;
     overflow: hidden;
     background-color: var(--color-crema-oscuro);
 }
 
-.book-cover img {
+.book-cover-img {
     width: 100%;
-    height: 400px;
+    height: 100%;
     object-fit: cover;
-    display: block;
-    transition: transform var(--transition-smooth);
+    transition: transform 0.5s ease;
 }
 
-@media (hover: hover) {
-    .book-card:hover .book-cover img {
-        transform: scale(1.05);
-    }
+.book-card:hover .book-cover-img {
+    transform: scale(1.03);
 }
 
+/* Badge (Nuevo / Próximamente) */
 .book-badge {
     position: absolute;
-    top: var(--space-sm);
-    right: var(--space-sm);
+    top: 1rem;
+    right: 1rem;
     background-color: var(--color-dorado);
-    color: var(--color-negro);
-    font-size: 0.75rem;
-    font-weight: 600;
+    color: var(--color-blanco);
+    font-size: 0.65rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 0.4rem 0.8rem;
-    border-radius: 2px;
+    letter-spacing: 0.12em;
+    padding: 0.4rem 0.75rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    z-index: 2;
 }
 
+.badge-proximamente {
+    background-color: var(--color-gris) !important;
+}
+
+.proximamente-img {
+    filter: grayscale(100%) brightness(0.85);
+}
+
+/* Contenido de la tarjeta */
 .book-content {
-    padding: var(--space-lg);
+    padding: 2rem 2.5rem 2rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 .book-title {
+    font-family: var(--fuente-serif);
     font-size: 1.8rem;
     font-weight: 700;
-    margin-bottom: var(--space-xs);
     color: var(--color-negro);
+    margin-bottom: 0.3rem;
     line-height: 1.2;
-    font-family: var(--fuente-serif);
 }
 
 .book-subtitle {
@@ -264,430 +149,225 @@
     font-style: italic;
     font-size: 1rem;
     color: var(--color-dorado);
-    margin-bottom: var(--space-md);
+    margin-bottom: 1.2rem;
+    font-weight: 400;
 }
 
 .book-description {
     font-size: 0.95rem;
     line-height: 1.7;
     color: var(--color-negro-suave);
-    margin-bottom: var(--space-lg);
+    margin-bottom: 1.8rem;
+    max-width: 600px;
 }
 
+/* Botones de acción */
 .book-actions {
     display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
-.btn-book-primary {
-    display: inline-block;
-    padding: 1rem 2rem;
-    background-color: transparent;
-    color: var(--color-dorado);
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    text-decoration: none;
-    border-radius: 4px;
-    text-align: center;
-    transition: all var(--transition-fast);
-    border: 1px solid var(--color-dorado);
-}
-
-.btn-book-primary:hover {
-    background-color: var(--color-dorado);
-    color: var(--color-blanco);
-}
-
-.btn-book-secondary {
+.btn-book-primary, .btn-book-secondary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: 1rem 2rem;
-    background-color: var(--color-dorado);
-    color: var(--color-negro);
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-decoration: none;
+    padding: 0.85rem 1.5rem;
     border-radius: 4px;
-    text-align: center;
-    transition: all var(--transition-fast);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    border: none;
+    cursor: pointer;
+    min-width: 180px;
 }
 
-.btn-book-secondary:hover {
-    background-color: var(--color-dorado-oscuro);
+.btn-book-primary {
+    background-color: var(--color-negro);
+    color: var(--color-crema);
+}
+
+.btn-book-primary:hover {
+    background-color: var(--color-dorado);
+    color: var(--color-negro);
     transform: translateY(-2px);
 }
 
-/* Libro destacado con borde dorado */
-.book-featured {
-    border: 2px solid var(--color-dorado);
+.btn-book-secondary {
+    background-color: transparent;
+    color: var(--color-negro);
+    border: 1px solid var(--color-crema-oscuro);
+}
+
+.btn-book-secondary:hover {
+    border-color: var(--color-dorado);
+    color: var(--color-dorado);
+    transform: translateY(-2px);
+}
+
+.btn-disabled {
+    background-color: var(--color-crema-oscuro) !important;
+    color: var(--color-gris) !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+}
+
+.btn-disabled:hover {
+    background-color: var(--color-crema-oscuro) !important;
+    color: var(--color-gris) !important;
+}
+
+/* Mensajes de estado */
+.no-books, .error-message, .loading-message {
+    text-align: center;
+    padding: 4rem 1rem;
+    font-size: 1.1rem;
+    color: var(--color-negro-suave);
+}
+
+.error-message {
+    color: #d32f2f;
 }
 
 /* =========================================
-   ESTILOS PERSONALIZADOS POR CATEGORÍA
-   ========================================= */
-
-/* Ensayo - Tono elegante */
-.book-card[data-category="ensayo"] {
-    background-color: var(--color-blanco);
-}
-
-/* Desarrollo Personal - Tono cálido */
-.book-card[data-category="desarrollo"] {
-    background-color: #faf8f5;
-}
-
-/* Narrativa - Tono literario */
-.book-card[data-category="narrativa"] {
-    background-color: #f8f5f0;
-}
-
-/* Infantil - Tono acogedor */
-.book-card[data-category="infantil"] {
-    background-color: #f5f1ea;
-}
-
-/* =========================================
-   4. AUTOR INVITADO (Yoeldis Castillo Quiala) - MÁS PEQUEÑO
+   SECCIÓN AUTOR INVITADO
    ========================================= */
 .guest-author {
-    padding: var(--space-lg) 0; /* Reducido de xxl a lg */
+    padding: var(--space-xl) 0;
     background-color: var(--color-crema-oscuro);
-    color: var(--color-negro);
     margin-top: var(--space-xl);
 }
 
-.guest-author .container {
-    width: 100%;
-    max-width: 1200px; /* Reducido de 1400px */
-    margin: 0 auto;
-}
-
 .guest-author-content {
-    max-width: 1000px; /* Reducido de 1200px */
+    max-width: 900px;
     margin: 0 auto;
-    padding: 0 var(--space-md);
 }
 
 .guest-author-title {
-    font-size: clamp(1.5rem, 3vw, 2.5rem); /* Reducido */
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: var(--space-sm); /* Reducido de md a sm */
-    color: var(--color-negro);
-    font-family: var(--fuente-serif);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-size: 1.8rem;
+    margin-bottom: var(--space-xs);
+    text-align: center;
 }
 
 .guest-author-subtitle {
-    font-family: var(--fuente-serif);
-    font-style: italic;
-    font-size: 1rem; /* Reducido de 1.1rem */
-    color: var(--color-dorado);
-    margin-bottom: var(--space-lg); /* Reducido de xl a lg */
-    padding-bottom: var(--space-sm); /* Reducido de md a sm */
-    border-bottom: 2px solid var(--color-dorado);
-    display: inline-block;
+    font-size: 1rem;
+    color: var(--color-negro-suave);
+    text-align: center;
+    margin-bottom: var(--space-lg);
 }
 
 .guest-author-wrapper {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-lg); /* Reducido de xl a lg */
-    align-items: start;
-}
-
-.guest-author-image {
-    width: 100%;
-    max-width: 300px; /* Reducido */
-    margin: 0 auto;
+    grid-template-columns: 200px 1fr;
+    gap: var(--space-lg);
+    align-items: center;
 }
 
 .guest-author-image img {
     width: 100%;
     height: auto;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .guest-author-text p {
-    font-size: 0.95rem; /* Reducido de 1rem */
-    line-height: 1.7; /* Reducido de 1.8 */
+    font-size: 0.95rem;
+    line-height: 1.7;
     color: var(--color-negro-suave);
     margin-bottom: var(--space-md);
 }
 
-.guest-author-text strong {
-    color: var(--color-dorado);
-    font-weight: 600;
-}
-
 .guest-author-cta {
-    margin-top: var(--space-lg);
-    text-align: center;
+    margin-top: var(--space-md);
 }
 
 /* =========================================
-   MEDIA QUERIES - TABLET (768px)
+   RESPONSIVE - TABLET
    ========================================= */
-@media (min-width: 768px) {
-    .hero-wrapper {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .hero-image {
-        margin-top: 0;
-    }
-
+@media (max-width: 968px) {
     .book-card {
-        grid-template-columns: 300px 1fr;
+        grid-template-columns: 220px 1fr;
+        gap: 1.5rem;
     }
-
-    .book-cover img {
-        height: 100%;
-    }
-
-    .book-actions {
-        flex-direction: row;
-    }
-
-    .guest-author-wrapper {
-        grid-template-columns: 250px 1fr; /* Reducido de 300px */
-        gap: var(--space-xl);
-    }
-}
-
-/* =========================================
-   MEDIA QUERIES - DESKTOP (1024px)
-   ========================================= */
-@media (min-width: 1024px) {
     
-    .library-hero {
-        padding: var(--space-xxl) 0;
+    .book-content {
+        padding: 1.5rem 1.5rem 1.5rem 0;
     }
-
-    .hero-wrapper {
-        grid-template-columns: 1fr 1.2fr;
-        gap: var(--space-xxl);
-    }
-
-    .hero-title {
-        font-size: clamp(4rem, 6vw, 5.5rem);
-    }
-
-    .hero-subtitle {
-        font-size: 1.2rem;
-    }
-
-    .book-card {
-        grid-template-columns: 350px 1fr;
-    }
-
-    .book-title {
-        font-size: 2rem;
-    }
-
-    .guest-author-wrapper {
-        grid-template-columns: 300px 1fr; /* Reducido de 350px */
-        gap: var(--space-xxl);
-    }
-
-    .guest-author-text p {
-        font-size: 1rem;
-    }
-}
-
-/* =========================================
-   MEDIA QUERIES - MÓVIL (menos de 768px)
-   ========================================= */
-@media (max-width: 767px) {
     
-    .library-hero {
-        padding: var(--space-lg) 0;
-        margin-top: 70px;
-    }
-
-    .hero-title {
-        font-size: clamp(2.5rem, 8vw, 4rem);
-    }
-
-    .hero-subtitle {
-        font-size: 1rem;
-    }
-
-    .filter-menu {
-        flex-direction: column;
-        gap: var(--space-xs);
-    }
-
-    .filter-dot {
-        display: none;
-    }
-
-    .filter-btn {
-        width: 100%;
-        text-align: center;
-        padding: var(--space-sm) 0;
-    }
-
-    .book-card {
-        grid-template-columns: 1fr;
-    }
-
-    .book-cover img {
-        height: 300px;
-    }
-
     .book-title {
         font-size: 1.5rem;
     }
-
-    .guest-author {
-        padding: var(--space-md) 0; /* Reducido */
-        margin-top: var(--space-md);
-    }
-
-    .guest-author-title {
-        font-size: 1.5rem; /* Reducido */
-    }
-
-    .guest-author-subtitle {
-        font-size: 0.95rem; /* Reducido */
-    }
-
-    .guest-author-image {
-        max-width: 250px; /* Reducido */
+    
+    .guest-author-wrapper {
+        grid-template-columns: 150px 1fr;
     }
 }
 
 /* =========================================
-   2. MENÚ DE FILTROS (STICKY)
-   ========================================= */
-/* =========================================
-   2. MENÚ DE FILTROS (STICKY PEGADO AL HEADER)
-   ========================================= */
-.library-filters {
-    position: sticky;
-    top: 72px; /* Ajustado para coincidir con la altura real del header */
-    z-index: 90;
-    padding: var(--space-sm) 0;
-    background-color: rgba(245, 241, 234, 0.98);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--color-crema-oscuro);
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    margin: 0; /* Elimina cualquier margin residual */
-}
-
-/* Clase para ocultar el menú */
-.library-filters.hide-filters {
-    transform: translateY(-150%);
-    opacity: 0;
-    pointer-events: none;
-}
-
-/* Clase para ocultar el menú */
-.library-filters.hide-filters {
-    transform: translateY(-100%);
-    opacity: 0;
-    pointer-events: none;
-}
-
-.library-filters .container {
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-/* Ajuste para compensar el sticky en el grid de libros */
-.library-books {
-    padding-top: calc(var(--space-xxl) + 100px); /* Espacio extra para el sticky */
-}
-
-.guest-author-image {
-    width: 100%;
-    max-width: 250px;
-    margin: 0 auto;
-}
-
-.guest-author-image img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-    border: 3px solid var(--color-dorado);
-}
-
-/* =========================================
-   FILTROS MÓVILES - VERSIÓN FINAL (SOBREESCRITURA TOTAL)
+   RESPONSIVE - MÓVIL (preparado para ajustar)
    ========================================= */
 @media (max-width: 767px) {
+    .library-hero {
+        margin-top: 70px;
+        padding: var(--space-lg) 0;
+    }
     
-    .library-filters {
-        padding: var(--space-md) 0 var(--space-lg) 0 !important;
-        background-color: var(--color-crema) !important;
-        position: relative !important;
-        top: auto !important;
-        z-index: 10 !important;
-        margin-bottom: var(--space-lg) !important;
+    .hero-wrapper {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
     }
-
-    .filter-menu {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: var(--space-sm) !important;
-        padding: 0 var(--space-md) !important;
-        overflow-x: visible !important;
-        scroll-behavior: auto !important;
+    
+    .hero-title {
+        font-size: 2.5rem;
     }
-
-    .filter-dot {
-        display: none !important;
+    
+    .hero-subtitle {
+        font-size: 1rem;
     }
-
-    .filter-btn {
-        width: 100% !important;
-        padding: 1rem 1.5rem !important;
-        min-height: 56px !important;
-        background-color: var(--color-crema-oscuro) !important;
-        border-radius: 8px !important;
-        border: 2px solid transparent !important;
-        transition: all 0.3s ease !important;
-        text-align: center !important;
-        flex-shrink: 0 !important;
+    
+    .hero-image {
+        order: -1;
     }
-
-    .filter-btn:hover {
-        background-color: var(--color-crema) !important;
-        border-color: var(--color-dorado) !important;
+    
+    /* Aquí ajustaremos los problemas de responsividad que mencionaste */
+    .book-card {
+        grid-template-columns: 1fr;
+        gap: 0;
     }
-
-    .filter-btn.active {
-        background-color: var(--color-dorado) !important;
-        border-color: var(--color-dorado) !important;
+    
+    .book-cover {
+        aspect-ratio: 3 / 4;
+        max-height: 350px;
     }
-
-    .filter-btn.active .filter-text {
-        color: var(--color-blanco) !important;
-        font-weight: 600 !important;
+    
+    .book-content {
+        padding: 1.5rem;
     }
-
-    .filter-text {
-        font-size: 0.85rem !important;
-        text-transform: uppercase !important;
-        letter-spacing: 0.1em !important;
-        color: var(--color-negro) !important;
-        white-space: nowrap !important;
+    
+    .book-title {
+        font-size: 1.4rem;
     }
-
-    /* Ajustar el grid de libros */
-    .library-books {
-        padding-top: 0 !important;
+    
+    .book-actions {
+        flex-direction: column;
+    }
+    
+    .btn-book-primary, .btn-book-secondary {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    .guest-author-wrapper {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .guest-author-image {
+        max-width: 200px;
+        margin: 0 auto;
     }
 }
