@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artículo | La Huella Escrita</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/blog-post.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo/logo-circular.jpg" alt="La Huella Escrita" class="logo-image">
+                <span class="logo-text">LA HUELLA ESCRITA</span>
+            </a>
+            <button class="menu-toggle" aria-label="Abrir menú"><span class="hamburger"></span></button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="autor.html" class="nav-link">Autor</a></li>
+                    <li><a href="biblioteca.html" class="nav-link">Biblioteca</a></li>
+                    <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                    <li><a href="recursos.html" class="nav-link">Recursos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <article class="post-article" id="post-article">
+            <div class="loading">Cargando artículo...</div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <blockquote class="footer-quote">"La literatura no cambia el mundo, pero lo vuelve habitable."</blockquote>
+            <div class="footer-social">
+                <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+            <p class="copyright">© 2026 La Huella Escrita. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="assets/js/supabase.js"></script>
+    <script type="module" src="assets/js/blog-post.js"></script>
+</body>
+</html>
