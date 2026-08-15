@@ -1,15 +1,16 @@
 /* =========================================
-   BLOG - ENTRE LIBROS Y CAFÉ
+   BLOG - ENTRE LIBROS Y CAFÉ (FUSIONADO)
    ========================================= */
 
 /* =========================================
-   HERO DEL BOLETÍN - IMAGEN DE FONDO CON DIFUMINADO
+   1. HERO DEL BOLETÍN - IMAGEN DE FONDO CON DIFUMINADO
    ========================================= */
 .newsletter-hero {
     position: relative;
     width: 100%;
     min-height: 700px;
     overflow: hidden;
+    margin-top: 80px; /* Compensa el header fijo */
 }
 
 .hero-background {
@@ -119,79 +120,114 @@
 }
 
 /* =========================================
-   CONTENIDO DEL BOLETÍN
+   2. SECCIÓN DE BIENVENIDA A LOS BLOGS
    ========================================= */
-.newsletter-content {
+.blog-welcome {
     background-color: var(--color-crema);
     padding: var(--space-xl) 0;
     position: relative;
     z-index: 4;
+    text-align: center;
 }
 
-/* Saludo */
-.newsletter-greeting {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: var(--space-md);
-    align-items: start;
-    max-width: 900px;
-    margin: 0 auto var(--space-xl);
-    padding: var(--space-lg);
-    background-color: var(--color-blanco);
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+.welcome-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
 }
 
-.greeting-icon {
-    width: 60px;
-    height: 60px;
+.welcome-icon {
+    width: 70px;
+    height: 70px;
     background-color: var(--color-crema-oscuro);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--color-dorado);
+    font-size: 1.8rem;
+    margin: 0 auto var(--space-md);
 }
 
-.greeting-title {
+.welcome-title {
     font-family: 'Dancing Script', cursive;
-    font-size: 2rem;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
     color: var(--color-dorado);
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-md);
 }
 
-.greeting-text p {
-    font-size: 1rem;
-    line-height: 1.7;
+.welcome-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
     color: var(--color-negro-suave);
     margin-bottom: var(--space-sm);
 }
 
-/* Grid principal - 3 columnas siempre */
-.newsletter-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
+/* =========================================
+   3. TÍTULOS DE SECCIÓN
+   ========================================= */
+.section-title {
+    font-family: var(--fuente-serif);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: var(--color-negro);
+    text-align: center;
     margin-bottom: var(--space-xl);
+    position: relative;
 }
 
-.newsletter-card {
-    background-color: var(--color-blanco);
-    padding: var(--space-lg);
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    transition: transform var(--transition-smooth);
-}
-
-@media (hover: hover) {
-    .newsletter-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-    }
-}
-
-.card-label {
+.section-title::after {
+    content: '';
     display: block;
+    width: 60px;
+    height: 2px;
+    background-color: var(--color-dorado);
+    margin: var(--space-sm) auto 0;
+}
+
+/* =========================================
+   4. ARTÍCULOS DESTACADOS (DINÁMICO)
+   ========================================= */
+.blog-featured {
+    background-color: var(--color-crema);
+    padding: 0 0 var(--space-xl) 0;
+}
+
+.featured-posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+}
+
+.featured-post-card {
+    background-color: var(--color-blanco);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.featured-post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+.featured-post-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.featured-post-content {
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.featured-post-categoria {
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.15em;
@@ -200,212 +236,138 @@
     font-weight: 600;
 }
 
-.card-label-exclusive {
+.featured-post-title {
+    font-family: var(--fuente-serif);
+    font-size: 1.4rem;
     color: var(--color-negro);
-    font-weight: 700;
+    margin-bottom: var(--space-sm);
+    line-height: 1.3;
 }
 
-.card-sublabel {
-    display: none;
-}
-
-.card-title-script {
-    font-family: 'Dancing Script', cursive;
-    font-size: 2rem;
-    color: var(--color-negro);
-    margin-bottom: var(--space-md);
-    line-height: 1.2;
-}
-
-.card-text {
-    font-size: 1rem;
+.featured-post-extracto {
+    font-size: 0.95rem;
     line-height: 1.7;
     color: var(--color-negro-suave);
-}
-
-.card-divider {
-    display: flex;
-    justify-content: center;
-    margin-top: var(--space-md);
-}
-
-.divider-heart {
-    font-size: 1.5rem;
-    color: var(--color-dorado);
-}
-
-.card-illustration {
     margin-bottom: var(--space-md);
+    flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-.card-illustration img {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    border-radius: 4px;
-}
-
-.card-book-preview {
-    margin-bottom: var(--space-md);
-    text-align: center;
-}
-
-.card-book-preview img {
-    width: 100%;
-    max-width: 160px;
-    height: auto;
-    border-radius: 4px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-/* Tarjeta de adelanto compacta */
-.card-adelanto {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.card-adelanto .card-label {
-    align-self: flex-start;
-}
-
-.card-adelanto .card-book-preview {
-    margin: var(--space-sm) 0;
-}
-
-.card-adelanto .card-book-preview img {
-    max-width: 160px;
-}
-
-.card-adelanto .card-text {
-    font-size: 0.95rem;
-}
-
-/* Segunda fila */
-.newsletter-grid-secondary {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
-    margin-bottom: var(--space-xl);
-}
-
-.card-header-icon {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    margin-bottom: var(--space-md);
-    color: var(--color-dorado);
-}
-
-.card-question {
-    font-family: var(--fuente-serif);
-    font-size: 1.3rem;
-    color: var(--color-negro);
-    margin-bottom: var(--space-sm);
-    line-height: 1.4;
-    font-style: italic;
-}
-
-/* Ocultar foto del cuervo en Curiosidad */
-.card-illustration-small {
-    display: none;
-}
-
-.card-illustration-small img {
-    width: 150px;
-    height: auto;
-    border-radius: 4px;
-}
-
-.card-book-info {
-    margin-bottom: var(--space-sm);
-}
-
-.book-meta {
-    font-size: 0.95rem;
-    color: var(--color-negro-suave);
-    margin-bottom: 0.3rem;
-}
-
-/* Bottom section */
-.newsletter-bottom {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
-}
-
-.card-rincon {
-    background-color: var(--color-crema-oscuro);
-}
-
-/* Rincón del lector: imagen arriba, cita abajo */
-.rincon-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-md);
-    text-align: center;
-}
-
-.rincon-drawing {
-    width: 100%;
-    max-width: 350px;
-}
-
-.rincon-drawing img {
-    width: 100%;
-    max-width: 350px;
-    height: auto;
-    border-radius: 4px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.rincon-quote {
-    font-family: var(--fuente-serif);
-    font-size: 1.2rem;
-    font-style: italic;
-    color: var(--color-negro);
-    line-height: 1.5;
-    margin: 0;
-    max-width: 500px;
-}
-
-.rincon-quote cite {
-    display: block;
-    margin-top: var(--space-sm);
-    font-size: 0.9rem;
+.featured-post-meta {
+    font-size: 0.85rem;
     color: var(--color-gris);
-    font-style: normal;
-}
-
-.rincon-heart {
-    font-size: 2rem;
-    color: var(--color-dorado);
-    text-align: center;
-}
-
-/* CTA Libros */
-.newsletter-cta-books {
-    background: linear-gradient(135deg, #2c2420 0%, #1a1512 100%);
-    padding: var(--space-xl);
-    border-radius: 8px;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
+    display: flex;
     align-items: center;
+    gap: 0.5rem;
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--color-crema-oscuro);
 }
 
-.cta-books-content {
+/* =========================================
+   5. TODOS LOS ARTÍCULOS (DINÁMICO)
+   ========================================= */
+.blog-posts {
+    background-color: var(--color-crema);
+    padding: 0 0 var(--space-xl) 0;
+}
+
+.all-posts {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.post-card {
+    background-color: var(--color-blanco);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+    cursor: pointer;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+.post-card-image {
+    width: 100%;
+    height: 100%;
+    min-height: 250px;
+    object-fit: cover;
+}
+
+.post-card-content {
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.post-card-categoria {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-dorado);
+    margin-bottom: var(--space-sm);
+    font-weight: 600;
+}
+
+.post-card-title {
+    font-family: var(--fuente-serif);
+    font-size: 1.6rem;
+    color: var(--color-negro);
+    margin-bottom: var(--space-sm);
+    line-height: 1.3;
+}
+
+.post-card-extracto {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-negro-suave);
+    margin-bottom: var(--space-md);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.post-card-meta {
+    font-size: 0.85rem;
+    color: var(--color-gris);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* =========================================
+   6. CTA FINAL ESTILO BOLETÍN
+   ========================================= */
+.newsletter-cta-final {
+    background: linear-gradient(135deg, #2c2420 0%, #1a1512 100%);
+    padding: var(--space-xl) 0;
     text-align: center;
 }
 
-.cta-icon {
+.cta-final-content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+.cta-final-content i {
+    font-size: 2.5rem;
     color: var(--color-dorado);
     margin-bottom: var(--space-md);
 }
 
-.cta-title {
+.cta-final-content h3 {
     font-family: var(--fuente-serif);
     font-size: 1.8rem;
     color: var(--color-crema);
@@ -413,51 +375,15 @@
     line-height: 1.3;
 }
 
-.cta-text {
+.cta-final-content p {
     font-size: 1.1rem;
     color: var(--color-crema);
     margin-bottom: var(--space-lg);
     line-height: 1.5;
 }
 
-.btn-cta-books {
-    display: inline-block;
-    padding: 1rem 2.5rem;
-    background-color: var(--color-dorado);
-    color: var(--color-negro);
-    font-family: var(--fuente-sans);
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    border-radius: 2px;
-    transition: all var(--transition-smooth);
-}
-
-.btn-cta-books:hover {
-    background-color: var(--color-crema);
-    transform: translateY(-3px);
-}
-
 /* =========================================
-   CAMBIO CLAVE: DIFUMINADO DE BORDES EN LA IMAGEN DE LIBROS
-   ========================================= */
-.cta-books-images img {
-    width: 100%;
-    max-width: 450px;
-    height: auto;
-    border-radius: 8px;
-    display: block;
-    margin: 0 auto;
-    /* Efecto de bordes difuminados (se funde con el fondo oscuro) */
-    -webkit-mask-image: radial-gradient(ellipse at center, black 65%, transparent 100%);
-    mask-image: radial-gradient(ellipse at center, black 65%, transparent 100%);
-    /* Sombra suave para dar sensación de flotación y profundidad */
-    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.6));
-}
-
-/* =========================================
-   FOOTER DEL BOLETÍN
+   7. FOOTER DEL BOLETÍN
    ========================================= */
 .newsletter-footer {
     background-color: var(--color-negro);
@@ -478,16 +404,12 @@
     margin-bottom: var(--space-md);
 }
 
-.footer-logo-icon {
-    font-size: 2rem;
-}
-
 .footer-logo-text {
-    font-family: var(--fuente-serif);
-    font-size: 1.2rem;
-    color: var(--color-crema);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2rem;
+    color: var(--color-dorado);
+    display: block;
+    margin-bottom: var(--space-md);
 }
 
 .footer-message {
@@ -524,96 +446,29 @@
     transform: translateY(-3px);
 }
 
-.footer-social .social-link svg {
+.footer-social .social-link i {
     color: var(--color-crema);
+    font-size: 1.1rem;
     transition: color var(--transition-fast);
 }
 
-.footer-social .social-link:hover svg {
+.footer-social .social-link:hover i {
     color: var(--color-negro);
 }
 
 /* =========================================
-   MEDIA QUERIES - TABLET (768px)
+   8. MEDIA QUERIES - RESPONSIVE
    ========================================= */
 @media (min-width: 768px) {
-    
-    /* 3 columnas siempre en el grid principal */
-    .newsletter-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .card-reflexion,
-    .card-historia,
-    .card-adelanto {
-        grid-column: auto;
-    }
-
-    .newsletter-grid-secondary {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .newsletter-bottom {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .newsletter-cta-books {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .cta-books-content {
-        text-align: left;
+    .post-card {
+        grid-template-columns: 350px 1fr;
     }
 }
 
-/* =========================================
-   MEDIA QUERIES - DESKTOP (1024px)
-   ========================================= */
-@media (min-width: 1024px) {
-    
-    .newsletter-grid {
-        grid-template-columns: repeat(3, 1fr);
-        align-items: stretch;
-    }
-
-    .card-reflexion,
-    .card-historia,
-    .card-adelanto {
-        height: 100%;
-        grid-column: auto;
-    }
-
-    .card-adelanto {
-        justify-content: space-between;
-    }
-
-    .title-script {
-        font-size: 5rem;
-    }
-
-    .title-main {
-        font-size: 3.5rem;
-    }
-
-    .greeting-title {
-        font-size: 2.5rem;
-    }
-
-    .card-title-script {
-        font-size: 2.5rem;
-    }
-
-    .cta-title {
-        font-size: 2rem;
-    }
-}
-
-/* =========================================
-   MEDIA QUERIES - MÓVIL (menos de 768px)
-   ========================================= */
 @media (max-width: 767px) {
     .newsletter-hero {
         min-height: 550px;
+        margin-top: 70px;
     }
 
     .hero-content-overlay {
@@ -645,33 +500,32 @@
         font-size: 1.3rem;
     }
 
-    .newsletter-greeting {
+    .welcome-title {
+        font-size: 2.5rem;
+    }
+
+    .post-card {
         grid-template-columns: 1fr;
-        text-align: center;
+    }
+
+    .post-card-image {
+        height: 220px;
+        min-height: auto;
+    }
+    
+    .post-card-content {
         padding: var(--space-md);
     }
-
-    .greeting-icon {
-        margin: 0 auto;
+    
+    .post-card-title {
+        font-size: 1.3rem;
     }
+}
 
-    .newsletter-card {
-        padding: var(--space-md);
-    }
-
-    .card-title-script {
-        font-size: 1.8rem;
-    }
-
-    .card-question {
-        font-size: 1.1rem;
-    }
-
-    .cta-title {
-        font-size: 1.5rem;
-    }
-
-    .footer-message {
-        font-size: 1rem;
-    }
+.loading {
+    text-align: center;
+    padding: 3rem;
+    color: var(--color-gris);
+    font-size: 1.1rem;
+    font-style: italic;
 }

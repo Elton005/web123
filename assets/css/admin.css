@@ -861,3 +861,400 @@ body {
         justify-content: space-between;
     }
 }
+/* =========================================
+   CONTADOR DE ALMACENAMIENTO
+   ========================================= */
+.storage-counter {
+    background: white;
+    padding: 1.2rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom: 1.5rem;
+}
+
+.storage-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.storage-header i {
+    color: #667eea;
+    margin-right: 0.5rem;
+}
+
+#storage-text {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.storage-bar {
+    height: 10px;
+    background: #f0f0f0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.storage-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 5px;
+    transition: width 0.5s ease, background 0.3s ease;
+}
+
+.storage-fill.warning {
+    background: linear-gradient(90deg, #f39c12, #e67e22);
+}
+
+.storage-fill.danger {
+    background: linear-gradient(90deg, #e74c3c, #c0392b);
+}
+
+.storage-tip {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.storage-tip i {
+    color: #f39c12;
+}
+
+/* =========================================
+   EDITOR QUILL (Blog)
+   ========================================= */
+.ql-toolbar.ql-snow {
+    border: 1px solid #ddd !important;
+    border-radius: 6px 6px 0 0 !important;
+    background: #fafafa;
+}
+
+.ql-container.ql-snow {
+    border: 1px solid #ddd !important;
+    border-top: none !important;
+    border-radius: 0 0 6px 6px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 15px !important;
+    min-height: 300px;
+}
+
+.ql-editor {
+    min-height: 300px;
+    line-height: 1.7 !important;
+}
+
+.ql-editor img {
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 6px;
+    margin: 1rem 0;
+}
+
+/* =========================================
+   CONFIGURACIÓN DE VISIBILIDAD
+   ========================================= */
+.visibility-config {
+    background: #f8f9ff;
+    padding: 1.2rem;
+    border-radius: 6px;
+    border-left: 4px solid #667eea;
+}
+
+.visibility-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: #1a1a1a;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #667eea;
+}
+
+.image-size-hint {
+    margin: 0.5rem 0 0 0 !important;
+    font-size: 0.8rem !important;
+    color: #999 !important;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+/* =========================================
+   LISTA DE POSTS (Blog)
+   ========================================= */
+.blog-item {
+    background: white;
+    padding: 1.2rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    gap: 1.5rem;
+    align-items: center;
+    transition: all 0.2s;
+    margin-bottom: 1rem;
+}
+
+.blog-item:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
+}
+
+.blog-item-image {
+    width: 100px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 4px;
+    background: #f0f0f0;
+}
+
+.blog-item-info h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.3rem 0;
+    color: #1a1a1a;
+}
+
+.blog-item-meta {
+    font-size: 0.8rem;
+    color: #666;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.blog-item-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.blog-item-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.featured-badge {
+    background: #667eea;
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .blog-item {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .blog-item-image {
+        width: 100%;
+        height: 180px;
+    }
+    
+    .blog-item-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+    
+    .visibility-options {
+        flex-direction: column;
+    }
+}
+/* =========================================
+   SECCIONES MODULARES DEL BLOG
+   ========================================= */
+.secciones-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.seccion-item {
+    background: #f8f9fa;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1rem;
+    position: relative;
+}
+
+.seccion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.seccion-tipo {
+    font-weight: 600;
+    color: #667eea;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.seccion-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-seccion {
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.btn-seccion:hover {
+    transform: translateY(-2px);
+}
+
+.btn-mover {
+    background: #667eea;
+    color: white;
+}
+
+.btn-eliminar-seccion {
+    background: #dc3545;
+    color: white;
+}
+
+.seccion-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.seccion-content input,
+.seccion-content textarea,
+.seccion-content select {
+    padding: 0.7rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.seccion-content textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Lista de libros dentro de sección */
+.libro-item {
+    background: white;
+    padding: 0.8rem;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+.libro-item img {
+    width: 80px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.libro-item input {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.btn-agregar-libro {
+    padding: 0.6rem 1rem;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+/* Dropdown de secciones */
+.add-section-dropdown {
+    position: relative;
+}
+
+.section-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 100;
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-menu button {
+    padding: 0.8rem 1rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: background 0.2s;
+}
+
+.section-menu button:hover {
+    background: #f8f9fa;
+}
+
+.section-menu button i {
+    color: #667eea;
+    width: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .libro-item {
+        grid-template-columns: 1fr;
+    }
+    
+    .libro-item img {
+        width: 100%;
+        height: 150px;
+    }
+}
