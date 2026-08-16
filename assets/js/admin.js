@@ -9,7 +9,13 @@ let secciones = [];
 let seccionCounter = 0;
 let pendingConfirmAction = null;
 
-const STORAGE_LIMIT_MB = 20;
+// 🆕 Variables para Recursos
+let currentRecursoId = null;
+let uploadedRecursoImageUrl = null;
+
+const BLOG_STORAGE_LIMIT_MB = 20;
+const RECURSOS_STORAGE_LIMIT_MB = 15;
+const MAX_RECURSO_IMAGE_KB = 300;
 
 // ==========================================
 // INICIALIZACIÓN
@@ -90,11 +96,11 @@ window.switchView = function(viewId) {
     document.getElementById(viewId).classList.add('active');
     document.querySelector(`[data-view="${viewId}"]`).classList.add('active');
     
-    // Ocultar botón de vista previa al cambiar de vista principal
     document.getElementById('preview-toggle').style.display = 'none';
     
     if (viewId === 'view-admins') loadAdminsList();
-    if (viewId === 'view-blog') { loadBlogPostsList(); loadStorageUsage(); }
+    if (viewId === 'view-blog') { loadBlogPostsList(); loadStorageUsage('blog'); }
+    if (viewId === 'view-recursos') { loadRecursosList(); loadStorageUsage('recursos'); }
 };
 
 window.loginWithGoogle = async function() {
@@ -164,14 +170,14 @@ function createBookItem(libro) {
 window.showBooksList = function() {
     document.getElementById('books-list-section').style.display = 'block';
     document.getElementById('book-form-section').style.display = 'none';
-    document.getElementById('preview-toggle').style.display = 'none'; // Ocultar botón
+    document.getElementById('preview-toggle').style.display = 'none';
     loadBooksList();
 };
 
 window.showBookForm = function(bookId = null) {
     document.getElementById('books-list-section').style.display = 'none';
     document.getElementById('book-form-section').style.display = 'block';
-    document.getElementById('preview-toggle').style.display = 'none'; // Solo visible en blog
+    document.getElementById('preview-toggle').style.display = 'none';
     currentBookId = bookId;
     uploadedImageUrl = null;
     
@@ -655,15 +661,15 @@ function createBlogItem(post) {
 window.showBlogList = function() {
     document.getElementById('blog-list-section').style.display = 'block';
     document.getElementById('blog-form-section').style.display = 'none';
-    document.getElementById('preview-toggle').style.display = 'none'; // ✅ OCULTAR BOTÓN AL SALIR
+    document.getElementById('preview-toggle').style.display = 'none';
     loadBlogPostsList();
-    loadStorageUsage();
+    loadStorageUsage('blog');
 };
 
 window.showBlogForm = function(postId = null) {
     document.getElementById('blog-list-section').style.display = 'none';
     document.getElementById('blog-form-section').style.display = 'block';
-    document.getElementById('preview-toggle').style.display = 'flex'; // ✅ MOSTRAR BOTÓN SOLO AQUÍ
+    document.getElementById('preview-toggle').style.display = 'flex';
     currentPostId = postId;
     uploadedPostImageUrl = null;
     
@@ -791,7 +797,10 @@ window.handleBlogImageUpload = async function(event) {
             document.getElementById('post-imagen_portada').value = url;
             document.getElementById('post-image-preview').innerHTML = `<img src="${url}" alt="Preview">`;
             showToast('Imagen de portada subida', 'success');
-            loadStorageUsage();
+            
+            // ✅ AGREGA ESTA LÍNEA:
+            loadStorageUsage('blog');
+            
             updateBlogPreview();
         }
     } catch (error) {
@@ -811,9 +820,208 @@ function resetBlogForm() {
     updateBlogPreview();
 }
 
-async function loadStorageUsage() {
+// ==========================================
+// 🆕 RECURSOS (NUEVO)
+// ==========================================
+async function loadRecursosList() {
+    const listContainer = document.getElementById('recursos-list');
+    listContainer.innerHTML = '<div class="loading">Cargando recursos...</div>';
+    const { data: recursos, error } = await supabase.from('recursos').select('*').order('orden', { ascending: true });
+
+    if (error || !recursos || recursos.length === 0) {
+        listContainer.innerHTML = `<div class="loading">${error ? 'Error al cargar' : 'No hay recursos aún'}</div>`;
+        return;
+    }
+
+    listContainer.innerHTML = '';
+    recursos.forEach(recurso => listContainer.appendChild(createRecursoItem(recurso)));
+}
+
+function createRecursoItem(recurso) {
+    const div = document.createElement('div');
+    div.className = 'recurso-admin-card';
+    const categoriaLabels = { consejos: 'Consejos', herramientas: 'Herramientas', inspiracion: 'Inspiración', tecnicas: 'Técnicas' };
+    
+    div.innerHTML = `
+        <div class="recurso-admin-img"><img src="${recurso.imagen_url}" alt="${recurso.titulo}"></div>
+        <div class="recurso-admin-info">
+            <h4>${recurso.titulo}</h4>
+            <span class="status-badge ${recurso.esta_activo ? 'status-publicado' : 'status-borrador'}">${recurso.esta_activo ? 'Activo' : 'Oculto'}</span>
+            <span class="recurso-categoria-tag">${categoriaLabels[recurso.categoria] || recurso.categoria}</span>
+        </div>
+        <div class="recurso-admin-actions">
+            <button onclick="showRecursoForm('${recurso.id}')" class="btn-edit" title="Editar"><i class="fas fa-pen"></i></button>
+            <button onclick="deleteRecursoById('${recurso.id}', '${recurso.imagen_url}')" class="btn-remove-admin" title="Eliminar"><i class="fas fa-trash"></i></button>
+        </div>
+    `;
+    return div;
+}
+
+window.showRecursosList = function() {
+    document.getElementById('recursos-list-section').style.display = 'block';
+    document.getElementById('recurso-form-section').style.display = 'none';
+    loadRecursosList();
+    loadStorageUsage('recursos');
+};
+
+window.showRecursoForm = function(id = null) {
+    document.getElementById('recursos-list-section').style.display = 'none';
+    document.getElementById('recurso-form-section').style.display = 'block';
+    currentRecursoId = id;
+    uploadedRecursoImageUrl = null;
+    
+    if (id) {
+        document.getElementById('recurso-form-title').textContent = 'Editar Recurso';
+        document.getElementById('btn-delete-recurso').style.display = 'inline-flex';
+        loadRecursoData(id);
+    } else {
+        document.getElementById('recurso-form-title').textContent = 'Nuevo Recurso';
+        document.getElementById('btn-delete-recurso').style.display = 'none';
+        resetRecursoForm();
+    }
+};
+
+async function loadRecursoData(id) {
+    const { data: recurso } = await supabase.from('recursos').select('*').eq('id', id).single();
+    if (!recurso) return;
+
+    document.getElementById('recurso-id').value = recurso.id;
+    document.getElementById('recurso-titulo').value = recurso.titulo;
+    document.getElementById('recurso-categoria').value = recurso.categoria;
+    document.getElementById('recurso-orden').value = recurso.orden;
+    document.getElementById('recurso-descripcion').value = recurso.descripcion || '';
+    document.getElementById('recurso-activo').checked = recurso.esta_activo;
+    
+    if (recurso.imagen_url) {
+        uploadedRecursoImageUrl = recurso.imagen_url;
+        document.getElementById('recurso-image-preview').innerHTML = `<img src="${recurso.imagen_url}">`;
+    }
+}
+
+window.saveRecurso = async function(event) {
+    event.preventDefault();
+    const titulo = document.getElementById('recurso-titulo').value;
+    if (!titulo || !uploadedRecursoImageUrl) { 
+        showToast('El título y la imagen son obligatorios', 'error'); 
+        return; 
+    }
+    
+    const recursoData = { 
+        titulo, 
+        categoria: document.getElementById('recurso-categoria').value, 
+        orden: parseInt(document.getElementById('recurso-orden').value) || 0, 
+        descripcion: document.getElementById('recurso-descripcion').value, 
+        imagen_url: uploadedRecursoImageUrl, 
+        esta_activo: document.getElementById('recurso-activo').checked 
+    };
+    
+    let error;
+    if (currentRecursoId) { 
+        const res = await supabase.from('recursos').update(recursoData).eq('id', currentRecursoId); 
+        error = res.error; 
+    } else { 
+        const res = await supabase.from('recursos').insert([recursoData]); 
+        error = res.error; 
+    }
+    
+    if (error) { 
+        showToast('Error al guardar: ' + error.message, 'error'); 
+        return; 
+    }
+    
+    showToast('Recurso guardado exitosamente', 'success');
+    setTimeout(() => showRecursosList(), 1500);
+};
+
+window.deleteRecurso = function() { 
+    if (currentRecursoId) deleteRecursoById(currentRecursoId, uploadedRecursoImageUrl); 
+};
+
+window.deleteRecursoById = function(id, imageUrl) {
+    showConfirmModal('¿Eliminar este recurso?', 'Se borrará la imagen y el consejo de la web.', async () => {
+        const { error: dbError } = await supabase.from('recursos').delete().eq('id', id);
+        if (dbError) { showToast('Error DB: ' + dbError.message, 'error'); return; }
+        
+        if (imageUrl) { 
+            const fileName = imageUrl.split('/').pop(); 
+            await supabase.storage.from('recursos').remove([`recursos/${fileName}`]); 
+        }
+        
+        showToast('Recurso eliminado', 'success');
+        showRecursosList();
+    });
+};
+
+window.handleRecursoImageUpload = async function(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    const fileSizeKB = file.size / 1024;
+    const hintEl = document.getElementById('recurso-size-hint');
+    
+    if (fileSizeKB > MAX_RECURSO_IMAGE_KB) {
+        showToast(`Imagen muy grande (${fileSizeKB.toFixed(0)}KB). Máximo 300KB.`, 'error');
+        if (hintEl) { hintEl.textContent = `⚠️ Tamaño excedido: ${fileSizeKB.toFixed(0)}KB`; hintEl.style.color = '#DC2626'; }
+        event.target.value = '';
+        return;
+    }
+
+    // Verificar espacio en bucket antes de subir
+    const { data: files } = await supabase.storage.from('recursos').list();
+    let totalBytes = 0;
+    if (files) {
+        for (const f of files) { if (f.metadata && f.metadata.size) totalBytes += f.metadata.size; }
+    }
+    const currentMB = totalBytes / (1024 * 1024);
+    if ((currentMB + (fileSizeKB / 1024)) > RECURSOS_STORAGE_LIMIT_MB) {
+        showToast(`Sin espacio suficiente en el bucket de recursos.`, 'error');
+        return;
+    }
+
+    if (hintEl) { hintEl.textContent = `✅ Tamaño válido: ${fileSizeKB.toFixed(0)}KB. Optimizando...`; hintEl.style.color = '#059669'; }
+    
     try {
-        const { data: files, error } = await supabase.storage.from('blog').list();
+        const compressed = await imageCompression(file, { 
+            maxSizeMB: MAX_RECURSO_IMAGE_KB / 1024, 
+            maxWidthOrHeight: 1200, 
+            useWebWorker: true, 
+            fileType: 'image/jpeg' 
+        });
+        
+        const titulo = document.getElementById('recurso-titulo').value || 'recurso';
+        const fileName = `recursos/${Date.now()}-${titulo.replace(/[^a-z0-9]/gi, '-').toLowerCase()}.jpg`;
+        
+        const { error } = await supabase.storage.from('recursos').upload(fileName, compressed);
+        if (error) throw error;
+        
+        const { data: { publicUrl } } = supabase.storage.from('recursos').getPublicUrl(fileName);
+        uploadedRecursoImageUrl = publicUrl;
+        
+        const previewEl = document.getElementById('recurso-image-preview');
+        if (previewEl) previewEl.innerHTML = `<img src="${publicUrl}">`;
+        if (hintEl) hintEl.textContent = '✅ Imagen optimizada y lista para guardar';
+        
+        showToast('Imagen optimizada y lista', 'success');
+    } catch (err) { 
+        showToast('Error al procesar imagen: ' + err.message, 'error'); 
+    }
+};
+
+function resetRecursoForm() {
+    document.getElementById('recurso-form').reset();
+    document.getElementById('recurso-id').value = '';
+    document.getElementById('recurso-image-preview').innerHTML = '';
+    const hintEl = document.getElementById('recurso-size-hint');
+    if (hintEl) hintEl.textContent = '';
+    uploadedRecursoImageUrl = null;
+}
+
+// ==========================================
+// GESTIÓN DE ALMACENAMIENTO (STORAGE)
+// ==========================================
+async function loadStorageUsage(bucketName = 'blog') {
+    try {
+        const { data: files, error } = await supabase.storage.from(bucketName).list();
         if (error) return;
 
         let totalBytes = 0;
@@ -823,20 +1031,30 @@ async function loadStorageUsage() {
             }
         }
 
+        const limit = bucketName === 'blog' ? BLOG_STORAGE_LIMIT_MB : RECURSOS_STORAGE_LIMIT_MB;
         const totalMB = (totalBytes / (1024 * 1024)).toFixed(2);
-        const percentage = Math.min((totalMB / STORAGE_LIMIT_MB) * 100, 100);
+        const percentage = Math.min((totalMB / limit) * 100, 100);
         
-        document.getElementById('storage-text').textContent = `${totalMB} / ${STORAGE_LIMIT_MB} MB`;
-        const fillEl = document.getElementById('storage-fill');
-        fillEl.style.width = `${percentage}%`;
-        fillEl.classList.remove('warning', 'danger');
-        if (percentage >= 90) fillEl.classList.add('danger');
-        else if (percentage >= 80) fillEl.classList.add('warning');
-    } catch (error) { console.error('Error al cargar uso de storage:', error); }
+        const textId = bucketName === 'blog' ? 'storage-text' : 'recursos-storage-text';
+        const fillId = bucketName === 'blog' ? 'storage-fill' : 'recursos-storage-fill';
+        
+        const textEl = document.getElementById(textId);
+        const fillEl = document.getElementById(fillId);
+        
+        if (textEl) textEl.textContent = `${totalMB} / ${limit} MB`;
+        if (fillEl) {
+            fillEl.style.width = `${percentage}%`;
+            fillEl.classList.remove('warning', 'danger');
+            if (percentage >= 90) fillEl.classList.add('danger');
+            else if (percentage >= 80) fillEl.classList.add('warning');
+        }
+    } catch (error) { 
+        console.error('Error al cargar uso de storage:', error); 
+    }
 }
 
 // ==========================================
-// 🆕 VISTA PREVIA EN VIVO DEL BLOG
+// VISTA PREVIA EN VIVO DEL BLOG
 // ==========================================
 window.updateBlogPreview = function() {
     const titulo = document.getElementById('post-titulo')?.value || 'Título del artículo';
