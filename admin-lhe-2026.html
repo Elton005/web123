@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin | La Huella Escrita</title>
+    <title>Panel de Administración | La Huella Escrita</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Quill Editor (Editor visual tipo Word) -->
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     
     <link rel="stylesheet" href="assets/css/reset.css">
@@ -23,11 +21,11 @@
     <div id="login-screen" class="admin-login-screen">
         <div class="login-container">
             <div class="login-header">
+                <div class="login-logo-icon"><i class="fas fa-feather-alt"></i></div>
                 <h1>Panel de Administración</h1>
                 <p>La Huella Escrita</p>
             </div>
             <div id="login-form-container">
-                <p class="login-instruction">Inicia sesión con tu cuenta autorizada</p>
                 <button onclick="loginWithGoogle()" class="btn-admin-google">
                     <i class="fab fa-google"></i> Continuar con Google
                 </button>
@@ -45,51 +43,53 @@
     <div id="admin-panel" style="display: none;">
         <header class="admin-header">
             <div class="admin-header-content">
-                <h1><i class="fas fa-book"></i> Panel de Administración</h1>
+                <div class="header-brand">
+                    <i class="fas fa-feather-alt"></i>
+                    <span>La Huella Escrita</span>
+                </div>
                 <div class="admin-user-info">
                     <span id="panel-user-email"></span>
-                    <button onclick="logout()" class="btn-admin-small">
-                        <i class="fas fa-sign-out-alt"></i> Salir
+                    <button onclick="logout()" class="btn-admin-small" title="Cerrar sesión">
+                        <i class="fas fa-sign-out-alt"></i>
                     </button>
                 </div>
             </div>
         </header>
 
-        <!-- NAVEGACIÓN -->
         <nav class="admin-nav">
             <div class="admin-nav-content">
                 <button class="nav-tab active" data-view="view-books" onclick="switchView('view-books')">
-                    <i class="fas fa-book"></i> Libros
+                    <i class="fas fa-book"></i> <span>Biblioteca</span>
                 </button>
                 <button class="nav-tab" data-view="view-blog" onclick="switchView('view-blog')">
-                    <i class="fas fa-pen-nib"></i> Blog
+                    <i class="fas fa-pen-nib"></i> <span>Blog</span>
                 </button>
                 <button class="nav-tab" data-view="view-admins" onclick="switchView('view-admins')">
-                    <i class="fas fa-users-cog"></i> Administradores
+                    <i class="fas fa-users-cog"></i> <span>Equipo</span>
                 </button>
             </div>
         </nav>
 
         <main class="admin-main">
-            
             <!-- ===================== VISTA: LIBROS ===================== -->
             <div id="view-books" class="admin-view active">
                 <div id="books-list-section">
                     <div class="admin-toolbar">
-                        <h2>Biblioteca</h2>
+                        <div>
+                            <h2>Biblioteca</h2>
+                            <p class="toolbar-subtitle">Gestiona tus obras publicadas y próximas.</p>
+                        </div>
                         <button onclick="showBookForm()" class="btn-admin-primary">
                             <i class="fas fa-plus"></i> Nuevo Libro
                         </button>
                     </div>
-                    <div id="books-list" class="books-list">
-                        <div class="loading">Cargando libros...</div>
-                    </div>
+                    <div id="books-list" class="cards-grid"><div class="loading">Cargando libros...</div></div>
                 </div>
 
-                <div id="book-form-section" style="display: none;">
+                <div id="book-form-section" class="form-container" style="display: none;">
                     <div class="admin-toolbar">
-                        <button onclick="showBooksList()" class="btn-admin-outline">
-                            <i class="fas fa-arrow-left"></i> Volver
+                        <button onclick="showBooksList()" class="btn-admin-ghost">
+                            <i class="fas fa-arrow-left"></i> Volver a la lista
                         </button>
                         <h2 id="book-form-title">Nuevo Libro</h2>
                     </div>
@@ -122,7 +122,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="orden">Orden</label>
+                                    <label for="orden">Orden de aparición</label>
                                     <input type="number" id="orden" min="0" value="0">
                                 </div>
                             </div>
@@ -133,18 +133,18 @@
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="amazon_url">URL Amazon</label>
-                                    <input type="url" id="amazon_url" placeholder="https://amazon.com/...">
+                                    <input type="url" id="amazon_url" placeholder="https://amazon.com/..." oninput="updatePreview()">
                                 </div>
                                 <div class="form-group">
                                     <label for="app_interactiva_url">URL App Interactiva</label>
-                                    <input type="url" id="app_interactiva_url" placeholder="https://...">
+                                    <input type="url" id="app_interactiva_url" placeholder="https://..." oninput="updatePreview()">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>Portada</label>
                                 <div class="image-upload-options">
                                     <button type="button" onclick="document.getElementById('image-file').click()" class="btn-admin-outline">
-                                        <i class="fas fa-upload"></i> Subir
+                                        <i class="fas fa-cloud-upload-alt"></i> Subir imagen
                                     </button>
                                     <input type="file" id="image-file" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
                                     <span class="or-divider">o</span>
@@ -153,24 +153,19 @@
                                 <div id="image-preview" class="image-preview"></div>
                             </div>
                             <div class="form-actions">
-                                <button type="submit" class="btn-admin-primary">
-                                    <i class="fas fa-save"></i> Guardar
-                                </button>
-                                <button type="button" onclick="deleteBook()" id="btn-delete" class="btn-admin-danger" style="display: none;">
-                                    <i class="fas fa-trash"></i> Eliminar
-                                </button>
+                                <button type="submit" class="btn-admin-primary"><i class="fas fa-save"></i> Guardar Libro</button>
+                                <button type="button" onclick="deleteBook()" id="btn-delete" class="btn-admin-danger" style="display: none;"><i class="fas fa-trash"></i> Eliminar</button>
                             </div>
                             <p id="form-message" class="form-message"></p>
                         </form>
+                        
+                        <!-- Vista Previa de Libro -->
                         <div class="preview-panel">
                             <h3><i class="fas fa-eye"></i> Vista Previa</h3>
                             <div class="preview-card" id="preview-card">
                                 <div class="preview-cover">
                                     <img id="preview-image" src="" alt="Portada" style="display: none;">
-                                    <div class="preview-cover-placeholder">
-                                        <i class="fas fa-book-open"></i>
-                                        <span>Sin imagen</span>
-                                    </div>
+                                    <div class="preview-cover-placeholder"><i class="fas fa-book-open"></i><span>Sin imagen</span></div>
                                     <span class="preview-badge" id="preview-badge" style="display: none;"></span>
                                 </div>
                                 <div class="preview-content">
@@ -178,15 +173,9 @@
                                     <p class="preview-subtitle" id="preview-subtitle">Subtítulo</p>
                                     <p class="preview-description" id="preview-description">La descripción aparecerá aquí...</p>
                                     <div class="preview-actions">
-                                        <button class="btn-preview-primary" id="preview-btn-app" style="display: none;">
-                                            <i class="fas fa-gamepad"></i> Experiencia Interactiva
-                                        </button>
-                                        <button class="btn-preview-secondary" id="preview-btn-amazon" style="display: none;">
-                                            <i class="fab fa-amazon"></i> Obtener en Amazon
-                                        </button>
-                                        <button class="btn-preview-disabled" id="preview-btn-soon" style="display: none;">
-                                            <i class="fas fa-clock"></i> Disponible pronto
-                                        </button>
+                                        <button class="btn-preview-primary" id="preview-btn-app" style="display: none;"><i class="fas fa-gamepad"></i> App Interactiva</button>
+                                        <button class="btn-preview-secondary" id="preview-btn-amazon" style="display: none;"><i class="fab fa-amazon"></i> Ver en Amazon</button>
+                                        <button class="btn-preview-disabled" id="preview-btn-soon" style="display: none;"><i class="fas fa-clock"></i> Próximamente</button>
                                     </div>
                                 </div>
                             </div>
@@ -195,63 +184,48 @@
                 </div>
             </div>
 
-            <!-- ===================== VISTA: BLOG (NUEVA) ===================== -->
-            <!-- ===================== VISTA: BLOG (MODULAR) ===================== -->
+            <!-- ===================== VISTA: BLOG ===================== -->
             <div id="view-blog" class="admin-view">
-                
-                <!-- Sub-vista: Lista de Posts -->
                 <div id="blog-list-section">
                     <div class="storage-counter">
                         <div class="storage-header">
                             <span><i class="fas fa-hdd"></i> Almacenamiento de imágenes</span>
                             <span id="storage-text">0 / 20 MB</span>
                         </div>
-                        <div class="storage-bar">
-                            <div class="storage-fill" id="storage-fill" style="width: 0%"></div>
-                        </div>
-                        <p class="storage-tip">
-                            <i class="fas fa-lightbulb"></i>
-                            Límite: 20 MB. Comprime tus imágenes antes de subir (máx. 2MB por archivo).
-                        </p>
+                        <div class="storage-bar"><div class="storage-fill" id="storage-fill" style="width: 0%"></div></div>
+                        <p class="storage-tip"><i class="fas fa-lightbulb"></i> Límite: 20 MB. Comprime tus imágenes antes de subir (máx. 2MB por archivo).</p>
                     </div>
             
                     <div class="admin-toolbar">
-                        <h2>Entre Libros y Café</h2>
-                        <button onclick="showBlogForm()" class="btn-admin-primary">
-                            <i class="fas fa-plus"></i> Nuevo Artículo
-                        </button>
+                        <div>
+                            <h2>Entre Libros y Café</h2>
+                            <p class="toolbar-subtitle">Gestiona los artículos mensuales de tu boletín.</p>
+                        </div>
+                        <button onclick="showBlogForm()" class="btn-admin-primary"><i class="fas fa-plus"></i> Nuevo Artículo</button>
                     </div>
-                    <div id="blog-list" class="books-list">
-                        <div class="loading">Cargando artículos...</div>
-                    </div>
+                    <div id="blog-list" class="cards-grid"><div class="loading">Cargando artículos...</div></div>
                 </div>
             
-                <!-- Sub-vista: Formulario de Post Modular -->
-                <div id="blog-form-section" style="display: none;">
+                <div id="blog-form-section" class="form-container" style="display: none;">
                     <div class="admin-toolbar">
-                        <button onclick="showBlogList()" class="btn-admin-outline">
-                            <i class="fas fa-arrow-left"></i> Volver
-                        </button>
+                        <button onclick="showBlogList()" class="btn-admin-ghost"><i class="fas fa-arrow-left"></i> Volver a la lista</button>
                         <h2 id="blog-form-title">Nuevo Artículo</h2>
                     </div>
             
                     <form id="blog-form" class="book-form" style="max-width: 100%;">
                         <input type="hidden" id="post-id">
-                        
                         <div class="form-group">
-                            <label for="post-titulo">Título *</label>
-                            <input type="text" id="post-titulo" required>
+                            <label for="post-titulo">Título del Artículo *</label>
+                            <input type="text" id="post-titulo" required oninput="updateBlogPreview()">
                         </div>
-            
                         <div class="form-group">
-                            <label for="post-subtitulo">Subtítulo / Extracto corto</label>
-                            <input type="text" id="post-subtitulo" placeholder="Una frase que invite a leer...">
+                            <label for="post-subtitulo">Subtítulo o Extracto</label>
+                            <input type="text" id="post-subtitulo" placeholder="Una frase que invite a leer..." oninput="updateBlogPreview()">
                         </div>
-            
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="post-categoria">Categoría</label>
-                                <select id="post-categoria">
+                                <select id="post-categoria" onchange="updateBlogPreview()">
                                     <option value="reflexion">Reflexión</option>
                                     <option value="cultura">Cultura</option>
                                     <option value="sociedad">Sociedad</option>
@@ -265,63 +239,41 @@
                                 <input type="date" id="post-fecha">
                             </div>
                             <div class="form-group">
-                                <label for="post-orden">Orden prioridad</label>
+                                <label for="post-orden">Orden de prioridad</label>
                                 <input type="number" id="post-orden" min="0" value="0">
                             </div>
                         </div>
-            
-                        <!-- Imagen de portada -->
                         <div class="form-group">
                             <label>Imagen de portada</label>
                             <div class="image-upload-options">
-                                <button type="button" onclick="document.getElementById('post-image-file').click()" class="btn-admin-outline">
-                                    <i class="fas fa-upload"></i> Subir imagen
-                                </button>
+                                <button type="button" onclick="document.getElementById('post-image-file').click()" class="btn-admin-outline"><i class="fas fa-cloud-upload-alt"></i> Subir imagen</button>
                                 <input type="file" id="post-image-file" accept="image/*" style="display: none;" onchange="handleBlogImageUpload(event)">
                                 <span class="or-divider">o</span>
-                                <input type="url" id="post-imagen_portada" placeholder="Pegar URL de imagen">
+                                <input type="url" id="post-imagen_portada" placeholder="Pegar URL de imagen" oninput="updateBlogPreview()">
                             </div>
                             <div id="post-image-preview" class="image-preview"></div>
                         </div>
-            
-                        <!-- Configuración de visibilidad -->
                         <div class="form-group visibility-config">
                             <label>Configuración de visibilidad</label>
                             <div class="visibility-options">
-                                <label class="checkbox-label">
-                                    <input type="radio" name="post-estado" value="publicado" checked>
-                                    <span>Publicar inmediatamente</span>
-                                </label>
-                                <label class="checkbox-label">
-                                    <input type="radio" name="post-estado" value="programado">
-                                    <span>Programar para fecha específica</span>
-                                </label>
-                                <label class="checkbox-label">
-                                    <input type="radio" name="post-estado" value="borrador">
-                                    <span>Guardar como borrador</span>
-                                </label>
+                                <label class="checkbox-label"><input type="radio" name="post-estado" value="publicado" checked><span>Publicar inmediatamente</span></label>
+                                <label class="checkbox-label"><input type="radio" name="post-estado" value="programado" onchange="updateBlogPreview()"><span>Programar para fecha específica</span></label>
+                                <label class="checkbox-label"><input type="radio" name="post-estado" value="borrador" onchange="updateBlogPreview()"><span>Guardar como borrador</span></label>
                             </div>
-                            <div id="fecha-programada-container" style="display: none; margin-top: 1rem;">
+                            <div id="fecha-programada-container" class="scheduled-date-container">
                                 <label for="post-fecha-programada">Fecha de publicación programada</label>
                                 <input type="date" id="post-fecha-programada">
                             </div>
-                            <label class="checkbox-label" style="margin-top: 1rem;">
-                                <input type="checkbox" id="post-es_destacado">
-                                <span>Marcar como destacado (aparece entre los primeros)</span>
+                            <label class="checkbox-label featured-label">
+                                <input type="checkbox" id="post-es_destacado" onchange="updateBlogPreview()">
+                                <span>Marcar como destacado (aparece primero en el blog)</span>
                             </label>
                         </div>
-            
-                        <!-- SECCIONES MODULARES -->
                         <div class="form-group">
                             <label>Secciones del artículo</label>
-                            <div id="secciones-container" class="secciones-container">
-                                <!-- Las secciones se agregan dinámicamente aquí -->
-                            </div>
-                            
+                            <div id="secciones-container" class="secciones-container"></div>
                             <div class="add-section-dropdown">
-                                <button type="button" onclick="toggleSectionMenu()" class="btn-admin-outline" style="width: 100%;">
-                                    <i class="fas fa-plus"></i> Agregar sección
-                                </button>
+                                <button type="button" onclick="toggleSectionMenu()" class="btn-admin-outline" style="width: 100%;"><i class="fas fa-plus"></i> Agregar sección</button>
                                 <div id="section-menu" class="section-menu" style="display: none;">
                                     <button type="button" onclick="addSection('texto')"><i class="fas fa-paragraph"></i> Texto</button>
                                     <button type="button" onclick="addSection('imagen')"><i class="fas fa-image"></i> Imagen</button>
@@ -333,29 +285,27 @@
                                 </div>
                             </div>
                         </div>
-            
                         <div class="form-actions">
-                            <button type="button" onclick="saveBlogPost()" class="btn-admin-primary">
-                                <i class="fas fa-save"></i> Guardar artículo
-                            </button>
-                            <button type="button" onclick="deleteBlogPost()" id="btn-delete-post" class="btn-admin-danger" style="display: none;">
-                                <i class="fas fa-trash"></i> Eliminar
-                            </button>
+                            <button type="button" onclick="saveBlogPost()" class="btn-admin-primary"><i class="fas fa-save"></i> Guardar Artículo</button>
+                            <button type="button" onclick="deleteBlogPost()" id="btn-delete-post" class="btn-admin-danger" style="display: none;"><i class="fas fa-trash"></i> Eliminar</button>
                         </div>
-            
                         <p id="blog-form-message" class="form-message"></p>
                     </form>
                 </div>
             </div>
+
             <!-- ===================== VISTA: ADMINISTRADORES ===================== -->
             <div id="view-admins" class="admin-view">
                 <div class="admin-toolbar">
-                    <h2>Administradores</h2>
+                    <div>
+                        <h2>Equipo de Administración</h2>
+                        <p class="toolbar-subtitle">Gestiona quién tiene acceso al panel.</p>
+                    </div>
                     <span class="admin-count" id="admin-count">0 / 3</span>
                 </div>
                 <div class="admin-info-box">
-                    <i class="fas fa-info-circle"></i>
-                    <p>Puedes tener un máximo de <strong>3 administradores</strong>.</p>
+                    <i class="fas fa-shield-alt"></i>
+                    <p>Puedes tener un máximo de <strong>3 administradores</strong> simultáneos.</p>
                 </div>
                 <div class="add-admin-form">
                     <h3>Agregar nuevo administrador</h3>
@@ -363,22 +313,51 @@
                         <div class="form-row">
                             <input type="email" id="new-admin-email" placeholder="correo@ejemplo.com" required>
                             <input type="text" id="new-admin-name" placeholder="Nombre completo" required>
-                            <button type="submit" class="btn-admin-primary">
-                                <i class="fas fa-user-plus"></i> Agregar
-                            </button>
+                            <button type="submit" class="btn-admin-primary"><i class="fas fa-user-plus"></i> Agregar</button>
                         </div>
                         <p id="admin-message" class="form-message"></p>
                     </form>
                 </div>
-                <div id="admins-list" class="admins-list">
-                    <div class="loading">Cargando administradores...</div>
-                </div>
+                <div id="admins-list" class="cards-grid"><div class="loading">Cargando administradores...</div></div>
             </div>
-
         </main>
     </div>
 
-    <!-- Scripts -->
+    <!-- MODAL DE CONFIRMACIÓN ELEGANTE -->
+    <div id="confirm-modal" class="confirm-modal-overlay">
+        <div class="confirm-modal">
+            <div class="confirm-icon"><i class="fas fa-exclamation-triangle"></i></div>
+            <h3 class="confirm-title" id="confirm-title">¿Estás seguro?</h3>
+            <p class="confirm-message" id="confirm-message">Esta acción no se puede deshacer.</p>
+            <div class="confirm-actions">
+                <button class="btn-confirm-cancel" onclick="closeConfirmModal()">Cancelar</button>
+                <button class="btn-confirm-delete" id="confirm-accept-btn" onclick="executeConfirmAction()">Sí, eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENEDOR DE TOASTS -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- BOTÓN FLOTANTE DE VISTA PREVIA (Solo visible en formulario de blog) -->
+    <button id="preview-toggle" class="preview-toggle-btn" onclick="togglePreviewPanel()" title="Vista previa del artículo" style="display: none;">
+        <i class="fas fa-eye"></i>
+    </button>
+
+    <!-- PANEL LATERAL DE VISTA PREVIA -->
+    <div id="preview-panel" class="preview-panel-slide">
+        <div class="preview-panel-header">
+            <h3><i class="fas fa-eye"></i> Vista Previa</h3>
+            <button class="preview-close-btn" onclick="togglePreviewPanel()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="preview-panel-body" id="preview-panel-body">
+            <div class="preview-empty">
+                <i class="fas fa-pen-fancy"></i>
+                <p>Comienza a escribir para ver la vista previa</p>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js"></script>
     <script type="module" src="assets/js/supabase.js"></script>
