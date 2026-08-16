@@ -10,7 +10,7 @@
     width: 100%;
     min-height: 700px;
     overflow: hidden;
-    margin-top: 80px; /* Compensa el header fijo */
+    margin-top: 40px; /* Compensa el header fijo */
 }
 
 .hero-background {

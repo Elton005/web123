@@ -10,7 +10,6 @@ async function loadPost() {
     }
     
     try {
-        // Consulta anidada para traer el post y sus secciones ordenadas
         const { data: post, error } = await supabase
             .from('blog_posts')
             .select(`
@@ -31,12 +30,11 @@ async function loadPost() {
         
         const article = document.getElementById('post-article');
         
-        // Renderizar cabecera
         let html = `
             <header class="post-header">
                 <div class="post-categoria">${post.categoria || 'Reflexión'}</div>
                 <h1 class="post-titulo">${post.titulo}</h1>
-                <p class="post-subtitulo">${post.subtitulo || ''}</p>
+                ${post.subtitulo ? `<p class="post-subtitulo">${post.subtitulo}</p>` : ''}
                 <div class="post-meta"><i class="far fa-calendar"></i> ${post.fecha_publicacion || 'Sin fecha'}</div>
             </header>
         `;
@@ -45,7 +43,6 @@ async function loadPost() {
             html += `<img src="${post.imagen_portada}" alt="${post.titulo}" class="post-imagen-principal">`;
         }
         
-        // Renderizar secciones modulares
         const secciones = post.blog_secciones || [];
         secciones.sort((a, b) => a.orden - b.orden);
         
@@ -59,7 +56,6 @@ async function loadPost() {
                         </div>
                     `;
                     break;
-                    
                 case 'imagen':
                     html += `
                         <div class="modulo-seccion modulo-imagen">
@@ -68,7 +64,6 @@ async function loadPost() {
                         </div>
                     `;
                     break;
-                    
                 case 'cita':
                     html += `
                         <div class="modulo-seccion modulo-cita">
@@ -77,7 +72,6 @@ async function loadPost() {
                         </div>
                     `;
                     break;
-                    
                 case 'consejo':
                     html += `
                         <div class="modulo-seccion modulo-consejo">
@@ -86,11 +80,9 @@ async function loadPost() {
                         </div>
                     `;
                     break;
-                    
                 case 'separador':
                     html += `<div class="modulo-seccion modulo-separador">✦ ✦ ✦</div>`;
                     break;
-                    
                 case 'lista_libros':
                     const libros = seccion.datos_json?.libros || [];
                     if (libros.length > 0) {
@@ -104,7 +96,6 @@ async function loadPost() {
                                 </div>
                             </div>
                         `).join('');
-                        
                         html += `
                             <div class="modulo-seccion modulo-lista-libros">
                                 ${seccion.titulo ? `<h3>${seccion.titulo}</h3>` : ''}
@@ -113,7 +104,6 @@ async function loadPost() {
                         `;
                     }
                     break;
-                    
                 case 'html_libre':
                     html += `<div class="modulo-seccion">${seccion.contenido || ''}</div>`;
                     break;
@@ -122,9 +112,67 @@ async function loadPost() {
         
         article.innerHTML = html;
         
+        // Cargar navegación anterior/siguiente
+        loadNavigation(post.id, post.orden_prioridad);
+        
     } catch (error) {
         console.error('Error al cargar artículo:', error);
         document.getElementById('post-article').innerHTML = '<div class="loading">Error al cargar el artículo</div>';
+    }
+}
+
+async function loadNavigation(currentId, currentOrden) {
+    const navContainer = document.getElementById('post-navigation');
+    
+    try {
+        // Artículo anterior (orden mayor = más antiguo en nuestra lógica)
+        const { data: prev } = await supabase
+            .from('blog_posts')
+            .select('id, titulo')
+            .eq('esta_publicado', true)
+            .gt('orden_prioridad', currentOrden)
+            .order('orden_prioridad', { ascending: true })
+            .limit(1)
+            .maybeSingle();
+        
+        // Artículo siguiente
+        const { data: next } = await supabase
+            .from('blog_posts')
+            .select('id, titulo')
+            .eq('esta_publicado', true)
+            .lt('orden_prioridad', currentOrden)
+            .order('orden_prioridad', { ascending: false })
+            .limit(1)
+            .maybeSingle();
+        
+        let html = '';
+        
+        if (prev) {
+            html += `
+                <a href="blog-post.html?id=${prev.id}" class="nav-post-link prev">
+                    <span class="nav-label"><i class="fas fa-arrow-left"></i> Anterior</span>
+                    <span class="nav-title">${prev.titulo}</span>
+                </a>
+            `;
+        } else {
+            html += '<div></div>';
+        }
+        
+        if (next) {
+            html += `
+                <a href="blog-post.html?id=${next.id}" class="nav-post-link next">
+                    <span class="nav-label">Siguiente <i class="fas fa-arrow-right"></i></span>
+                    <span class="nav-title">${next.titulo}</span>
+                </a>
+            `;
+        } else {
+            html += '<div></div>';
+        }
+        
+        navContainer.innerHTML = html;
+        
+    } catch (error) {
+        console.error('Error al cargar navegación:', error);
     }
 }
 
