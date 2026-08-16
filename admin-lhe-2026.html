@@ -26,9 +26,7 @@
                 <p>La Huella Escrita</p>
             </div>
             <div id="login-form-container">
-                <button onclick="loginWithGoogle()" class="btn-admin-google">
-                    <i class="fab fa-google"></i> Continuar con Google
-                </button>
+                <button onclick="loginWithGoogle()" class="btn-admin-google"><i class="fab fa-google"></i> Continuar con Google</button>
                 <div class="login-divider"><span>o usa tu correo</span></div>
                 <form onsubmit="handleAdminLogin(event)">
                     <input type="email" id="admin-email" placeholder="tu@correo.com" required>
@@ -43,109 +41,66 @@
     <div id="admin-panel" style="display: none;">
         <header class="admin-header">
             <div class="admin-header-content">
-                <div class="header-brand">
-                    <i class="fas fa-feather-alt"></i>
-                    <span>La Huella Escrita</span>
-                </div>
+                <div class="header-brand"><i class="fas fa-feather-alt"></i><span>La Huella Escrita</span></div>
                 <div class="admin-user-info">
                     <span id="panel-user-email"></span>
-                    <button onclick="logout()" class="btn-admin-small" title="Cerrar sesión">
-                        <i class="fas fa-sign-out-alt"></i>
-                    </button>
+                    <button onclick="logout()" class="btn-admin-small" title="Cerrar sesión"><i class="fas fa-sign-out-alt"></i></button>
                 </div>
             </div>
         </header>
 
         <nav class="admin-nav">
             <div class="admin-nav-content">
-                <button class="nav-tab active" data-view="view-books" onclick="switchView('view-books')">
-                    <i class="fas fa-book"></i> <span>Biblioteca</span>
-                </button>
-                <button class="nav-tab" data-view="view-blog" onclick="switchView('view-blog')">
-                    <i class="fas fa-pen-nib"></i> <span>Blog</span>
-                </button>
-                <button class="nav-tab" data-view="view-admins" onclick="switchView('view-admins')">
-                    <i class="fas fa-users-cog"></i> <span>Equipo</span>
-                </button>
+                <button class="nav-tab active" data-view="view-books" onclick="switchView('view-books')"><i class="fas fa-book"></i> <span>Biblioteca</span></button>
+                <button class="nav-tab" data-view="view-blog" onclick="switchView('view-blog')"><i class="fas fa-pen-nib"></i> <span>Blog</span></button>
+                <button class="nav-tab" data-view="view-recursos" onclick="switchView('view-recursos')"><i class="fas fa-lightbulb"></i> <span>Recursos</span></button>
+                <button class="nav-tab" data-view="view-admins" onclick="switchView('view-admins')"><i class="fas fa-users-cog"></i> <span>Equipo</span></button>
             </div>
         </nav>
 
         <main class="admin-main">
-            <!-- ===================== VISTA: LIBROS ===================== -->
+            <!-- VISTA: LIBROS -->
             <div id="view-books" class="admin-view active">
                 <div id="books-list-section">
                     <div class="admin-toolbar">
-                        <div>
-                            <h2>Biblioteca</h2>
-                            <p class="toolbar-subtitle">Gestiona tus obras publicadas y próximas.</p>
-                        </div>
-                        <button onclick="showBookForm()" class="btn-admin-primary">
-                            <i class="fas fa-plus"></i> Nuevo Libro
-                        </button>
+                        <div><h2>Biblioteca</h2><p class="toolbar-subtitle">Gestiona tus obras publicadas y próximas.</p></div>
+                        <button onclick="showBookForm()" class="btn-admin-primary"><i class="fas fa-plus"></i> Nuevo Libro</button>
                     </div>
                     <div id="books-list" class="cards-grid"><div class="loading">Cargando libros...</div></div>
                 </div>
-
                 <div id="book-form-section" class="form-container" style="display: none;">
                     <div class="admin-toolbar">
-                        <button onclick="showBooksList()" class="btn-admin-ghost">
-                            <i class="fas fa-arrow-left"></i> Volver a la lista
-                        </button>
+                        <button onclick="showBooksList()" class="btn-admin-ghost"><i class="fas fa-arrow-left"></i> Volver a la lista</button>
                         <h2 id="book-form-title">Nuevo Libro</h2>
                     </div>
                     <div class="form-with-preview">
                         <form id="book-form" class="book-form" onsubmit="saveBook(event)">
                             <input type="hidden" id="book-id">
-                            <div class="form-group">
-                                <label for="titulo">Título *</label>
-                                <input type="text" id="titulo" required oninput="updatePreview()">
-                            </div>
-                            <div class="form-group">
-                                <label for="subtitulo">Subtítulo</label>
-                                <input type="text" id="subtitulo" oninput="updatePreview()">
-                            </div>
+                            <div class="form-group"><label for="titulo">Título *</label><input type="text" id="titulo" required oninput="updatePreview()"></div>
+                            <div class="form-group"><label for="subtitulo">Subtítulo</label><input type="text" id="subtitulo" oninput="updatePreview()"></div>
                             <div class="form-row">
-                                <div class="form-group">
-                                    <label for="categoria">Categoría *</label>
+                                <div class="form-group"><label for="categoria">Categoría *</label>
                                     <select id="categoria" required onchange="updatePreview()">
-                                        <option value="ensayo">Ensayo</option>
-                                        <option value="desarrollo">Desarrollo Personal</option>
-                                        <option value="narrativa">Narrativa</option>
-                                        <option value="infantil">Infantil</option>
+                                        <option value="ensayo">Ensayo</option><option value="desarrollo">Desarrollo Personal</option>
+                                        <option value="narrativa">Narrativa</option><option value="infantil">Infantil</option>
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <label for="estado">Estado</label>
+                                <div class="form-group"><label for="estado">Estado</label>
                                     <select id="estado" onchange="updatePreview()">
-                                        <option value="publicado">Publicado</option>
-                                        <option value="proximamente">Próximamente</option>
+                                        <option value="publicado">Publicado</option><option value="proximamente">Próximamente</option>
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <label for="orden">Orden de aparición</label>
-                                    <input type="number" id="orden" min="0" value="0">
-                                </div>
+                                <div class="form-group"><label for="orden">Orden</label><input type="number" id="orden" min="0" value="0"></div>
                             </div>
-                            <div class="form-group">
-                                <label for="descripcion">Descripción</label>
-                                <textarea id="descripcion" rows="4" oninput="updatePreview()"></textarea>
-                            </div>
+                            <div class="form-group"><label for="descripcion">Descripción</label><textarea id="descripcion" rows="4" oninput="updatePreview()"></textarea></div>
                             <div class="form-row">
-                                <div class="form-group">
-                                    <label for="amazon_url">URL Amazon</label>
-                                    <input type="url" id="amazon_url" placeholder="https://amazon.com/..." oninput="updatePreview()">
-                                </div>
-                                <div class="form-group">
-                                    <label for="app_interactiva_url">URL App Interactiva</label>
-                                    <input type="url" id="app_interactiva_url" placeholder="https://..." oninput="updatePreview()">
-                                </div>
+                                <div class="form-group"><label for="amazon_url">URL Amazon</label><input type="url" id="amazon_url" placeholder="https://amazon.com/..." oninput="updatePreview()"></div>
+                                <div class="form-group"><label for="app_interactiva_url">URL App Interactiva</label><input type="url" id="app_interactiva_url" placeholder="https://..." oninput="updatePreview()"></div>
                             </div>
                             <div class="form-group">
                                 <label>Portada</label>
                                 <div class="image-upload-options">
-                                    <button type="button" onclick="document.getElementById('image-file').click()" class="btn-admin-outline">
-                                        <i class="fas fa-cloud-upload-alt"></i> Subir imagen
-                                    </button>
+                                    <button type="button" onclick="document.getElementById('image-file').click()" class="btn-admin-outline"><i class="fas fa-cloud-upload-alt"></i> Subir imagen</button>
                                     <input type="file" id="image-file" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
                                     <span class="or-divider">o</span>
                                     <input type="url" id="imagen_url" placeholder="Pegar URL" oninput="updatePreview()">
@@ -158,8 +113,6 @@
                             </div>
                             <p id="form-message" class="form-message"></p>
                         </form>
-                        
-                        <!-- Vista Previa de Libro -->
                         <div class="preview-panel">
                             <h3><i class="fas fa-eye"></i> Vista Previa</h3>
                             <div class="preview-card" id="preview-card">
@@ -184,64 +137,39 @@
                 </div>
             </div>
 
-            <!-- ===================== VISTA: BLOG ===================== -->
+            <!-- VISTA: BLOG -->
             <div id="view-blog" class="admin-view">
                 <div id="blog-list-section">
                     <div class="storage-counter">
-                        <div class="storage-header">
-                            <span><i class="fas fa-hdd"></i> Almacenamiento de imágenes</span>
-                            <span id="storage-text">0 / 20 MB</span>
-                        </div>
+                        <div class="storage-header"><span><i class="fas fa-hdd"></i> Almacenamiento Blog</span><span id="storage-text">0 / 20 MB</span></div>
                         <div class="storage-bar"><div class="storage-fill" id="storage-fill" style="width: 0%"></div></div>
                         <p class="storage-tip"><i class="fas fa-lightbulb"></i> Límite: 20 MB. Comprime tus imágenes antes de subir (máx. 2MB por archivo).</p>
                     </div>
-            
                     <div class="admin-toolbar">
-                        <div>
-                            <h2>Entre Libros y Café</h2>
-                            <p class="toolbar-subtitle">Gestiona los artículos mensuales de tu boletín.</p>
-                        </div>
+                        <div><h2>Entre Libros y Café</h2><p class="toolbar-subtitle">Gestiona los artículos mensuales de tu boletín.</p></div>
                         <button onclick="showBlogForm()" class="btn-admin-primary"><i class="fas fa-plus"></i> Nuevo Artículo</button>
                     </div>
                     <div id="blog-list" class="cards-grid"><div class="loading">Cargando artículos...</div></div>
                 </div>
-            
                 <div id="blog-form-section" class="form-container" style="display: none;">
                     <div class="admin-toolbar">
                         <button onclick="showBlogList()" class="btn-admin-ghost"><i class="fas fa-arrow-left"></i> Volver a la lista</button>
                         <h2 id="blog-form-title">Nuevo Artículo</h2>
                     </div>
-            
                     <form id="blog-form" class="book-form" style="max-width: 100%;">
                         <input type="hidden" id="post-id">
-                        <div class="form-group">
-                            <label for="post-titulo">Título del Artículo *</label>
-                            <input type="text" id="post-titulo" required oninput="updateBlogPreview()">
-                        </div>
-                        <div class="form-group">
-                            <label for="post-subtitulo">Subtítulo o Extracto</label>
-                            <input type="text" id="post-subtitulo" placeholder="Una frase que invite a leer..." oninput="updateBlogPreview()">
-                        </div>
+                        <div class="form-group"><label for="post-titulo">Título del Artículo *</label><input type="text" id="post-titulo" required oninput="updateBlogPreview()"></div>
+                        <div class="form-group"><label for="post-subtitulo">Subtítulo o Extracto</label><input type="text" id="post-subtitulo" placeholder="Una frase que invite a leer..." oninput="updateBlogPreview()"></div>
                         <div class="form-row">
-                            <div class="form-group">
-                                <label for="post-categoria">Categoría</label>
+                            <div class="form-group"><label for="post-categoria">Categoría</label>
                                 <select id="post-categoria" onchange="updateBlogPreview()">
-                                    <option value="reflexion">Reflexión</option>
-                                    <option value="cultura">Cultura</option>
-                                    <option value="sociedad">Sociedad</option>
-                                    <option value="literatura">Literatura</option>
-                                    <option value="condicion-humana">Condición Humana</option>
-                                    <option value="noticias">Noticias</option>
+                                    <option value="reflexion">Reflexión</option><option value="cultura">Cultura</option>
+                                    <option value="sociedad">Sociedad</option><option value="literatura">Literatura</option>
+                                    <option value="condicion-humana">Condición Humana</option><option value="noticias">Noticias</option>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label for="post-fecha">Fecha de publicación</label>
-                                <input type="date" id="post-fecha">
-                            </div>
-                            <div class="form-group">
-                                <label for="post-orden">Orden de prioridad</label>
-                                <input type="number" id="post-orden" min="0" value="0">
-                            </div>
+                            <div class="form-group"><label for="post-fecha">Fecha de publicación</label><input type="date" id="post-fecha"></div>
+                            <div class="form-group"><label for="post-orden">Orden de prioridad</label><input type="number" id="post-orden" min="0" value="0"></div>
                         </div>
                         <div class="form-group">
                             <label>Imagen de portada</label>
@@ -264,10 +192,7 @@
                                 <label for="post-fecha-programada">Fecha de publicación programada</label>
                                 <input type="date" id="post-fecha-programada">
                             </div>
-                            <label class="checkbox-label featured-label">
-                                <input type="checkbox" id="post-es_destacado" onchange="updateBlogPreview()">
-                                <span>Marcar como destacado (aparece primero en el blog)</span>
-                            </label>
+                            <label class="checkbox-label featured-label"><input type="checkbox" id="post-es_destacado" onchange="updateBlogPreview()"><span>Marcar como destacado (aparece primero en el blog)</span></label>
                         </div>
                         <div class="form-group">
                             <label>Secciones del artículo</label>
@@ -294,19 +219,70 @@
                 </div>
             </div>
 
-            <!-- ===================== VISTA: ADMINISTRADORES ===================== -->
+            <!-- 🆕 VISTA: RECURSOS -->
+            <div id="view-recursos" class="admin-view">
+                <div id="recursos-list-section">
+                    <div class="storage-counter">
+                        <div class="storage-header"><span><i class="fas fa-hdd"></i> Almacenamiento Recursos</span><span id="recursos-storage-text">0 / 15 MB</span></div>
+                        <div class="storage-bar"><div class="storage-fill" id="recursos-storage-fill" style="width: 0%"></div></div>
+                        <p class="storage-tip"><i class="fas fa-exclamation-triangle"></i> Límite estricto: 15 MB. Máximo 300KB por imagen para optimizar carga.</p>
+                    </div>
+                    <div class="admin-toolbar">
+                        <div><h2>Recursos para Escritores</h2><p class="toolbar-subtitle">Consejos visuales estilo Pinterest.</p></div>
+                        <button onclick="showRecursoForm()" class="btn-admin-primary"><i class="fas fa-plus"></i> Nuevo Recurso</button>
+                    </div>
+                    <div id="recursos-list" class="recursos-admin-grid"><div class="loading">Cargando recursos...</div></div>
+                </div>
+
+                <div id="recurso-form-section" class="form-container" style="display: none;">
+                    <div class="admin-toolbar">
+                        <button onclick="showRecursosList()" class="btn-admin-ghost"><i class="fas fa-arrow-left"></i> Volver a la lista</button>
+                        <h2 id="recurso-form-title">Nuevo Recurso</h2>
+                    </div>
+                    <form id="recurso-form" class="book-form" style="max-width: 800px;" onsubmit="saveRecurso(event)">
+                        <input type="hidden" id="recurso-id">
+                        <div class="form-group"><label for="recurso-titulo">Título del Consejo *</label><input type="text" id="recurso-titulo" required placeholder="Ej: 5 Tips para vencer el bloqueo del escritor"></div>
+                        <div class="form-row">
+                            <div class="form-group"><label for="recurso-categoria">Categoría</label>
+                                <select id="recurso-categoria">
+                                    <option value="consejos">Consejos</option><option value="herramientas">Herramientas</option>
+                                    <option value="inspiracion">Inspiración</option><option value="tecnicas">Técnicas</option>
+                                </select>
+                            </div>
+                            <div class="form-group"><label for="recurso-orden">Orden</label><input type="number" id="recurso-orden" min="0" value="0"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Imagen del Recurso (Máx. 300KB) *</label>
+                            <div class="image-upload-options">
+                                <button type="button" onclick="document.getElementById('recurso-image-file').click()" class="btn-admin-outline"><i class="fas fa-cloud-upload-alt"></i> Subir imagen</button>
+                                <input type="file" id="recurso-image-file" accept="image/*" style="display: none;" onchange="handleRecursoImageUpload(event)">
+                            </div>
+                            <div id="recurso-image-preview" class="image-preview"></div>
+                            <p class="image-size-hint" id="recurso-size-hint" style="margin-top: 0.5rem; font-size: 0.8rem; color: #6B7280;"></p>
+                        </div>
+                        <div class="form-group"><label for="recurso-descripcion">Descripción corta (Opcional)</label><textarea id="recurso-descripcion" rows="3" placeholder="Breve descripción que aparecerá debajo de la imagen..."></textarea></div>
+                        <div class="form-group visibility-config" style="background: transparent; border: none; padding: 0;">
+                            <label class="checkbox-label" style="font-weight: 600; color: var(--color-primary);">
+                                <input type="checkbox" id="recurso-activo" checked>
+                                <span>Publicar en la web (Desmarca para ocultar)</span>
+                            </label>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn-admin-primary"><i class="fas fa-save"></i> Guardar Recurso</button>
+                            <button type="button" onclick="deleteRecurso()" id="btn-delete-recurso" class="btn-admin-danger" style="display: none;"><i class="fas fa-trash"></i> Eliminar</button>
+                        </div>
+                        <p id="recurso-form-message" class="form-message"></p>
+                    </form>
+                </div>
+            </div>
+
+            <!-- VISTA: ADMINISTRADORES -->
             <div id="view-admins" class="admin-view">
                 <div class="admin-toolbar">
-                    <div>
-                        <h2>Equipo de Administración</h2>
-                        <p class="toolbar-subtitle">Gestiona quién tiene acceso al panel.</p>
-                    </div>
+                    <div><h2>Equipo de Administración</h2><p class="toolbar-subtitle">Gestiona quién tiene acceso al panel.</p></div>
                     <span class="admin-count" id="admin-count">0 / 3</span>
                 </div>
-                <div class="admin-info-box">
-                    <i class="fas fa-shield-alt"></i>
-                    <p>Puedes tener un máximo de <strong>3 administradores</strong> simultáneos.</p>
-                </div>
+                <div class="admin-info-box"><i class="fas fa-shield-alt"></i><p>Puedes tener un máximo de <strong>3 administradores</strong> simultáneos.</p></div>
                 <div class="add-admin-form">
                     <h3>Agregar nuevo administrador</h3>
                     <form onsubmit="addAdmin(event)">
@@ -323,7 +299,7 @@
         </main>
     </div>
 
-    <!-- MODAL DE CONFIRMACIÓN ELEGANTE -->
+    <!-- MODAL DE CONFIRMACIÓN -->
     <div id="confirm-modal" class="confirm-modal-overlay">
         <div class="confirm-modal">
             <div class="confirm-icon"><i class="fas fa-exclamation-triangle"></i></div>
@@ -339,10 +315,8 @@
     <!-- CONTENEDOR DE TOASTS -->
     <div id="toast-container" class="toast-container"></div>
 
-    <!-- BOTÓN FLOTANTE DE VISTA PREVIA (Solo visible en formulario de blog) -->
-    <button id="preview-toggle" class="preview-toggle-btn" onclick="togglePreviewPanel()" title="Vista previa del artículo" style="display: none;">
-        <i class="fas fa-eye"></i>
-    </button>
+    <!-- BOTÓN FLOTANTE DE VISTA PREVIA (Solo para blog) -->
+    <button id="preview-toggle" class="preview-toggle-btn" onclick="togglePreviewPanel()" title="Vista previa del artículo" style="display: none;"><i class="fas fa-eye"></i></button>
 
     <!-- PANEL LATERAL DE VISTA PREVIA -->
     <div id="preview-panel" class="preview-panel-slide">
@@ -351,10 +325,7 @@
             <button class="preview-close-btn" onclick="togglePreviewPanel()"><i class="fas fa-times"></i></button>
         </div>
         <div class="preview-panel-body" id="preview-panel-body">
-            <div class="preview-empty">
-                <i class="fas fa-pen-fancy"></i>
-                <p>Comienza a escribir para ver la vista previa</p>
-            </div>
+            <div class="preview-empty"><i class="fas fa-pen-fancy"></i><p>Comienza a escribir para ver la vista previa</p></div>
         </div>
     </div>
 

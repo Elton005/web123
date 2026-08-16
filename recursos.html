@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Recursos para escritores - Técnicas, herramientas y guías para transformar tu escritura">
+    <meta name="description" content="Recursos y consejos visuales para escritores - La Huella Escrita">
     <title>Recursos | La Huella Escrita</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <link rel="stylesheet" href="assets/css/reset.css">
@@ -21,18 +19,14 @@
 </head>
 <body>
 
-    <!-- HEADER GLOBAL CON AUTENTICACIÓN -->
+    <!-- HEADER -->
     <header class="site-header">
         <div class="container">
             <a href="index.html" class="logo">
                 <img src="assets/images/logo/logo-circular.jpg" alt="La Huella Escrita" class="logo-image">
                 <span class="logo-text">LA HUELLA ESCRITA</span>
             </a>
-
-            <button class="menu-toggle" aria-label="Abrir menú">
-                <span class="hamburger"></span>
-            </button>
-
+            <button class="menu-toggle" aria-label="Abrir menú"><span class="hamburger"></span></button>
             <nav class="main-nav">
                 <ul class="nav-list">
                     <li><a href="index.html" class="nav-link">Inicio</a></li>
@@ -40,18 +34,11 @@
                     <li><a href="biblioteca.html" class="nav-link">Biblioteca</a></li>
                     <li><a href="blog.html" class="nav-link">Blog</a></li>
                     <li><a href="recursos.html" class="nav-link active">Recursos</a></li>
-                    
-                    <!-- AUTENTICACIÓN -->
                     <li id="auth-login-container">
-                        <button id="auth-login-btn" class="nav-link auth-login-link" onclick="openLoginModal()">
-                            Iniciar sesión
-                        </button>
+                        <button class="nav-link auth-login-link" onclick="openLoginModal()">Iniciar sesión</button>
                     </li>
-                    
                     <li id="auth-profile-container" class="nav-user-profile" style="display: none;">
-                        <div class="user-avatar-circle">
-                            <span id="user-initial" class="user-initial">U</span>
-                        </div>
+                        <div class="user-avatar-circle"><span id="user-initial" class="user-initial">U</span></div>
                         <span id="auth-user-email" class="user-email"></span>
                     </li>
                 </ul>
@@ -59,137 +46,27 @@
         </div>
     </header>
 
-    <!-- FOTO DE FONDO DEL HERO (ancho completo con difuminado izquierdo) -->
-    <div class="resources-floating-photo">
-        <img src="assets/images/resources/hero-recursos.png" alt="Herramientas de escritura: cuaderno, pluma y gafas">
-    </div>
-
     <main>
-        <!-- ============================================ -->
-        <!-- HERO DE RECURSOS -->
-        <!-- ============================================ -->
-        <section class="resources-hero">
+        <!-- HERO COMPACTO -->
+        <section class="recursos-hero">
             <div class="container">
-                <div class="hero-content">
-                    <h1 class="hero-title">Recursos para escritores</h1>
-                    <p class="hero-subtitle">Técnicas, herramientas e ideas para transformar una intuición en una historia que permanezca.</p>
-                    <div class="hero-buttons">
-                        <a href="#explorar" class="btn btn-primary">Explorar recursos</a>
-                        <a href="#descargar" class="btn btn-outline">Descargar herramientas</a>
+                <div class="hero-split">
+                    <div class="hero-text">
+                        <h1 class="recursos-title">Recursos para escritores</h1>
+                        <p class="recursos-subtitle">Técnicas, herramientas e ideas para transformar una intuición en una historia que permanezca.</p>
+                    </div>
+                    <div class="hero-image">
+                        <img src="assets/images/resources/hero-recursos.png" alt="Recursos para escritores">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ============================================ -->
-        <!-- GRID DE RECURSOS PRINCIPALES -->
-        <!-- ============================================ -->
-        <section class="resources-grid" id="explorar">
+        <!-- GRID MASONRY (Sin filtros) -->
+        <section class="recursos-grid-section">
             <div class="container">
-                <article class="resource-card">
-                    <div class="card-icon"><i class="fa-solid fa-lightbulb"></i></div>
-                    <h3 class="card-title">De la idea a la historia</h3>
-                    <p class="card-text">Encuentra la chispa inicial y conviértela en el motor de tu relato.</p>
-                    <a href="#" class="card-link">Ver recurso →</a>
-                </article>
-
-                <article class="resource-card">
-                    <div class="card-icon"><i class="fa-solid fa-user-pen"></i></div>
-                    <h3 class="card-title">Construcción de personajes</h3>
-                    <p class="card-text">Crea personajes memorables con motivaciones, arcos y profundidad.</p>
-                    <a href="#" class="card-link">Ver recurso →</a>
-                </article>
-
-                <article class="resource-card">
-                    <div class="card-icon"><i class="fa-solid fa-compass"></i></div>
-                    <h3 class="card-title">Técnicas narrativas</h3>
-                    <p class="card-text">Domina estructuras, punto de vista, ritmo y tensión narrativa.</p>
-                    <a href="#" class="card-link">Ver recurso →</a>
-                </article>
-
-                <article class="resource-card">
-                    <div class="card-icon"><i class="fa-solid fa-comments"></i></div>
-                    <h3 class="card-title">Diálogos, voz y estilo</h3>
-                    <p class="card-text">Escribe diálogos naturales y desarrolla una voz propia e inconfundible.</p>
-                    <a href="#" class="card-link">Ver recurso →</a>
-                </article>
-
-                <article class="resource-card">
-                    <div class="card-icon"><i class="fa-solid fa-pen-to-square"></i></div>
-                    <h3 class="card-title">Revisión y edición</h3>
-                    <p class="card-text">Pule tu manuscrito para lograr claridad, coherencia e impacto.</p>
-                    <a href="#" class="card-link">Ver recurso →</a>
-                </article>
-            </div>
-        </section>
-
-        <!-- ============================================ -->
-        <!-- RECURSO DESTACADO -->
-        <!-- ============================================ -->
-        <section class="resource-featured">
-            <div class="container">
-                <div class="featured-content">
-                    <span class="featured-label">Recurso destacado</span>
-                    <h2 class="featured-title">Cómo construir un personaje que no termine en la última página</h2>
-                    <p class="featured-text">Explora un método paso a paso para crear personajes complejos y coherentes que evolucionan, toman decisiones y dejan huella en el lector.</p>
-                    <a href="#" class="btn btn-primary">Leer recurso →</a>
-                </div>
-                <div class="featured-image">
-                    <img src="assets/images/resources/personaje-silhouette.png" alt="Silueta de personaje literario">
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================================ -->
-        <!-- RECURSOS DESCARGABLES -->
-        <!-- ============================================ -->
-        <section class="resources-download" id="descargar">
-            <div class="container">
-                <h2 class="section-title">Herramientas descargables</h2>
-                <p class="section-subtitle">Plantillas, guías y hojas de trabajo para acompañar tu proceso creativo.</p>
-                
-                <div class="download-grid">
-                    <article class="download-card">
-                        <div class="download-icon"><i class="fa-solid fa-file-lines"></i></div>
-                        <h3 class="download-title">Plantilla de estructura</h3>
-                        <p class="download-meta">PDF · 3 páginas</p>
-                        <a href="#" class="btn-download">Descargar</a>
-                    </article>
-
-                    <article class="download-card">
-                        <div class="download-icon"><i class="fa-solid fa-id-card"></i></div>
-                        <h3 class="download-title">Ficha de personaje</h3>
-                        <p class="download-meta">PDF · 5 páginas</p>
-                        <a href="#" class="btn-download">Descargar</a>
-                    </article>
-
-                    <article class="download-card">
-                        <div class="download-icon"><i class="fa-solid fa-table"></i></div>
-                        <h3 class="download-title">Hoja de personajes</h3>
-                        <p class="download-meta">PDF · 2 páginas</p>
-                        <a href="#" class="btn-download">Descargar</a>
-                    </article>
-
-                    <article class="download-card">
-                        <div class="download-icon"><i class="fa-solid fa-map"></i></div>
-                        <h3 class="download-title">Mapa de tramas</h3>
-                        <p class="download-meta">PDF · 4 páginas</p>
-                        <a href="#" class="btn-download">Descargar</a>
-                    </article>
-
-                    <article class="download-card">
-                        <div class="download-icon"><i class="fa-solid fa-clipboard-check"></i></div>
-                        <h3 class="download-title">Lista de verificación</h3>
-                        <p class="download-meta">PDF · 1 página</p>
-                        <a href="#" class="btn-download">Descargar</a>
-                    </article>
-
-                    <article class="download-card">
-                        <div class="download-icon"><i class="fa-solid fa-feather-pointed"></i></div>
-                        <h3 class="download-title">Rutina de escritura</h3>
-                        <p class="download-meta">PDF · 2 páginas</p>
-                        <a href="#" class="btn-download">Descargar</a>
-                    </article>
+                <div class="masonry-grid" id="recursos-masonry">
+                    <div class="loading">Cargando recursos...</div>
                 </div>
             </div>
         </section>
@@ -209,93 +86,37 @@
         </div>
     </footer>
 
-    <!-- ============================================ -->
-    <!-- MODALES DE AUTENTICACIÓN (GLOBALES) -->
-    <!-- ============================================ -->
-    
-    <!-- MODAL DE LOGIN -->
+    <!-- MODAL DE IMAGEN (LIGHTBOX) -->
+    <div id="image-modal" class="image-modal" onclick="closeImageModal(event)">
+        <button class="modal-close" onclick="closeImageModal(event)" aria-label="Cerrar">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <img id="modal-image" src="" alt="Recurso ampliado">
+            <p id="modal-title" class="modal-title"></p>
+        </div>
+    </div>
+
+    <!-- MODAL LOGIN (Mismo de siempre) -->
     <div id="login-modal" class="login-modal">
         <div class="login-modal-content">
-            <button class="login-modal-close" onclick="closeLoginModal()" aria-label="Cerrar">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
+            <button class="login-modal-close" onclick="closeLoginModal()" aria-label="Cerrar"><i class="fas fa-times"></i></button>
             <h3 class="login-modal-title">Accede a contenido exclusivo</h3>
             <p class="login-modal-subtitle">Inicia sesión para acceder a recursos exclusivos y juegos interactivos.</p>
-            
-            <button type="button" onclick="loginWithGoogle()" class="btn-google">
-                <svg width="20" height="20" viewBox="0 0 24 24">
-                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                </svg>
-                Continuar con Google
-            </button>
-
-            <div class="login-divider"><span>o usa tu correo</span></div>
-            
+            <button type="button" onclick="loginWithGoogle()" class="btn-google"><i class="fab fa-google"></i> Continuar con Google</button>
+            <div class="login-divider"><span>o utiliza tu correo electrónico</span></div>
             <form id="login-form" onsubmit="handleLoginSubmit(event)">
                 <div class="login-input-group">
                     <input type="email" id="login-email" placeholder="tu@correo.com" required class="login-input">
                 </div>
-                <button type="submit" id="login-submit-btn" class="btn btn-primary login-submit-btn">Enviar enlace mágico</button>
+                <button type="submit" id="login-submit-btn" class="btn btn-primary login-submit-btn">Solicitar enlace de acceso</button>
             </form>
             <p id="login-message" class="login-message"></p>
         </div>
     </div>
 
-    <!-- MODAL DE PERFIL -->
-    <div id="profile-modal" class="profile-modal">
-        <div class="profile-modal-content">
-            <button class="profile-modal-close" onclick="closeProfileModal()" aria-label="Cerrar">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
-            
-            <div class="profile-header">
-                <div class="profile-avatar">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
-                    </svg>
-                </div>
-                <h3 class="profile-title">Tu Perfil</h3>
-                <p id="profile-email" class="profile-email"></p>
-            </div>
-            
-            <div class="profile-divider"></div>
-            
-            <div class="profile-contact-section">
-                <h4 class="profile-section-title">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                    </svg>
-                    ¿Quieres contactar a los autores?
-                </h4>
-                <p class="profile-contact-text">¿Tienes preguntas, sugerencias o quieres colaborar? Escríbenos directamente.</p>
-                <a href="contacto.html" class="btn btn-primary profile-contact-btn">Enviar mensaje</a>
-            </div>
-            
-            <div class="profile-divider"></div>
-            
-            <button onclick="logout()" class="btn btn-outline profile-logout-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                    <polyline points="16 17 21 12 16 7"></polyline>
-                    <line x1="21" y1="12" x2="9" y2="12"></line>
-                </svg>
-                Cerrar sesión
-            </button>
-        </div>
-    </div>
-
-    <!-- Scripts Globales -->
     <script src="assets/js/main.js"></script>
     <script type="module" src="assets/js/supabase.js"></script>
+    <script type="module" src="assets/js/recursos.js"></script>
 </body>
 </html>
