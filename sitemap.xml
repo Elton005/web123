@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Página de Inicio -->
+    <url>
+        <loc>https://lahuellaescrita.com/</loc>
+        <lastmod>2024-05-20</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <!-- Biblioteca -->
+    <url>
+        <loc>https://lahuellaescrita.com/biblioteca.html</loc>
+        <lastmod>2024-05-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Blog -->
+    <url>
+        <loc>https://lahuellaescrita.com/blog.html</loc>
+        <lastmod>2024-05-20</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Recursos -->
+    <url>
+        <loc>https://lahuellaescrita.com/recursos.html</loc>
+        <lastmod>2024-05-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Autor -->
+    <url>
+        <loc>https://lahuellaescrita.com/autor.html</loc>
+        <lastmod>2024-05-20</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+</urlset>

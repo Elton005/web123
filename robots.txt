@@ -1,0 +1,11 @@
+# Permitir que todos los robots de búsqueda rastreen el sitio
+User-agent: *
+Allow: /
+
+# PROTEGER: Bloquear el acceso al panel de administración
+Disallow: /admin-lhe-2026.html
+Disallow: /assets/js/admin.js
+Disallow: /assets/css/admin.css
+
+# Indicar a Google dónde está tu mapa del sitio
+Sitemap: https://lahuellaescrita.com/sitemap.xml
