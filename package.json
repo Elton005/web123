@@ -1,0 +1,15 @@
+{
+  "name": "la-huella-escrita",
+  "version": "1.0.0",
+  "description": "La Huella Escrita - Junior Osmany Coronel Durán",
+  "type": "module",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/speed-insights": "^1.0.0"
+  }
+}
