@@ -104,7 +104,13 @@ window.switchView = function(viewId) {
 };
 
 window.loginWithGoogle = async function() {
-    await supabase.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: window.location.origin + window.location.pathname } });
+    await supabase.auth.signInWithOAuth({ 
+        provider: 'google', 
+        options: { 
+            // ✅ Forzamos la redirección a tu dominio real
+            redirectTo: 'https://lahuellaescrita.com/admin-lhe-2026.html' 
+        } 
+    });
 };
 
 window.handleAdminLogin = async function(event) {
@@ -112,7 +118,14 @@ window.handleAdminLogin = async function(event) {
     const email = document.getElementById('admin-email').value;
     const messageEl = document.getElementById('login-message');
     
-    const { error } = await supabase.auth.signInWithOtp({ email, options: { emailRedirectTo: window.location.origin + window.location.pathname } });
+    const { error } = await supabase.auth.signInWithOtp({ 
+        email, 
+        options: { 
+            // ✅ Forzamos la redirección a tu dominio real
+            emailRedirectTo: 'https://lahuellaescrita.com/admin-lhe-2026.html' 
+        } 
+    });
+    
     if (error) {
         messageEl.textContent = '❌ Error: ' + error.message;
         messageEl.style.color = '#DC2626';

@@ -30,7 +30,8 @@ export async function loginWithMagicLink(email) {
         const { data, error } = await supabase.auth.signInWithOtp({
             email: email,
             options: {
-                emailRedirectTo: window.location.origin + window.location.pathname,
+                // ✅ CAMBIO: Forzar el dominio real + la página actual
+                emailRedirectTo: 'https://lahuellaescrita.com' + window.location.pathname,
             },
         });
         if (error) throw error;
@@ -48,7 +49,8 @@ export async function loginWithGoogle() {
         const { data, error } = await supabase.auth.signInWithOAuth({
             provider: 'google',
             options: {
-                redirectTo: window.location.origin + window.location.pathname,
+                // ✅ CAMBIO: Forzar el dominio real + la página actual
+                redirectTo: 'https://lahuellaescrita.com' + window.location.pathname,
             },
         });
         if (error) throw error;
@@ -66,8 +68,8 @@ export async function logout() {
         const { error } = await supabase.auth.signOut();
         if (error) throw error;
         
-        // Recargar la página para limpiar cualquier estado residual y volver al inicio
-        window.location.href = window.location.origin;
+        // ✅ CAMBIO: Redirigir siempre al inicio del dominio real
+        window.location.href = 'https://lahuellaescrita.com/';
     } catch (error) {
         console.error('Error al cerrar sesión:', error);
         alert('Error al cerrar sesión: ' + error.message);
@@ -219,7 +221,7 @@ window.closeProfileModal = function() {
     if (modal) modal.classList.remove('is-active');
 };
 
-// Hacer logout disponible globalmente
+// Hacer logout y login disponibles globalmente
 window.logout = logout;
 window.loginWithGoogle = loginWithGoogle;
 
