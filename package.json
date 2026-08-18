@@ -1,0 +1,25 @@
+{
+  "name": "la-huella-escrita",
+  "version": "1.0.0",
+  "description": "La Huella Escrita - Junior Osmany Coronel Durán. Libros para comprender lo que somos.",
+  "scripts": {
+    "build": "echo 'Static HTML site - no build needed'",
+    "lint": "echo 'No linter configured'",
+    "test": "echo 'No tests configured'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elton005/web123.git"
+  },
+  "author": "Junior Osmany Coronel Durán",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/speed-insights": "^1.3.1"
+  },
+  "main": "index.js",
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Elton005/web123/issues"
+  },
+  "homepage": "https://github.com/Elton005/web123#readme"
+}
