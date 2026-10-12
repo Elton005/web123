@@ -124,7 +124,7 @@
 }
 
 .proximamente-img {
-    filter: grayscale(100%) brightness(0.85);
+    filter: none;
 }
 
 /* Contenido de la tarjeta */
